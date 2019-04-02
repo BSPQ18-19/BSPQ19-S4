@@ -36,7 +36,7 @@ public class Pelicula implements Serializable{
 	
 	/**
 	 * Constructor de Película.
-	 * @param titulo Nombre de la peñicula.
+	 * @param titulo Nombre de la película.
 	 * @param genero Género de la película (Acción, Ciencia Ficción, Romance, Cómica, Terror, Drama.. etc).
 	 * @param fechaestreno Fecha en la que se estrenó la película.
 	 * @param fichatecnica Breve sinópsis junto con los miembros del reparto.
@@ -57,12 +57,9 @@ public class Pelicula implements Serializable{
 	}
 
 
-	/*
+	/**
 	 * Getters & Setters
 	 */
-	
-	
-
 
 	public String getId_pelicula() {
 		return id_pelicula;
@@ -145,7 +142,10 @@ public class Pelicula implements Serializable{
 		return serialVersionUID;
 	}
 
-
+	/**
+	 * Metodo To String
+	 */
+	
 	@Override
 	public String toString() {
 		return "Película [id_pelicula=" + id_pelicula + ", titulo=" + titulo + ", genero=" + genero + ", fechaestreno="
@@ -153,9 +153,7 @@ public class Pelicula implements Serializable{
 				+ puntuacion + ", vecesalquilada=" + vecesalquilada + "]";
 	}
 
-	/**
-	 * Metodo To String
-	 */
+	
 	
 
 }
