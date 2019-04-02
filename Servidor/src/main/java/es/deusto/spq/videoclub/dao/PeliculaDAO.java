@@ -35,8 +35,8 @@ public class PeliculaDAO implements IPeliculaDAO{
 	
 	
 	/**
-	 * Metodo que almacena un libro.
-	 * @Libro anyade libro.
+	 * Metodo que almacena una película.
+	 * @Pelicula anyade pelicula.
 	 * @throws Exception Lanza una excepccion si ocurre un error.
 	 */
 	@Override
@@ -47,11 +47,11 @@ public class PeliculaDAO implements IPeliculaDAO{
 
 		try {
 			tx.begin();
-			logger.info("   * Almacenando libro: " + p);
+			logger.info("   * Almacenando película: " + p);
 			pm.makePersistent(p);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.error("   $ Error almacenando libro:" + ex.getMessage());
+			logger.error("   $ Error almacenando película:" + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -79,16 +79,86 @@ public class PeliculaDAO implements IPeliculaDAO{
 		
 	}
 	
+	/**
+	 * Metodo que devuelve una pelicula de la BD dado su titulo.
+	 * @titulo Nombre de la pelicula.
+	 * @return Devuleve el una pelicula de la BD
+	 */
 	@Override
 	public Pelicula getPelicula(String titulo) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(3);
+
+		Transaction tx = pm.currentTransaction();
+		Pelicula l = null;
+
+		try {
+			logger.info("   * Buscando película: " + titulo);
+
+
+			tx.begin();
+			Query<?> query = pm.newQuery("SELECT FROM " + Pelicula.class.getName() + " WHERE nombre == '" + titulo +"'");
+			query.setUnique(true);
+			l = (Pelicula) query.execute();
+			tx.commit();
+
+		} catch (Exception ex) {
+			logger.error("   $ Error buscando película:" + ex.getMessage());
+
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return l;
 	}
 
+	/**
+	 * Metodo que devuelve todas las películas
+	 * @return Devuelve todas las películas de la BD
+	 */
 	@Override
 	public ArrayList<String> getPeliculas() {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+
+
+		Transaction tx = pm.currentTransaction();
+		
+		ArrayList<String> catalogo = new ArrayList<String>();
+		
+		try {
+
+			logger.info("  * Mostrando catalogo de películas...");
+
+			String pelicula=null;
+			tx.begin();
+			Query<Pelicula> query = pm.newQuery(Pelicula.class);
+			@SuppressWarnings("unchecked")
+			List<Pelicula> peliculas = (List<Pelicula>) query.execute();
+			
+			for (Pelicula p : peliculas) {
+				pelicula = p.getId_pelicula() + "#" + p.getTitulo() + "#" + p.getGenero() + "#" + p.getFechaestreno() + "/" ;
+				catalogo.add(pelicula);
+			}
+			tx.commit();
+  			
+		} catch (Exception ex) {
+			
+			logger.error("   $ Error recuperando todas las películas: " + ex.getMessage());
+		
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+		
+		return catalogo;
 		
 	}
 	
