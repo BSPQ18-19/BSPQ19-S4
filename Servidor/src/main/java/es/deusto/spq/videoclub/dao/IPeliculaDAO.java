@@ -16,8 +16,8 @@ public interface IPeliculaDAO {
 	public ArrayList<String> getPeliculas();
 	public void almacenarPelicula (Pelicula p);
 	public Pelicula verPelicula(String titulo);
-	public void anyadirPuntuacion(String titulo, int puntuacion);
-	public void anyadirOpinion(String opiniones);
+	public void anyadirPuntuacion(String id_pelicula, int puntuacion);
+	public void anyadirOpinion(String id_pelicula, String opiniones);
 	
 	
 }
