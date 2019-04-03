@@ -20,7 +20,7 @@ public class Pelicula {
     @Persistent(table="PELICULAS_CLIENTE")
     @Join(column="PELICULA_ID")
     @Element(column="CORREO")
-	Set<Usuario>usuarios;
+	Set<Cuenta>usuarios;
 
 
 	public Pelicula(String genero, String titulo, String fEstreno, String trailer, String fichaTecnica,
@@ -94,12 +94,12 @@ public class Pelicula {
 	}
 
 
-	public Set<Usuario> getUsuarios() {
+	public Set<Cuenta> getUsuarios() {
 		return usuarios;
 	}
 
 
-	public void setUsuarios(Set<Usuario> usuarios) {
+	public void setUsuarios(Set<Cuenta> usuarios) {
 		this.usuarios = usuarios;
 	}
 

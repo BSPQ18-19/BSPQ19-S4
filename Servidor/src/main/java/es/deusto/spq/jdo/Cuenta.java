@@ -4,9 +4,11 @@ import java.util.Set;
 
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Usuario {
+public class Cuenta {
+	@PrimaryKey
 	String correo = null;
 	String nombre = null;
 	String contrasenna = null;
@@ -18,7 +20,7 @@ public class Usuario {
     @Persistent(mappedBy="usuarios")
 	Set<Pelicula>peliculas;
 
-	public Usuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) {
+	public Cuenta(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) {
 		this.correo = correo;
 		this.nombre = nombre;
 		this.contrasenna = contrasenna;
