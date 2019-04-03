@@ -171,7 +171,7 @@ public class VentanaPrincipal extends JFrame{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							ContraseñaOlvidada frame = new ContraseñaOlvidada();
+							ContrasenyaOlvidada frame = new ContrasenyaOlvidada();
 							frame.setVisible(true);
 							frame.setTitle("Contrase\u00F1a olvidada");
 							frame.setIconImage(imagen.getImage());

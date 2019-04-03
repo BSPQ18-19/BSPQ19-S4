@@ -17,7 +17,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class ContraseñaOlvidada extends JFrame{
+public class ContrasenyaOlvidada extends JFrame{
 	
 	private static final long serialVersionUID = 8892233185250939659L;
 	private JPanel contentPane;
@@ -27,7 +27,7 @@ public class ContraseñaOlvidada extends JFrame{
 	private JButton btnAtras;
 	private static ImageIcon imagen= new ImageIcon("Icono//icono.jpg"); 
 
-	public ContraseñaOlvidada() {
+	public ContrasenyaOlvidada() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 200);
 		contentPane = new JPanel();
