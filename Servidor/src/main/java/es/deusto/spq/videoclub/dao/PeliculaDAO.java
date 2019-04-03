@@ -173,7 +173,7 @@ public class PeliculaDAO implements IPeliculaDAO{
 	/**
 	 * Metodo que devuelve una pelicula de la BD dado su titulo.
 	 * @titulo Nombre de la pelicula.
-	 * @return Devuele una pelicula de la BD
+	 * @return Devuelve una pelicula de la BD
 	 */
 	@Override
 	public Pelicula getPelicula(String titulo) {

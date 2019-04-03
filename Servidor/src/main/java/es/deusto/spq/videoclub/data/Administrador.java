@@ -10,7 +10,7 @@ import javax.jdo.annotations.Join;
 import javax.jdo.annotations.PersistenceCapable;
 
 /**
- * Clase Cliente
+ * Clase Administrador
  * @author Jon
  *
  */

@@ -17,7 +17,7 @@ import es.deusto.spq.videoclub.data.AlquilerPelicula;
 import es.deusto.spq.videoclub.data.Cliente;
 
 /**
- * Clase de creación de DAO de Peliculas
+ * Clase de creación de DAO de Clientes
  * @author Jon
  */
 public class ClienteDAO implements IClienteDAO{
@@ -33,17 +33,87 @@ public class ClienteDAO implements IClienteDAO{
 
 	}
 	
-	
+	/**
+	 * Metodo que devuelve un cliente dado su nombre de cuenta
+	 * @nombre Nombre de la cuenta.
+	 * @return Devuelve una cuenta de la BD
+	 */
 	@Override
 	public Cliente getCliente(String nombre) {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+		pm.getFetchPlan().setMaxFetchDepth(3);
+
+		Transaction tx = pm.currentTransaction();
+		Cliente c = null;
+
+		try {
+			logger.info("   * Buscando cuenta del cliente: " + nombre);
+
+
+			tx.begin();
+			Query<?> query = pm.newQuery("SELECT FROM " + Cliente.class.getName() + " WHERE nombre == '" + nombre +"'");
+			query.setUnique(true);
+			c = (Cliente) query.execute();
+			tx.commit();
+
+		} catch (Exception ex) {
+			logger.error("   $ Error buscando cuenta:" + ex.getMessage());
+
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+
+		return c;
 	}
 
+	/**
+	 * Metodo que devuelve todos los clientes
+	 * @return Devuelve todos los clientes de la BD
+	 */
 	@Override
 	public ArrayList<String> getClientes() {
-		// TODO Auto-generated method stub
-		return null;
+		PersistenceManager pm = pmf.getPersistenceManager();
+
+
+		Transaction tx = pm.currentTransaction();
+		
+		ArrayList<String> listaclientes = new ArrayList<String>();
+		
+		try {
+
+			logger.info("  * Mostrando lista de clientes...");
+
+			String cliente=null;
+			tx.begin();
+			Query<Cliente> query = pm.newQuery(Cliente.class);
+			@SuppressWarnings("unchecked")
+			List<Cliente> clientes = (List<Cliente>) query.execute();
+			
+			for (Cliente c : clientes) {
+				//aquí también falta la lista de películas
+				cliente = c.getNombre() + "#" + c.getCorreo() + "#" + c.getCuentapaypal() + "#" + c.getGastototal() + "/" ;
+				listaclientes.add(cliente);
+			}
+			tx.commit();
+  			
+		} catch (Exception ex) {
+			
+			logger.error("   $ Error recuperando todos los clientes: " + ex.getMessage());
+		
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+		
+		
+		return listaclientes;
 	}
 
 	
