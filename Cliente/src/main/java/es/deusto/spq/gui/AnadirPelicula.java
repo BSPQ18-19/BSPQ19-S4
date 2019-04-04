@@ -78,10 +78,10 @@ public class AnadirPelicula extends JFrame{
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER){
 					titulo = textFieldPelicula.getText();
-					boolean añadida = false;
-					//TODO: comprobar en la BD si el titulo de la pelicula está añadido
-						if(añadida==true){
-							JOptionPane.showMessageDialog(null, "Esta pelicula ya est\u00E1 añadida");
+					boolean anadida = false;
+					//TODO: comprobar en la BD si el titulo de la pelicula esta aÃ±adido
+						if(anadida==true){
+							JOptionPane.showMessageDialog(null, "Esta pelicula ya est\u00E1 aï¿½adida");
 						}else{
 						lblGenero.setEnabled(true);
 						textFieldGenero.setEnabled(true);
