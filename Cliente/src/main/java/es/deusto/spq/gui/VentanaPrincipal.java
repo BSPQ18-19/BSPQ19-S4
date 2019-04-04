@@ -1,4 +1,5 @@
 package es.deusto.spq.gui;
+
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -20,7 +21,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class VentanaPrincipal extends JFrame{
+public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 8689513507453358451L;
 	private JPanel contentPane;
 	private JLabel lblUsuario;
@@ -30,11 +31,11 @@ public class VentanaPrincipal extends JFrame{
 	private JButton btnNuevoUsuario;
 	private JButton btnContraseaOlvidada;
 	private JButton btnIniciarSesion;
-	static boolean usuario=false;
+	static boolean usuario = false;
 	static boolean administrador = false;
 	static String nombre = null;
-	private static ImageIcon imagen= new ImageIcon("Icono//icono.jpg"); 
-	
+	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -57,12 +58,12 @@ public class VentanaPrincipal extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 0, 0};
-		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, Double.MIN_VALUE};
-		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
+		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
-		
+
 		lblUsuario = new JLabel("Usuario:");
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
 		gbc_lblUsuario.fill = GridBagConstraints.VERTICAL;
@@ -70,7 +71,7 @@ public class VentanaPrincipal extends JFrame{
 		gbc_lblUsuario.gridx = 0;
 		gbc_lblUsuario.gridy = 0;
 		contentPane.add(lblUsuario, gbc_lblUsuario);
-		
+
 		textFieldUsuario = new JTextField();
 		GridBagConstraints gbc_textFieldUsuario = new GridBagConstraints();
 		gbc_textFieldUsuario.insets = new Insets(0, 0, 5, 0);
@@ -78,20 +79,20 @@ public class VentanaPrincipal extends JFrame{
 		gbc_textFieldUsuario.gridy = 0;
 		contentPane.add(textFieldUsuario, gbc_textFieldUsuario);
 		textFieldUsuario.setColumns(20);
-		
+
 		textFieldUsuario.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER){
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					nombre = textFieldUsuario.getText();
-					//TODO: combrobar si nombre está en la BD
-//					if(nombre está en la BD y es administrador (privilegio==1)){
+					// TODO: combrobar si nombre estï¿½ en la BD
+//					if(nombre estï¿½ en la BD y es administrador (privilegio==1)){
 //						administrador = true;
 //						lblContrasea.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(true);
 //						btnContraseaOlvidada.setEnabled(true);
 //						passwordFieldContrasea.requestFocus();
 //						textFieldUsuario.setEditable(false);
-//					}else if(nombre está en la BD y es usuario (privilegio==0))
+//					}else if(nombre estï¿½ en la BD y es usuario (privilegio==0))
 //						usuario = true;
 //						lblContrasea.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(true);
@@ -99,13 +100,13 @@ public class VentanaPrincipal extends JFrame{
 //						passwordFieldContrasea.requestFocus();
 //						textFieldUsuario.setEditable(false);
 //					}
-					if(administrador==false && usuario== false){
+					if (administrador == false && usuario == false) {
 						JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
 					}
 				}
 			}
 		});
-		
+
 		lblContrasea = new JLabel("Contrase\u00F1a:");
 		lblContrasea.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea = new GridBagConstraints();
@@ -113,7 +114,7 @@ public class VentanaPrincipal extends JFrame{
 		gbc_lblContrasea.gridx = 0;
 		gbc_lblContrasea.gridy = 1;
 		contentPane.add(lblContrasea, gbc_lblContrasea);
-		
+
 		passwordFieldContrasea = new JPasswordField();
 		passwordFieldContrasea.setEnabled(false);
 		passwordFieldContrasea.setColumns(20);
@@ -122,13 +123,13 @@ public class VentanaPrincipal extends JFrame{
 		gbc_passwordFieldContrasea.gridx = 1;
 		gbc_passwordFieldContrasea.gridy = 1;
 		contentPane.add(passwordFieldContrasea, gbc_passwordFieldContrasea);
-		
+
 		passwordFieldContrasea.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
-				if (e.getKeyCode() == KeyEvent.VK_ENTER){
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					String contrasenya = new String(passwordFieldContrasea.getPassword());
-					//TODO: comprobar contrasenya correcta para nombre
-//					if(contraseña correcta){
+					// TODO: comprobar contrasenya correcta para nombre
+//					if(contraseï¿½a correcta){
 //						btnIniciarSesion.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(false);
 //						btnIniciarSesion.requestFocus();
@@ -137,8 +138,8 @@ public class VentanaPrincipal extends JFrame{
 //					}
 				}
 			}
-		});	
-		
+		});
+
 		btnNuevoUsuario = new JButton("Registrar nuevo usuario");
 		btnNuevoUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -162,7 +163,7 @@ public class VentanaPrincipal extends JFrame{
 		gbc_btnNuevoUsuario.gridx = 0;
 		gbc_btnNuevoUsuario.gridy = 2;
 		contentPane.add(btnNuevoUsuario, gbc_btnNuevoUsuario);
-		
+
 		btnContraseaOlvidada = new JButton("Se me ha olvidado la contrase\u00F1a");
 		btnContraseaOlvidada.setEnabled(false);
 		btnContraseaOlvidada.addActionListener(new ActionListener() {
@@ -187,12 +188,12 @@ public class VentanaPrincipal extends JFrame{
 		gbc_btnContraseaOlvidada.gridx = 1;
 		gbc_btnContraseaOlvidada.gridy = 2;
 		contentPane.add(btnContraseaOlvidada, gbc_btnContraseaOlvidada);
-		
+
 		btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
-				if (usuario == true){
+				if (usuario == true) {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
@@ -205,7 +206,7 @@ public class VentanaPrincipal extends JFrame{
 							}
 						}
 					});
-				}else if (administrador == true){
+				} else if (administrador == true) {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
