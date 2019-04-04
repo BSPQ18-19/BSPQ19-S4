@@ -63,10 +63,10 @@ public class BorrarUsuario extends JFrame{
 		usuarios = null;
 		Arrays.sort(usuarios);
 		
-		listMostarUsuarios = new JList<String>(usuarios);
-		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarUsuarios);
+//		listMostarUsuarios = new JList<String>(usuarios);
+//		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+//		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		scrollPane.setViewportView(listMostarUsuarios);
 		
 		listMostarUsuarios.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

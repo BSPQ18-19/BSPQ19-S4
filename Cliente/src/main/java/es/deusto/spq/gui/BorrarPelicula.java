@@ -63,10 +63,10 @@ public class BorrarPelicula extends JFrame{
 		peliculas = null;
 		Arrays.sort(peliculas);
 		
-		listMostarPeliculas = new JList<String>(peliculas);
-		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarPeliculas);
+//		listMostarPeliculas = new JList<String>(peliculas);
+//		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+//		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		scrollPane.setViewportView(listMostarPeliculas);
 		
 		listMostarPeliculas.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

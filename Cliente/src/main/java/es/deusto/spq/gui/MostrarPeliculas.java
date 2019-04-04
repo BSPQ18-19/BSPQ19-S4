@@ -57,10 +57,10 @@ public class MostrarPeliculas extends JFrame{
 		String[]peliculas = null;
 		Arrays.sort(peliculas);
 		
-		JList<String> listMostarPeliculas = new JList<String>(peliculas);
-		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarPeliculas);
+//		JList<String> listMostarPeliculas = new JList<String>(peliculas);
+//		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+//		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		scrollPane.setViewportView(listMostarPeliculas);
 		
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {

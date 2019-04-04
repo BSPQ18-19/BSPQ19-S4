@@ -57,10 +57,10 @@ public class MostrarUsuarios extends JFrame{
 		String[]usuarios = null;
 		Arrays.sort(usuarios);
 		
-		JList<String> listMostarUsuarios = new JList<String>(usuarios);
-		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarUsuarios);
+//		JList<String> listMostarUsuarios = new JList<String>(usuarios);
+//		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+//		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+//		scrollPane.setViewportView(listMostarUsuarios);
 		
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
