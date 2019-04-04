@@ -22,6 +22,7 @@ public class Usuario extends JFrame{
 
 	private static final long serialVersionUID = -1644310303190255276L;
 	private JPanel contentPane;
+	private JLabel lblLista;
 	private static ImageIcon imagen= new ImageIcon("Icono//icono.jpg");
 	
 	//TODO:eliminar hasta la linea 30 cuando funcione la BD
@@ -47,9 +48,9 @@ public class Usuario extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[]{0, 175};
+		gbl_contentPane.columnWidths = new int[]{0, 130, 0};
 		gbl_contentPane.rowHeights = new int[]{0, 0, 0, 0, 0};
-		gbl_contentPane.columnWeights = new double[]{0.0, 0.0};
+		gbl_contentPane.columnWeights = new double[]{1.0, 1.0, 1.0};
 		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
@@ -79,6 +80,14 @@ public class Usuario extends JFrame{
 //		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 //		scrollPane.setViewportView(listMostarPeliculas);
 		
+		lblLista = new JLabel("Ordenar lista por: ");
+		GridBagConstraints gbc_lblLista = new GridBagConstraints();
+		gbc_lblLista.insets = new Insets(0, 0, 5, 0);
+		gbc_lblLista.gridwidth = 3;
+		gbc_lblLista.gridx = 0;
+		gbc_lblLista.gridy = 2;
+		contentPane.add(lblLista, gbc_lblLista);
+		
 		JButton btnTitulo = new JButton("Titulo");
 		btnTitulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -98,7 +107,7 @@ public class Usuario extends JFrame{
 		GridBagConstraints gbc_btnTitulo = new GridBagConstraints();
 		gbc_btnTitulo.insets = new Insets(0, 0, 5, 5);
 		gbc_btnTitulo.gridx = 0;
-		gbc_btnTitulo.gridy = 2;
+		gbc_btnTitulo.gridy = 3;
 		contentPane.add(btnTitulo, gbc_btnTitulo);
 		
 		JButton btnGenero = new JButton("Genero");
@@ -120,7 +129,7 @@ public class Usuario extends JFrame{
 		GridBagConstraints gbc_btnGenero = new GridBagConstraints();
 		gbc_btnGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_btnGenero.gridx = 1;
-		gbc_btnGenero.gridy = 2;
+		gbc_btnGenero.gridy = 3;
 		contentPane.add(btnGenero, gbc_btnGenero);
 		
 		JButton btnFecha = new JButton("Fecha");
@@ -142,7 +151,7 @@ public class Usuario extends JFrame{
 		GridBagConstraints gbc_btnFecha = new GridBagConstraints();
 		gbc_btnFecha.insets = new Insets(0, 0, 5, 0);
 		gbc_btnFecha.gridx = 2;
-		gbc_btnFecha.gridy = 2;
+		gbc_btnFecha.gridy = 3;
 		contentPane.add(btnFecha, gbc_btnFecha);
 		
 		JButton btnAtras = new JButton("Atr\u00E1s");
@@ -167,7 +176,7 @@ public class Usuario extends JFrame{
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridwidth = 3;
 		gbc_btnAtras.gridx = 0;
-		gbc_btnAtras.gridy = 3;
+		gbc_btnAtras.gridy = 4;
 		contentPane.add(btnAtras, gbc_btnAtras);
 	}
 }
