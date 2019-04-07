@@ -28,6 +28,7 @@ public class BorrarPelicula extends JFrame {
 	private JButton btnBorrar;
 	private JList<String> listMostarPeliculas;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
+	private String[] peliculas = {"a","b"};
 
 	public BorrarPelicula() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -61,7 +62,6 @@ public class BorrarPelicula extends JFrame {
 
 		// TODO: Cargar String[]peliculas con los titulos de todas las peliculas de la
 		// BD
-		String[] peliculas = {"a","b"};
 		Arrays.sort(peliculas);
 
 		listMostarPeliculas = new JList<String>(peliculas);

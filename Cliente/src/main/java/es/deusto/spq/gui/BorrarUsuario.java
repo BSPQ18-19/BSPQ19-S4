@@ -28,6 +28,7 @@ public class BorrarUsuario extends JFrame {
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
+	private String[] usuarios = {"a","b"};
 
 	public BorrarUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -60,7 +61,6 @@ public class BorrarUsuario extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
-		String[] usuarios = {"a","b"};
 		Arrays.sort(usuarios);
 
 		listMostarUsuarios = new JList<String>(usuarios);
