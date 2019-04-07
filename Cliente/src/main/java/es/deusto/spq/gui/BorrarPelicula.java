@@ -27,7 +27,6 @@ public class BorrarPelicula extends JFrame {
 	private JPanel contentPane;
 	private JButton btnBorrar;
 	private JList<String> listMostarPeliculas;
-	private String[] peliculas;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public BorrarPelicula() {
@@ -62,13 +61,13 @@ public class BorrarPelicula extends JFrame {
 
 		// TODO: Cargar String[]peliculas con los titulos de todas las peliculas de la
 		// BD
-		peliculas = null;
+		String[] peliculas = {"a","b"};
 		Arrays.sort(peliculas);
 
-//		listMostarPeliculas = new JList<String>(peliculas);
-//		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-//		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		scrollPane.setViewportView(listMostarPeliculas);
+		listMostarPeliculas = new JList<String>(peliculas);
+		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listMostarPeliculas);
 
 		listMostarPeliculas.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

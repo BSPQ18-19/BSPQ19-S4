@@ -56,8 +56,6 @@ public class Usuarios extends JFrame {
 		contentPane.add(btnAnadir, gbc_btnAnadir);
 
 		JButton btnBorrar = new JButton("Borrar usuario");
-		// TODO: quitar siguiente linea cuando funcione BorrarUsuario
-		btnBorrar.setEnabled(false);
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -82,8 +80,6 @@ public class Usuarios extends JFrame {
 		contentPane.add(btnBorrar, gbc_btnBorrar);
 
 		JButton btnMostrarLista = new JButton("Mostrar lista de usuarios");
-		// TODO: quitar siguiente linea cuando funcione MostrarUsuarios
-		btnMostrarLista.setEnabled(false);
 		btnMostrarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

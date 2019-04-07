@@ -26,7 +26,7 @@ public class Usuario extends JFrame {
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
-	private String[] peliculas = null;
+	private String[] peliculas = {"a","b"};
 
 	public void cargarLista(String[] peliculas) {
 		Arrays.sort(peliculas);

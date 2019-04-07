@@ -27,7 +27,6 @@ public class BorrarUsuario extends JFrame {
 	private JPanel contentPane;
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
-	private String[] usuarios;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public BorrarUsuario() {
@@ -61,13 +60,13 @@ public class BorrarUsuario extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
-		usuarios = null;
+		String[] usuarios = {"a","b"};
 		Arrays.sort(usuarios);
 
-//		listMostarUsuarios = new JList<String>(usuarios);
-//		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-//		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		scrollPane.setViewportView(listMostarUsuarios);
+		listMostarUsuarios = new JList<String>(usuarios);
+		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listMostarUsuarios);
 
 		listMostarUsuarios.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {

@@ -56,8 +56,6 @@ public class Peliculas extends JFrame {
 		contentPane.add(btnAnadir, gbc_btnAnadir);
 
 		JButton btnBorrar = new JButton("Borrar pelicula");
-		// TODO: quitar siguiente linea cuando funcione BorrarPelicula
-		btnBorrar.setEnabled(false);
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);
@@ -82,8 +80,6 @@ public class Peliculas extends JFrame {
 		contentPane.add(btnBorrar, gbc_btnBorrar);
 
 		JButton btnMostrarLista = new JButton("Mostrar lista de peliculas");
-		// TODO: quitar siguiente linea cuando funcione MostrarPeliculas
-		btnMostrarLista.setEnabled(false);
 		btnMostrarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				setVisible(false);

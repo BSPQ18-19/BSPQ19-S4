@@ -55,13 +55,13 @@ public class MostrarUsuarios extends JFrame {
 		contentPane.add(scrollPane, gbc_scrollPane);
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
-		String[] usuarios = null;
+		String[] usuarios = {"a","b"};
 		Arrays.sort(usuarios);
 
-//		JList<String> listMostarUsuarios = new JList<String>(usuarios);
-//		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-//		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-//		scrollPane.setViewportView(listMostarUsuarios);
+		JList<String> listMostarUsuarios = new JList<String>(usuarios);
+		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listMostarUsuarios);
 
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
