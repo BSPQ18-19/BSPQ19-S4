@@ -6,37 +6,19 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.BevelBorder;
 import javax.swing.border.EmptyBorder;
 
-public class Usuario extends JFrame {
-
+public class Usuario extends JFrame{
 	private static final long serialVersionUID = -1644310303190255276L;
 	private JPanel contentPane;
-	private JLabel lblLista;
-	private JScrollPane scrollPane;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
-	private String[] peliculas = {"a","b"};
 
-	public void cargarLista(String[] peliculas) {
-		Arrays.sort(peliculas);
-		JList<String> listMostarPeliculas = new JList<String>(peliculas);
-		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarPeliculas);
-	}
-
-	// TODO:eliminar hasta la linea 30 cuando funcione la BD
+	// TODO:eliminar hasta la linea 35 cuando funcione la BD
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -59,48 +41,23 @@ public class Usuario extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 130, 0 };
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, 1.0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
-		JLabel lblMostrarPeliculas = new JLabel("Las peliculas registradas en este momento son:");
-		GridBagConstraints gbc_lblMostrarPeliculas = new GridBagConstraints();
-		gbc_lblMostrarPeliculas.gridwidth = 3;
-		gbc_lblMostrarPeliculas.insets = new Insets(0, 0, 5, 0);
-		gbc_lblMostrarPeliculas.gridx = 0;
-		gbc_lblMostrarPeliculas.gridy = 0;
-		contentPane.add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
-
-		scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 3;
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 1;
-		contentPane.add(scrollPane, gbc_scrollPane);
-
-		lblLista = new JLabel("Ordenar lista por: ");
-		GridBagConstraints gbc_lblLista = new GridBagConstraints();
-		gbc_lblLista.insets = new Insets(0, 0, 5, 0);
-		gbc_lblLista.gridwidth = 3;
-		gbc_lblLista.gridx = 0;
-		gbc_lblLista.gridy = 2;
-		contentPane.add(lblLista, gbc_lblLista);
-
-		JButton btnTitulo = new JButton("Titulo");
-		btnTitulo.addActionListener(new ActionListener() {
+		JButton btnPerfil = new JButton("Mi perfil de usuario");
+		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO: Cargar String[]peliculas con todas las peliculas de la BD ordenadas por
-							// titulo
-
-							cargarLista(peliculas);
+							Perfil frame = new Perfil();
+							frame.setVisible(true);
+							frame.setTitle("Mi perfil");
+							frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -108,24 +65,23 @@ public class Usuario extends JFrame {
 				});
 			}
 		});
+		GridBagConstraints gbc_btnPerfil = new GridBagConstraints();
+		gbc_btnPerfil.insets = new Insets(0, 0, 5, 0);
+		gbc_btnPerfil.gridx = 0;
+		gbc_btnPerfil.gridy = 0;
+		contentPane.add(btnPerfil, gbc_btnPerfil);
 
-		GridBagConstraints gbc_btnTitulo = new GridBagConstraints();
-		gbc_btnTitulo.insets = new Insets(0, 0, 5, 5);
-		gbc_btnTitulo.gridx = 0;
-		gbc_btnTitulo.gridy = 3;
-		contentPane.add(btnTitulo, gbc_btnTitulo);
-
-		JButton btnGenero = new JButton("Genero");
-		btnGenero.addActionListener(new ActionListener() {
+		JButton btnPelicula = new JButton("Buscar pelicula");
+		btnPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO: Cargar String[]peliculas con todas las peliculas de la BD ordenadas por
-							// genero
-
-							cargarLista(peliculas);
+							BuscarPelicula frame = new BuscarPelicula();
+							frame.setVisible(true);
+							frame.setTitle("Buscar pelicula");
+							frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -133,41 +89,17 @@ public class Usuario extends JFrame {
 				});
 			}
 		});
-
-		GridBagConstraints gbc_btnGenero = new GridBagConstraints();
-		gbc_btnGenero.insets = new Insets(0, 0, 5, 5);
-		gbc_btnGenero.gridx = 1;
-		gbc_btnGenero.gridy = 3;
-		contentPane.add(btnGenero, gbc_btnGenero);
-
-		JButton btnFecha = new JButton("Fecha");
-		btnFecha.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							// TODO: Cargar String[]peliculas con todas las peliculas de la BD ordenadas por
-							// fecha
-
-							cargarLista(peliculas);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-
-		GridBagConstraints gbc_btnFecha = new GridBagConstraints();
-		gbc_btnFecha.insets = new Insets(0, 0, 5, 0);
-		gbc_btnFecha.gridx = 2;
-		gbc_btnFecha.gridy = 3;
-		contentPane.add(btnFecha, gbc_btnFecha);
+		GridBagConstraints gbc_btnPelicula = new GridBagConstraints();
+		gbc_btnPelicula.insets = new Insets(0, 0, 5, 0);
+		gbc_btnPelicula.gridx = 0;
+		gbc_btnPelicula.gridy = 1;
+		contentPane.add(btnPelicula, gbc_btnPelicula);
 
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
+			public void actionPerformed(ActionEvent e) {
+				VentanaPrincipal.administrador = false;
+				VentanaPrincipal.usuario = false;
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
@@ -183,11 +115,10 @@ public class Usuario extends JFrame {
 				});
 			}
 		});
-
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridwidth = 3;
 		gbc_btnAtras.gridx = 0;
-		gbc_btnAtras.gridy = 4;
+		gbc_btnAtras.gridy = 2;
 		contentPane.add(btnAtras, gbc_btnAtras);
 	}
+
 }

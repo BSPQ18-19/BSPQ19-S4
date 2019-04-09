@@ -84,15 +84,15 @@ public class VentanaPrincipal extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					nombre = textFieldUsuario.getText();
-					// TODO: combrobar si nombre est� en la BD
-//					if(nombre est� en la BD y es administrador (privilegio==1)){
+					// TODO: combrobar si nombre esta en la BD
+//					if(nombre esta en la BD y es administrador (privilegio==1)){
 //						administrador = true;
 //						lblContrasea.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(true);
 //						btnContraseaOlvidada.setEnabled(true);
 //						passwordFieldContrasea.requestFocus();
 //						textFieldUsuario.setEditable(false);
-//					}else if(nombre est� en la BD y es usuario (privilegio==0))
+//					}else if(nombre esta en la BD y es usuario (privilegio==0))
 //						usuario = true;
 //						lblContrasea.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(true);
@@ -129,7 +129,7 @@ public class VentanaPrincipal extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					String contrasenya = new String(passwordFieldContrasea.getPassword());
 					// TODO: comprobar contrasenya correcta para nombre
-//					if(contrase�a correcta){
+//					if(contraseña correcta){
 //						btnIniciarSesion.setEnabled(true);
 //						passwordFieldContrasea.setEnabled(false);
 //						btnIniciarSesion.requestFocus();
@@ -197,6 +197,7 @@ public class VentanaPrincipal extends JFrame {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
+								//TODO: pasar info usuario
 								Usuario frame = new Usuario();
 								frame.setVisible(true);
 								frame.setTitle("Usuario");
