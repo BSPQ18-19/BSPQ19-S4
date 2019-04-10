@@ -1,6 +1,7 @@
 package es.deusto.spq.dao;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.jdo.Extent;
 import javax.jdo.JDOHelper;
@@ -10,12 +11,11 @@ import javax.jdo.Query;
 import javax.jdo.Transaction;
 import org.apache.log4j.Logger;
 
-import es.deusto.spq.jdo.Cuenta;
-import es.deusto.spq.jdo.JDO;
+import es.deusto.spq.jdo.Pelicula;
 
 
-public class CuentaDAO implements ICuentaDAO{
 
+public class PeliculaDAO implements IPeliculaDAO{
 	
 	private PersistenceManagerFactory pmf;
 	private static final Logger logger = Logger.getLogger(PeliculaDAO.class);
@@ -23,31 +23,30 @@ public class CuentaDAO implements ICuentaDAO{
 	/**
 	 * Contructor de la clase
 	 */
-	public CuentaDAO() {
+	public PeliculaDAO() {
 		pmf = JDOHelper.getPersistenceManagerFactory("datanucleus.properties");
 
 	}
 	
 	/**
-	 * Metodo que almacena una cuenta en la BD.
-	 * @Cuenta anyade cuenta.
+	 * Metodo que almacena una película en la BD.
+	 * @Pelicula anyade pelicula.
 	 * @throws Exception Lanza una excepccion si ocurre un error.
 	 */
-
 	@Override
-	public void almacenarCuenta(Cuenta c) {
-		//Hasta que no este el rmi no funcionará
+	public void almacenarPelicula(Pelicula p) {
 		
+		//Hasta que no este el rmi no funcionará
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 
 		try {
 			tx.begin();
-			logger.info("   * Almacenando informacion de la cuenta: " + c);
-			pm.makePersistent(c);
+			logger.info("   * Almacenando película: " + p);
+			pm.makePersistent(p);
 			tx.commit();
 		} catch (Exception ex) {
-			logger.error("   $ Error almacenando informacion de la cuenta:" + ex.getMessage());
+			logger.error("   $ Error almacenando película:" + ex.getMessage());
 		} finally {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
@@ -55,8 +54,6 @@ public class CuentaDAO implements ICuentaDAO{
 
 			pm.close();
 		}
-	
-		
 	}
 
 }
