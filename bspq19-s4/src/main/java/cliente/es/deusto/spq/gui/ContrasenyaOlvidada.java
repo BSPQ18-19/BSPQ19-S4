@@ -1,6 +1,7 @@
 package cliente.es.deusto.spq.gui;
 
 import java.awt.EventQueue;
+
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -13,7 +14,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -44,7 +44,6 @@ public class ContrasenyaOlvidada extends JFrame {
 		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 0;
 		gbc_panel.gridy = 0;
 		contentPane.add(panel, gbc_panel);
@@ -72,10 +71,10 @@ public class ContrasenyaOlvidada extends JFrame {
 		textFieldCorreo.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					String correo = textFieldCorreo.getText();
-					String nombre = VentanaPrincipal.nombre;
+//					String correo = textFieldCorreo.getText();
+//					String nombre = VentanaPrincipal.nombre;
 					// TODO: Buscar correo del usuario con dicho nombre y si es correcto devolver
-					// contrase�a
+					// contraseña
 //					if(Correo es correcto para ese usuario){
 //						String contrasenya = lo que sea;
 //						JOptionPane.showMessageDialog(null, "La contrase\u00F1a del usuario "+nombre+" es "+contrasenya);

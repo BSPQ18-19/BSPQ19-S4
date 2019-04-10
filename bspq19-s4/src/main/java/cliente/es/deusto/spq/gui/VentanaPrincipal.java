@@ -34,6 +34,7 @@ public class VentanaPrincipal extends JFrame {
 	static boolean usuario = false;
 	static boolean administrador = false;
 	static String nombre = null;
+	static String contrasenya = null;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public static void main(String[] args) {
@@ -66,7 +67,6 @@ public class VentanaPrincipal extends JFrame {
 
 		lblUsuario = new JLabel("Usuario:");
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
-		gbc_lblUsuario.fill = GridBagConstraints.VERTICAL;
 		gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUsuario.gridx = 0;
 		gbc_lblUsuario.gridy = 0;
@@ -127,7 +127,7 @@ public class VentanaPrincipal extends JFrame {
 		passwordFieldContrasea.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					String contrasenya = new String(passwordFieldContrasea.getPassword());
+					contrasenya = new String(passwordFieldContrasea.getPassword());
 					// TODO: comprobar contrasenya correcta para nombre
 //					if(contraseña correcta){
 //						btnIniciarSesion.setEnabled(true);

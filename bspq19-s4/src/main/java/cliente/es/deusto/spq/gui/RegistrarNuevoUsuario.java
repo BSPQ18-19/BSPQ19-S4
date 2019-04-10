@@ -60,9 +60,9 @@ public class RegistrarNuevoUsuario extends JFrame {
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblUsuario = new JLabel("Introducir nombre de usuario: ");
@@ -310,7 +310,6 @@ public class RegistrarNuevoUsuario extends JFrame {
 		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 7;
 		contentPane.add(panel, gbc_panel);
@@ -380,7 +379,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		btnGuardar.setEnabled(false);
 		GridBagConstraints gbc_btnGuardar = new GridBagConstraints();
 		gbc_btnGuardar.insets = new Insets(0, 0, 0, 5);
-		gbc_btnGuardar.gridx = 0;
+		gbc_btnGuardar.gridx = 1;
 		gbc_btnGuardar.gridy = 8;
 		contentPane.add(btnGuardar, gbc_btnGuardar);
 
@@ -403,7 +402,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridx = 1;
+		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 8;
 		contentPane.add(btnAtras, gbc_btnAtras);
 	}

@@ -37,15 +37,14 @@ public class BorrarPelicula extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblMostrarPelicula = new JLabel("Seleccione la pelicula que desea borrar:");
 		GridBagConstraints gbc_lblMostrarPelicula = new GridBagConstraints();
-		gbc_lblMostrarPelicula.gridwidth = 2;
 		gbc_lblMostrarPelicula.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMostrarPelicula.gridx = 0;
 		gbc_lblMostrarPelicula.gridy = 0;
@@ -53,7 +52,6 @@ public class BorrarPelicula extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 2;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -80,8 +78,9 @@ public class BorrarPelicula extends JFrame {
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int i = listMostarPeliculas.getSelectedIndex();
-				String n = peliculas[i];
+				//TODO: coger pelicla seleccionada de la lista
+//				int i = listMostarPeliculas.getSelectedIndex();
+//				String n = peliculas[i];
 				// TODO: eliminar la pelicula con titulo n de la BD
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
@@ -101,7 +100,7 @@ public class BorrarPelicula extends JFrame {
 		});
 		btnBorrar.setEnabled(false);
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
-		gbc_btnBorrar.gridwidth = 2;
+		gbc_btnBorrar.insets = new Insets(0, 0, 5, 0);
 		gbc_btnBorrar.gridx = 0;
 		gbc_btnBorrar.gridy = 2;
 		contentPane.add(btnBorrar, gbc_btnBorrar);
@@ -126,7 +125,6 @@ public class BorrarPelicula extends JFrame {
 		});
 
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridwidth = 2;
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 3;
 		contentPane.add(btnAtras, gbc_btnAtras);
