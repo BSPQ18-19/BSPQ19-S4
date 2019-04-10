@@ -101,7 +101,6 @@ public class BuscarPelicula extends JFrame {
 		JButton btnTitulo = new JButton("Titulo");
 		btnTitulo.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(true);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -126,7 +125,6 @@ public class BuscarPelicula extends JFrame {
 		JButton btnGenero = new JButton("Genero");
 		btnGenero.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(true);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -151,7 +149,6 @@ public class BuscarPelicula extends JFrame {
 		JButton btnFecha = new JButton("Fecha");
 		btnFecha.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(true);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -176,7 +173,7 @@ public class BuscarPelicula extends JFrame {
 		btnVer = new JButton("Ver información película");
 		btnVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(true);
+				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
