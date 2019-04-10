@@ -9,6 +9,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.net.MalformedURLException;
+import java.rmi.NotBoundException;
+import java.rmi.RemoteException;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +23,8 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import cliente.es.deusto.spq.remote.RMIBSPQ19S4ServiceLocator;
 
 public class VentanaPrincipal extends JFrame {
 	private static final long serialVersionUID = 8689513507453358451L;
@@ -41,7 +46,7 @@ public class VentanaPrincipal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					VentanaPrincipal frame = new VentanaPrincipal();
+					VentanaPrincipal frame = new VentanaPrincipal(args[0], args[1], args[2]);
 					frame.setVisible(true);
 					frame.setTitle("Login");
 					frame.setIconImage(imagen.getImage());
@@ -52,7 +57,9 @@ public class VentanaPrincipal extends JFrame {
 		});
 	}
 
-	public VentanaPrincipal() {
+	public VentanaPrincipal(String ip, String port, String serviceName) throws MalformedURLException, RemoteException, NotBoundException {
+		RMIBSPQ19S4ServiceLocator bspq19s4ServiceLocator = new RMIBSPQ19S4ServiceLocator();
+		bspq19s4ServiceLocator.setService(ip, port, serviceName);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 350);
 		contentPane = new JPanel();

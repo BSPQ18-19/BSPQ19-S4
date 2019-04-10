@@ -85,7 +85,8 @@ public class ContrasenyaOlvidada extends JFrame {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								VentanaPrincipal frame = new VentanaPrincipal();
+								//TODO ARREGLAR
+								VentanaPrincipal frame = new VentanaPrincipal(null, null, null);
 								frame.setVisible(true);
 								frame.setTitle("Login");
 								frame.setIconImage(imagen.getImage());
@@ -107,7 +108,8 @@ public class ContrasenyaOlvidada extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							VentanaPrincipal frame = new VentanaPrincipal();
+							//TODO ARREGLAR
+							VentanaPrincipal frame = new VentanaPrincipal(null, null, null);
 							frame.setVisible(true);
 							frame.setTitle("Login");
 							frame.setIconImage(imagen.getImage());

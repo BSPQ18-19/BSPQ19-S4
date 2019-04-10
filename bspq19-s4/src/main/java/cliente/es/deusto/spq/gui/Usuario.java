@@ -104,7 +104,8 @@ public class Usuario extends JFrame{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							VentanaPrincipal frame = new VentanaPrincipal();
+							//TODO Arreglar
+							VentanaPrincipal frame = new VentanaPrincipal(null, null, null);
 							frame.setVisible(true);
 							frame.setTitle("Login");
 							frame.setIconImage(imagen.getImage());

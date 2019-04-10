@@ -14,6 +14,7 @@ public class Pelicula {
 	String fEstreno = null;
 	String trailer = null;
 	String fichaTecnica = null;
+	String sinopsis = null;
 	int puntuacion = 0;
 	
 
@@ -23,13 +24,14 @@ public class Pelicula {
 	Set<Cuenta>usuarios;
 
 
-	public Pelicula(String genero, String titulo, String fEstreno, String trailer, String fichaTecnica,
+	public Pelicula(String genero, String titulo, String fEstreno, String trailer, String fichaTecnica, String sinopsis,
 			int puntuacion) {
 		this.genero = genero;
 		this.titulo = titulo;
 		this.fEstreno = fEstreno;
 		this.trailer = trailer;
 		this.fichaTecnica = fichaTecnica;
+		this.sinopsis = sinopsis;
 		this.puntuacion = puntuacion;
 	}
 
@@ -82,7 +84,14 @@ public class Pelicula {
 	public void setFichaTecnica(String fichaTecnica) {
 		this.fichaTecnica = fichaTecnica;
 	}
-
+	
+	public String getSinopsis() {
+		return sinopsis;
+	}
+	
+	public void setSinopsis(String sinopsis) {
+		this.sinopsis = sinopsis;
+	}
 
 	public int getPuntuacion() {
 		return puntuacion;
@@ -107,7 +116,8 @@ public class Pelicula {
 	@Override
 	public String toString() {
 		return "Pelicula [genero=" + genero + ", titulo=" + titulo + ", fEstreno=" + fEstreno + ", trailer=" + trailer
-				+ ", fichaTecnica=" + fichaTecnica + ", puntuacion=" + puntuacion + ", usuarios=" + usuarios + "]";
+				+ ", fichaTecnica=" + fichaTecnica + ", sinopsis=" + sinopsis + ", puntuacion=" + puntuacion
+				+ ", usuarios=" + usuarios + "]";
 	}
     
 }
