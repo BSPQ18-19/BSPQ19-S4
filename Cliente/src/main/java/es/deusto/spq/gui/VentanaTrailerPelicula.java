@@ -13,9 +13,7 @@ public class VentanaTrailerPelicula extends JFrame {
 
 	private JPanel contentPane;
 
-	/**
-	 * Launch the application.
-	 */
+
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -29,9 +27,7 @@ public class VentanaTrailerPelicula extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
+	
 	public VentanaTrailerPelicula() {
 		setTitle("Trailer");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -42,17 +38,6 @@ public class VentanaTrailerPelicula extends JFrame {
 		setContentPane(contentPane);
 		
 		
-		//mediaPlayer Prueba 1
-		setLayout(new BorderLayout());
-
-        URL mediaURL = https://www.youtube.com/watch?v=Q4_ex7a9ZcY
-        //reproductor 
-        Player VentanaTrailerPelicula = Manager.createRealizedPlayer(mediaURL);
-        //componentes para botones playback
-        Component video = VentanaTrailerPelicula.getVisualComponent();
-        Component controls = VentanaTrailerPelicula.getControlPanelComponent();
-        add(video,BorderLayout.CENTER);
-        add(controls,BorderLayout.SOUTH);
 	}
 
 }
