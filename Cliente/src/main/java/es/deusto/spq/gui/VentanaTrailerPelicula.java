@@ -28,7 +28,7 @@ public class VentanaTrailerPelicula extends JFrame {
 				JFrame frame = new JFrame("Trailer de la pelicula");
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				frame.getContentPane().add(VentanaTrailerPelicula(), BorderLayout.CENTER);
-				frame.setSize(1024, 768);
+				frame.setSize(1366, 768);
 				frame.setVisible(true);
 			}
 		});
@@ -50,8 +50,8 @@ public class VentanaTrailerPelicula extends JFrame {
 		JWebBrowser panel = new JWebBrowser();
 		PanelReproductor.add(panel, BorderLayout.CENTER);
 		panel.setBarsVisible(false);
-		panel.navigate("https://www.youtube.com/watch?v=Q4_ex7a9ZcY");
-		//Utilizo watch_popuppara poder ver el trailer en pantalla completa
+		panel.navigate("https://www.youtube.com/watch_popup?v=Q4_ex7a9ZcY");
+		//Utilizo watch_popup para poder ver el trailer en pantalla completa, IMPORTANTE!! hay que añadirlo a mano para cada url
 		return PanelReproductor;
 		
 	}
