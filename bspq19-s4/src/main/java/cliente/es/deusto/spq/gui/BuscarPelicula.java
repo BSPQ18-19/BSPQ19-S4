@@ -207,10 +207,10 @@ public class BuscarPelicula extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuario frame = new Usuario();
-							frame.setVisible(true);
-							frame.setTitle("Usuario");
-							frame.setIconImage(imagen.getImage());
+//							Usuario frame = new Usuario();
+//							frame.setVisible(true);
+//							frame.setTitle("Usuario");
+//							frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

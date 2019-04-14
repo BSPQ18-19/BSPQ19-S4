@@ -11,7 +11,12 @@ import java.rmi.server.UnicastRemoteObject;
 public class Server extends UnicastRemoteObject implements IServer{
 	
 	
-    protected Server() throws RemoteException {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7646537450779069731L;
+
+	protected Server() throws RemoteException {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -31,6 +36,8 @@ public class Server extends UnicastRemoteObject implements IServer{
     	IServer servidor = new Server();
     	Naming.rebind(name, servidor);
     	System.out.println("- Server active and waiting...");
+    	boolean a = false;
+    	while(a == false) {}
     	}catch (Exception e) {
     		System.err.println("$ Server exception: " + e.getMessage());
 			e.printStackTrace();

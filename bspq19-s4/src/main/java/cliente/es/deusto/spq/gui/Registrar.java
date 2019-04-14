@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -22,10 +23,11 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class RegistrarNuevoUsuario extends JFrame {
+import cliente.es.deusto.spq.controller.RegistrarController;
+
+public class Registrar extends JPanel {
 
 	private static final long serialVersionUID = 674330126384087764L;
-	private JPanel contentPane;
 	private JTextField textFieldUsuario;
 	private JLabel lblContrasea1;
 	private JPasswordField passwordFieldContrasea1;
@@ -50,20 +52,19 @@ public class RegistrarNuevoUsuario extends JFrame {
 	String correo1 = null;
 	String paypal1 = null;
 	boolean administrador = false;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
+	private RegistrarController registrarController;
+	private CardLayout cardLayout;
 
-	public RegistrarNuevoUsuario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public Registrar(RegistrarController registrarController, CardLayout cardLayout) {
+		this.registrarController = registrarController;
+		this.cardLayout = cardLayout;
+
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		JLabel lblUsuario = new JLabel("Introducir nombre de usuario: ");
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
@@ -71,14 +72,14 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
 		gbc_lblUsuario.gridx = 0;
 		gbc_lblUsuario.gridy = 0;
-		contentPane.add(lblUsuario, gbc_lblUsuario);
+		add(lblUsuario, gbc_lblUsuario);
 
 		textFieldUsuario = new JTextField();
 		GridBagConstraints gbc_textFieldUsuario = new GridBagConstraints();
 		gbc_textFieldUsuario.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldUsuario.gridx = 1;
 		gbc_textFieldUsuario.gridy = 0;
-		contentPane.add(textFieldUsuario, gbc_textFieldUsuario);
+		add(textFieldUsuario, gbc_textFieldUsuario);
 		textFieldUsuario.setColumns(20);
 
 		textFieldUsuario.addKeyListener(new KeyAdapter() {
@@ -105,7 +106,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblContrasea1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblContrasea1.gridx = 0;
 		gbc_lblContrasea1.gridy = 1;
-		contentPane.add(lblContrasea1, gbc_lblContrasea1);
+		add(lblContrasea1, gbc_lblContrasea1);
 
 		passwordFieldContrasea1 = new JPasswordField();
 		passwordFieldContrasea1.setEnabled(false);
@@ -114,7 +115,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_passwordFieldContrasea1.insets = new Insets(0, 0, 5, 0);
 		gbc_passwordFieldContrasea1.gridx = 1;
 		gbc_passwordFieldContrasea1.gridy = 1;
-		contentPane.add(passwordFieldContrasea1, gbc_passwordFieldContrasea1);
+		add(passwordFieldContrasea1, gbc_passwordFieldContrasea1);
 
 		passwordFieldContrasea1.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -134,7 +135,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblContrasea2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblContrasea2.gridx = 0;
 		gbc_lblContrasea2.gridy = 2;
-		contentPane.add(lblContrasea2, gbc_lblContrasea2);
+		add(lblContrasea2, gbc_lblContrasea2);
 
 		passwordFieldContrasea2 = new JPasswordField();
 		passwordFieldContrasea2.setEnabled(false);
@@ -143,7 +144,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_passwordFieldContrasea2.insets = new Insets(0, 0, 5, 0);
 		gbc_passwordFieldContrasea2.gridx = 1;
 		gbc_passwordFieldContrasea2.gridy = 2;
-		contentPane.add(passwordFieldContrasea2, gbc_passwordFieldContrasea2);
+		add(passwordFieldContrasea2, gbc_passwordFieldContrasea2);
 
 		passwordFieldContrasea2.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -168,7 +169,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblCorreo1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCorreo1.gridx = 0;
 		gbc_lblCorreo1.gridy = 3;
-		contentPane.add(lblCorreo1, gbc_lblCorreo1);
+		add(lblCorreo1, gbc_lblCorreo1);
 
 		textFieldCorreo1 = new JTextField();
 		textFieldCorreo1.setEnabled(false);
@@ -176,7 +177,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_textFieldCorreo1.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldCorreo1.gridx = 1;
 		gbc_textFieldCorreo1.gridy = 3;
-		contentPane.add(textFieldCorreo1, gbc_textFieldCorreo1);
+		add(textFieldCorreo1, gbc_textFieldCorreo1);
 		textFieldCorreo1.setColumns(20);
 
 		textFieldCorreo1.addKeyListener(new KeyAdapter() {
@@ -197,7 +198,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblCorreo2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblCorreo2.gridx = 0;
 		gbc_lblCorreo2.gridy = 4;
-		contentPane.add(lblCorreo2, gbc_lblCorreo2);
+		add(lblCorreo2, gbc_lblCorreo2);
 
 		textFieldCorreo2 = new JTextField();
 		textFieldCorreo2.setEnabled(false);
@@ -205,7 +206,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_textFieldCorreo2.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldCorreo2.gridx = 1;
 		gbc_textFieldCorreo2.gridy = 4;
-		contentPane.add(textFieldCorreo2, gbc_textFieldCorreo2);
+		add(textFieldCorreo2, gbc_textFieldCorreo2);
 		textFieldCorreo2.setColumns(20);
 
 		textFieldCorreo2.addKeyListener(new KeyAdapter() {
@@ -230,7 +231,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblPaypal1.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPaypal1.gridx = 0;
 		gbc_lblPaypal1.gridy = 5;
-		contentPane.add(lblPaypal1, gbc_lblPaypal1);
+		add(lblPaypal1, gbc_lblPaypal1);
 
 		textFieldPaypal1 = new JTextField();
 		textFieldPaypal1.setEnabled(false);
@@ -238,7 +239,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_textFieldPaypal1.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPaypal1.gridx = 1;
 		gbc_textFieldPaypal1.gridy = 5;
-		contentPane.add(textFieldPaypal1, gbc_textFieldPaypal1);
+		add(textFieldPaypal1, gbc_textFieldPaypal1);
 		textFieldPaypal1.setColumns(20);
 
 		textFieldPaypal1.addKeyListener(new KeyAdapter() {
@@ -259,7 +260,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_lblPaypal2.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPaypal2.gridx = 0;
 		gbc_lblPaypal2.gridy = 6;
-		contentPane.add(lblPaypal2, gbc_lblPaypal2);
+		add(lblPaypal2, gbc_lblPaypal2);
 
 		textFieldPaypal2 = new JTextField();
 		textFieldPaypal2.setEnabled(false);
@@ -267,7 +268,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_textFieldPaypal2.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPaypal2.gridx = 1;
 		gbc_textFieldPaypal2.gridy = 6;
-		contentPane.add(textFieldPaypal2, gbc_textFieldPaypal2);
+		add(textFieldPaypal2, gbc_textFieldPaypal2);
 		textFieldPaypal2.setColumns(20);
 
 		textFieldPaypal2.addKeyListener(new KeyAdapter() {
@@ -291,7 +292,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_chckbxAdministrador.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxAdministrador.gridx = 0;
 		gbc_chckbxAdministrador.gridy = 7;
-		contentPane.add(chckbxAdministrador, gbc_chckbxAdministrador);
+		add(chckbxAdministrador, gbc_chckbxAdministrador);
 		chckbxAdministrador.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxAdministrador.isSelected()) {
@@ -312,7 +313,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 7;
-		contentPane.add(panel, gbc_panel);
+		add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 0, 0 };
 		gbl_panel.rowHeights = new int[] { 0, 0 };
@@ -364,12 +365,12 @@ public class RegistrarNuevoUsuario extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO ARREGLAR
-							VentanaPrincipal frame = new VentanaPrincipal(null, null, null);
-							frame.setVisible(true);
-							frame.setTitle("Login");
-							frame.setIconImage(imagen.getImage());
-							JOptionPane.showMessageDialog(null, "Nuevo usuario registrado");
+							// TODO ARREGLAR
+							// Login frame = new Login(null, null, null);
+							// frame.setVisible(true);
+							// frame.setTitle("Login");
+							// frame.setIconImage(imagen.getImage());
+							// JOptionPane.showMessageDialog(null, "Nuevo usuario registrado");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -382,7 +383,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		gbc_btnGuardar.insets = new Insets(0, 0, 0, 5);
 		gbc_btnGuardar.gridx = 1;
 		gbc_btnGuardar.gridy = 8;
-		contentPane.add(btnGuardar, gbc_btnGuardar);
+		add(btnGuardar, gbc_btnGuardar);
 
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
@@ -391,11 +392,11 @@ public class RegistrarNuevoUsuario extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO ARREGLAR
-							VentanaPrincipal frame = new VentanaPrincipal(null, null, null);
-							frame.setVisible(true);
-							frame.setTitle("Login");
-							frame.setIconImage(imagen.getImage());
+							// TODO ARREGLAR
+							// Login frame = new Login(null, null, null);
+							// frame.setVisible(true);
+							// frame.setTitle("Login");
+							// frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -406,7 +407,7 @@ public class RegistrarNuevoUsuario extends JFrame {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 8;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
 
 }

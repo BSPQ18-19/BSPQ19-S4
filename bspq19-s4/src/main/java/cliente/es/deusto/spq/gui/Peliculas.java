@@ -110,10 +110,10 @@ public class Peliculas extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Administrador frame = new Administrador();
-							frame.setVisible(true);
-							frame.setTitle("Administrador");
-							frame.setIconImage(imagen.getImage());
+//							Administrador frame = new Administrador();
+//							frame.setVisible(true);
+//							frame.setTitle("Administrador");
+//							frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
