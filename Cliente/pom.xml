@@ -49,7 +49,7 @@
             <artifactId>exec-maven-plugin</artifactId>
             <version>1.6.0</version>
             <configuration>
-              <mainClass>es.deusto.spq.gui.VentanaPrincipal</mainClass>
+              <mainClass>es.deusto.es.App</mainClass>
             </configuration>
           </plugin>
         </plugins>

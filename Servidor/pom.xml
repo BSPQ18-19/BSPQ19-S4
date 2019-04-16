@@ -51,12 +51,6 @@
 			<artifactId>log4j</artifactId>
 			<version>[1.2.17, )</version>
 		</dependency>
-		<dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
         <dependency>
             <groupId>com.hynnet</groupId>
             <artifactId>DJNativeSwing</artifactId>
@@ -154,7 +148,7 @@
 				<version>1.2.1</version>
 
 				<configuration>
-					<mainClass>es.deusto.spq.gui.VentanaPrincipal</mainClass>
+					<mainClass>es.deusto.es.App</mainClass>
 					<systemProperties>
 						<systemProperty>
 							<key>log4j.configuration</key>
@@ -185,7 +179,7 @@
 	            <artifactId>exec-maven-plugin</artifactId>
 	            <version>1.6.0</version>
 	            <configuration>
-	              <mainClass>es.deusto.spq.gui.VentanaPrincipal</mainClass>
+	              <mainClass>es.deusto.es.App</mainClass>
 	            </configuration>
           </plugin>
 		</plugins>
