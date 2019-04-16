@@ -47,6 +47,22 @@ public class AnadirPelicula extends JFrame {
 	String saga = null;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AnadirUsuario frame = new AnadirUsuario();
+					frame.setVisible(true);
+					frame.setTitle("Añadir Pelicula");
+					frame.setIconImage(imagen.getImage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
 	public AnadirPelicula() {
 		setBounds(100, 100, 643, 500);
 		contentPane = new JPanel();
