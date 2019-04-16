@@ -10,6 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -51,6 +53,21 @@ public class AnadirUsuario extends JFrame {
 	boolean administrador = false;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
+	
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AnadirUsuario frame = new AnadirUsuario();
+					frame.setVisible(true);
+					frame.setTitle("Añadir Usuario");
+					frame.setIconImage(imagen.getImage());
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 	public AnadirUsuario() {
 		setBounds(100, 100, 600, 500);
 		contentPane = new JPanel();
@@ -355,19 +372,36 @@ public class AnadirUsuario extends JFrame {
 		btnAnadirUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (administrador == true) {
-					// TODO: guardar usuario en la BD como administrador
+					// TODO: guardar usuario en la BD como administrador	
 				} else {
 					// TODO: guardar usuario en la BD como usuario
+						
 				}
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String nombre = textFieldUsuario.getText();
+							String contrasenna = passwordFieldContrasea1.getText();
+							String correo = textFieldCorreo1.getText();
+							String paypal = textFieldPaypal1.getText();
+							
+							String query = "INSERT INTO usuario (Nombre, Contraseña, Correo, Paypal) values ('"+nombre+"', '"+contrasenna+"', '"+correo+"', '"+paypal+"')";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							
+						
 							Usuarios frame = new Usuarios();
 							frame.setVisible(true);
 							frame.setTitle("Base de datos de usuarios");
 							frame.setIconImage(imagen.getImage());
-							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido");
+							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido correctamente a la BD");
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
