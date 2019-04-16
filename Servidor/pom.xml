@@ -154,7 +154,7 @@
 				<version>1.2.1</version>
 
 				<configuration>
-					<mainClass>es.deusto.es.App</mainClass>
+					<mainClass>es.deusto.spq.gui.VentanaPrincipal</mainClass>
 					<systemProperties>
 						<systemProperty>
 							<key>log4j.configuration</key>
@@ -180,6 +180,14 @@
 					<nohelp>true</nohelp>
 				</configuration>
 			</plugin>
+			<plugin>
+	            <groupId>org.codehaus.mojo</groupId>
+	            <artifactId>exec-maven-plugin</artifactId>
+	            <version>1.6.0</version>
+	            <configuration>
+	              <mainClass>es.deusto.spq.gui.VentanaPrincipal</mainClass>
+	            </configuration>
+          </plugin>
 		</plugins>
 	</build>
 </project>
