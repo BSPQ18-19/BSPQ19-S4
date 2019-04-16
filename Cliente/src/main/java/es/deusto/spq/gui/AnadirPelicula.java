@@ -10,6 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -52,7 +54,7 @@ public class AnadirPelicula extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AnadirUsuario frame = new AnadirUsuario();
+					AnadirPelicula frame = new AnadirPelicula();
 					frame.setVisible(true);
 					frame.setTitle("Añadir Pelicula");
 					frame.setIconImage(imagen.getImage());
@@ -289,16 +291,32 @@ public class AnadirPelicula extends JFrame {
 		btnAnadirPelicula = new JButton("A\u00F1adir");
 		btnAnadirPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: guardar pelicula en la BD como administrador
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String titulo = textFieldPelicula.getText();
+							String genero = textFieldGenero.getText();
+							String festreno = textFieldfEstreno.getText();
+							String trailer = textFieldtrailer.getText();
+							String fichatecnica = textFieldFichaTecnica.getText();
+							
+							
+							String query = "INSERT INTO pelicula (Titulo, Genero, FechaEstreno, Trailer, FichaTecnica) values ('"+titulo+"', '"+genero+"', '"+festreno+"', '"+trailer+"', '"+fichatecnica+"')";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							
 							Peliculas frame = new Peliculas();
 							frame.setVisible(true);
 							frame.setTitle("Base de datos de peliculas");
 							frame.setIconImage(imagen.getImage());
-							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adido");
+							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adida a la BD");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
