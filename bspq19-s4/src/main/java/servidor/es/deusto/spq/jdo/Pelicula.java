@@ -18,7 +18,7 @@ public class Pelicula {
 	int puntuacion = 0;
 	
 
-    @Persistent(table="PELICULAS_CLIENTE")
+    @Persistent(table="PELICULAS_CUENTA")
     @Join(column="PELICULA_ID")
     @Element(column="CORREO")
 	Set<Cuenta>usuarios;
