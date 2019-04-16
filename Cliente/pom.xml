@@ -42,16 +42,4 @@
             </exclusions>
     </dependency>
   </dependencies>
-  <build>
-        <plugins>
-          <plugin>
-            <groupId>org.codehaus.mojo</groupId>
-            <artifactId>exec-maven-plugin</artifactId>
-            <version>1.6.0</version>
-            <configuration>
-              <mainClass>es.deusto.spq.player.App</mainClass>
-            </configuration>
-          </plugin>
-        </plugins>
-    </build>
 </project>
