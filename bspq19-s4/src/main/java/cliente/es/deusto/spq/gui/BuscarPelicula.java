@@ -32,11 +32,12 @@ public class BuscarPelicula extends JFrame {
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
-	private String[] peliculas = {"a","b"};
+	private String[] peliculas = {"Elegir como ordenar la lista"};
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
 
 	public void actualizarLista(String[] peliculas) {
+		listMostarPeliculas.setEnabled(true);
 		DefaultListModel<String> model = new DefaultListModel<String>();
 		for (String s:peliculas) {
 			model.addElement(s);
@@ -54,7 +55,7 @@ public class BuscarPelicula extends JFrame {
 		gbl_contentPane.columnWidths = new int[] { 0, 130, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, 1.0 };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblMostrarPeliculas = new JLabel("Las peliculas registradas en este momento son:");
@@ -78,6 +79,7 @@ public class BuscarPelicula extends JFrame {
 		Arrays.sort(peliculas);
 		
 		listMostarPeliculas = new JList<String>(peliculas);
+		listMostarPeliculas.setEnabled(false);
 		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listMostarPeliculas);
@@ -177,6 +179,8 @@ public class BuscarPelicula extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							//TODO: coger pelicula seleccionada de la lista
+							//TODO: pasar pelicula seleccionada
 							Pelicula frame = new Pelicula();
 							frame.setVisible(true);
 							frame.setTitle("Pelicula");
@@ -203,10 +207,10 @@ public class BuscarPelicula extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuario frame = new Usuario();
-							frame.setVisible(true);
-							frame.setTitle("Usuario");
-							frame.setIconImage(imagen.getImage());
+//							Usuario frame = new Usuario();
+//							frame.setVisible(true);
+//							frame.setTitle("Usuario");
+//							frame.setIconImage(imagen.getImage());
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

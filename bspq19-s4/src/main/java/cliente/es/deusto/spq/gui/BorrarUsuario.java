@@ -32,20 +32,19 @@ public class BorrarUsuario extends JFrame {
 
 	public BorrarUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 450, 342);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, 0.0, Double.MIN_VALUE };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblMostrarUsuarios = new JLabel("Seleccione el usuario que desea borrar:");
 		GridBagConstraints gbc_lblMostrarUsuarios = new GridBagConstraints();
-		gbc_lblMostrarUsuarios.gridwidth = 2;
 		gbc_lblMostrarUsuarios.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMostrarUsuarios.gridx = 0;
 		gbc_lblMostrarUsuarios.gridy = 0;
@@ -53,7 +52,6 @@ public class BorrarUsuario extends JFrame {
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.gridwidth = 2;
 		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
@@ -79,8 +77,9 @@ public class BorrarUsuario extends JFrame {
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				int i = listMostarUsuarios.getSelectedIndex();
-				String n = usuarios[i];
+				//TODO: coger usuario seleccionado de la lista
+//				int i = listMostarUsuarios.getSelectedIndex();
+//				String n = usuarios[i];
 				// TODO: eliminar el usuarios con nombre n de la BD
 				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
@@ -100,7 +99,7 @@ public class BorrarUsuario extends JFrame {
 		});
 		btnBorrar.setEnabled(false);
 		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
-		gbc_btnBorrar.gridwidth = 2;
+		gbc_btnBorrar.insets = new Insets(0, 0, 5, 0);
 		gbc_btnBorrar.gridx = 0;
 		gbc_btnBorrar.gridy = 2;
 		contentPane.add(btnBorrar, gbc_btnBorrar);
@@ -125,7 +124,6 @@ public class BorrarUsuario extends JFrame {
 		});
 
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridwidth = 2;
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 3;
 		contentPane.add(btnAtras, gbc_btnAtras);

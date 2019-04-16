@@ -31,6 +31,8 @@ public class AnadirPelicula extends JFrame {
 	private JTextField textFieldfEstreno;
 	private JLabel lbltrailer;
 	private JTextField textFieldtrailer;
+	private JLabel lblSinopsis;
+	private JTextField textFieldSinopsis;
 	private JLabel lblFichaTecnica;
 	private JTextField textFieldFichaTecnica;
 	private JCheckBox chckbxSaga;
@@ -43,25 +45,25 @@ public class AnadirPelicula extends JFrame {
 	String genero = null;
 	String fEstreno = null;
 	String trailer = null;
+	String sinopsis = null;
 	String fichaTecnica = null;
 	String saga = null;
 	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public AnadirPelicula() {
-		setBounds(100, 100, 643, 500);
+		setBounds(100, 100, 650, 500);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 , 1.0, 1.0};
 		contentPane.setLayout(gbl_contentPane);
 
 		JLabel lblPelicula = new JLabel("Introducir titulo de pelicula: ");
 		GridBagConstraints gbc_lblPelicula = new GridBagConstraints();
-		gbc_lblPelicula.fill = GridBagConstraints.VERTICAL;
 		gbc_lblPelicula.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPelicula.gridx = 0;
 		gbc_lblPelicula.gridy = 0;
@@ -172,20 +174,50 @@ public class AnadirPelicula extends JFrame {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					trailer = textFieldtrailer.getText();
+					lblSinopsis.setEnabled(true);
+					textFieldSinopsis.setEnabled(true);
+					textFieldtrailer.setEditable(false);
+					textFieldSinopsis.requestFocus();
+				}
+			}
+		});
+		
+		lblSinopsis = new JLabel("Introducir sinopsis de la pelicula:");
+		lblSinopsis.setEnabled(false);
+		GridBagConstraints gbc_lblSinopsis = new GridBagConstraints();
+		gbc_lblSinopsis.insets = new Insets(0, 0, 5, 5);
+		gbc_lblSinopsis.gridx = 0;
+		gbc_lblSinopsis.gridy = 4;
+		contentPane.add(lblSinopsis, gbc_lblSinopsis);
+
+		textFieldSinopsis = new JTextField();
+		textFieldSinopsis.setEnabled(false);
+		GridBagConstraints gbc_textFieldSinopsis = new GridBagConstraints();
+		gbc_textFieldSinopsis.insets = new Insets(0, 0, 5, 0);
+		gbc_textFieldSinopsis.gridx = 1;
+		gbc_textFieldSinopsis.gridy = 4;
+		contentPane.add(textFieldSinopsis, gbc_textFieldSinopsis);
+		textFieldSinopsis.setColumns(20);
+
+		textFieldSinopsis.addKeyListener(new KeyAdapter() {
+			public void keyPressed(KeyEvent e) {
+				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+					sinopsis = textFieldSinopsis.getText();
 					lblFichaTecnica.setEnabled(true);
 					textFieldFichaTecnica.setEnabled(true);
-					textFieldtrailer.setEditable(false);
+					textFieldSinopsis.setEditable(false);
 					textFieldFichaTecnica.requestFocus();
 				}
 			}
 		});
+
 
 		lblFichaTecnica = new JLabel("Introducir ficha tecnica:");
 		lblFichaTecnica.setEnabled(false);
 		GridBagConstraints gbc_lblFichaTecnica = new GridBagConstraints();
 		gbc_lblFichaTecnica.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFichaTecnica.gridx = 0;
-		gbc_lblFichaTecnica.gridy = 4;
+		gbc_lblFichaTecnica.gridy = 5;
 		contentPane.add(lblFichaTecnica, gbc_lblFichaTecnica);
 
 		textFieldFichaTecnica = new JTextField();
@@ -193,7 +225,7 @@ public class AnadirPelicula extends JFrame {
 		GridBagConstraints gbc_textFieldFichaTecnica = new GridBagConstraints();
 		gbc_textFieldFichaTecnica.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldFichaTecnica.gridx = 1;
-		gbc_textFieldFichaTecnica.gridy = 4;
+		gbc_textFieldFichaTecnica.gridy = 5;
 		contentPane.add(textFieldFichaTecnica, gbc_textFieldFichaTecnica);
 		textFieldFichaTecnica.setColumns(20);
 
@@ -213,7 +245,7 @@ public class AnadirPelicula extends JFrame {
 		GridBagConstraints gbc_chckbxSaga = new GridBagConstraints();
 		gbc_chckbxSaga.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxSaga.gridx = 0;
-		gbc_chckbxSaga.gridy = 5;
+		gbc_chckbxSaga.gridy = 6;
 		contentPane.add(chckbxSaga, gbc_chckbxSaga);
 		chckbxSaga.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
@@ -233,9 +265,8 @@ public class AnadirPelicula extends JFrame {
 		panel = new JPanel();
 		GridBagConstraints gbc_panel = new GridBagConstraints();
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
-		gbc_panel.fill = GridBagConstraints.BOTH;
 		gbc_panel.gridx = 1;
-		gbc_panel.gridy = 5;
+		gbc_panel.gridy = 6;
 		contentPane.add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 0, 0 };
@@ -293,8 +324,8 @@ public class AnadirPelicula extends JFrame {
 		btnAnadirPelicula.setEnabled(false);
 		GridBagConstraints gbc_btnAnadirPelicula = new GridBagConstraints();
 		gbc_btnAnadirPelicula.insets = new Insets(0, 0, 0, 5);
-		gbc_btnAnadirPelicula.gridx = 0;
-		gbc_btnAnadirPelicula.gridy = 6;
+		gbc_btnAnadirPelicula.gridx = 1;
+		gbc_btnAnadirPelicula.gridy = 7;
 		contentPane.add(btnAnadirPelicula, gbc_btnAnadirPelicula);
 
 		btnAtras = new JButton("Atr\u00E1s");
@@ -316,8 +347,8 @@ public class AnadirPelicula extends JFrame {
 			}
 		});
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridx = 1;
-		gbc_btnAtras.gridy = 6;
+		gbc_btnAtras.gridx = 0;
+		gbc_btnAtras.gridy = 7;
 		contentPane.add(btnAtras, gbc_btnAtras);
 	}
 
