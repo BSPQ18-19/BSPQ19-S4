@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,28 +9,22 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 
-public class MostrarPeliculas extends JFrame {
+import cliente.es.deusto.spq.controller.MostrarPeliculasController;
+
+public class MostrarPeliculas extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
 	private JPanel contentPane;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
-	public MostrarPeliculas() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public MostrarPeliculas(MostrarPeliculasController mostrarPeliculasController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
@@ -64,14 +59,10 @@ public class MostrarPeliculas extends JFrame {
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Peliculas frame = new Peliculas();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de peliculas");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

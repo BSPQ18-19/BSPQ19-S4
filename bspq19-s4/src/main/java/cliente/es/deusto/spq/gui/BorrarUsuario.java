@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -8,9 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
@@ -18,24 +17,20 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class BorrarUsuario extends JFrame {
+import cliente.es.deusto.spq.controller.BorrarUsuarioController;
+
+public class BorrarUsuario extends JPanel {
 	private static final long serialVersionUID = -2878465684552734783L;
 	private JPanel contentPane;
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 	private String[] usuarios = {"a","b"};
 
-	public BorrarUsuario() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 342);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -81,14 +76,10 @@ public class BorrarUsuario extends JFrame {
 //				int i = listMostarUsuarios.getSelectedIndex();
 //				String n = usuarios[i];
 				// TODO: eliminar el usuarios con nombre n de la BD
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuarios frame = new Usuarios();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de usuarios");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -107,14 +98,10 @@ public class BorrarUsuario extends JFrame {
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuarios frame = new Usuarios();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de usuarios");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

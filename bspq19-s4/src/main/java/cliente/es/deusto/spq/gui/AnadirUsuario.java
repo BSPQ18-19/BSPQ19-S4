@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,18 +12,17 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
-public class AnadirUsuario extends JFrame {
+import cliente.es.deusto.spq.controller.AnadirUsuarioController;
+
+public class AnadirUsuario extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;
 	private JPanel contentPane;
 	private JTextField textFieldUsuario;
@@ -49,13 +49,9 @@ public class AnadirUsuario extends JFrame {
 	String correo1 = null;
 	String paypal1 = null;
 	boolean administrador = false;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
-	public AnadirUsuario() {
-		setBounds(100, 100, 600, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public AnadirUsuario(AnadirUsuarioController anadirUsuarioController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0};
@@ -83,7 +79,7 @@ public class AnadirUsuario extends JFrame {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					usuario = textFieldUsuario.getText();
 					boolean disponible = true;
-					// TODO: comprobar en la BD si el nombre de usuario est� disponible
+					// TODO: comprobar en la BD si el nombre de usuario esta disponible
 					if (disponible == false) {
 						JOptionPane.showMessageDialog(null, "Este nombre de usuario no est\u00E1 disponible");
 					} else {
@@ -357,14 +353,10 @@ public class AnadirUsuario extends JFrame {
 				} else {
 					// TODO: guardar usuario en la BD como usuario
 				}
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuarios frame = new Usuarios();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de usuarios");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido");
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -383,14 +375,10 @@ public class AnadirUsuario extends JFrame {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Usuarios frame = new Usuarios();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de usuarios");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

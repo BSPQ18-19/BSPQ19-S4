@@ -35,12 +35,8 @@ public class Login extends JPanel {
 	static boolean administrador = false;
 	static String nombre = null;
 	static String contrasenya = null;
-	private LoginController loginController;
-	private CardLayout cardLayout;
 
 	public Login(LoginController loginController, CardLayout cardLayout) {
-		this.loginController = loginController;
-		this.cardLayout = cardLayout;
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
@@ -148,14 +144,10 @@ public class Login extends JPanel {
 		btnContraseaOlvidada.setEnabled(false);
 		btnContraseaOlvidada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// ContrasenyaOlvidada frame = new ContrasenyaOlvidada();
-							// frame.setVisible(true);
-							// frame.setTitle("Contrase\u00F1a olvidada");
-							// frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.CONTRASENYA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -177,11 +169,8 @@ public class Login extends JPanel {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								// //TODO: pasar info usuario
-								// Usuario frame = new Usuario();
-								// frame.setVisible(true);
-								// frame.setTitle("Usuario");
-								// frame.setIconImage(imagen.getImage());
+								//TODO: pasar info usuario
+								cardLayout.show(getParent(), VentanaPrincipal.USUARIO);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -191,10 +180,7 @@ public class Login extends JPanel {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								// Administrador frame = new Administrador();
-								// frame.setVisible(true);
-								// frame.setTitle("Administrador");
-								// frame.setIconImage(imagen.getImage());
+								cardLayout.show(getParent(), VentanaPrincipal.ADMINISTRADOR);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}

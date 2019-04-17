@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 
 
@@ -12,26 +13,24 @@ import java.awt.event.ActionListener;
 import java.util.Arrays;
 
 import javax.swing.DefaultListModel;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-public class BuscarPelicula extends JFrame {
+import cliente.es.deusto.spq.controller.BuscarPeliculaController;
+
+public class BuscarPelicula extends JPanel {
 
 	private static final long serialVersionUID = -1644310303190255276L;
 	private JPanel contentPane;
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 	private String[] peliculas = {"Elegir como ordenar la lista"};
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
@@ -45,12 +44,8 @@ public class BuscarPelicula extends JFrame {
 		listMostarPeliculas.setModel(model);
 	}
 
-	public BuscarPelicula() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 350);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public BuscarPelicula(BuscarPeliculaController buscarPeliculaController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 130, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -175,16 +170,12 @@ public class BuscarPelicula extends JFrame {
 		btnVer = new JButton("Ver información película");
 		btnVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
 							//TODO: coger pelicula seleccionada de la lista
 							//TODO: pasar pelicula seleccionada
-							Pelicula frame = new Pelicula();
-							frame.setVisible(true);
-							frame.setTitle("Pelicula");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

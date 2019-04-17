@@ -11,7 +11,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,7 +25,6 @@ public class ContrasenyaOlvidada extends JPanel {
 	private JLabel lblCorreo;
 	private JTextField textFieldCorreo;
 	private JButton btnAtras;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public ContrasenyaOlvidada(ContrasenyaController contrasenyaController, CardLayout cardLayout) {
 
@@ -82,11 +80,7 @@ public class ContrasenyaOlvidada extends JPanel {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								// TODO ARREGLAR
-								// Login frame = new Login(null, null, null);
-								// frame.setVisible(true);
-								// frame.setTitle("Login");
-								// frame.setIconImage(imagen.getImage());
+								cardLayout.show(getParent(), VentanaPrincipal.LOGIN);
 							} catch (Exception e) {
 								e.printStackTrace();
 							}
@@ -101,15 +95,10 @@ public class ContrasenyaOlvidada extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				Login.administrador = false;
 				Login.usuario = false;
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO ARREGLAR
-							// Login frame = new Login(null, null, null);
-							// frame.setVisible(true);
-							// frame.setTitle("Login");
-							// frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.LOGIN);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

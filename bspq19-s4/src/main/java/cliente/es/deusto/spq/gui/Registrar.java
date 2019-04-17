@@ -12,16 +12,13 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
 import cliente.es.deusto.spq.controller.RegistrarController;
 
@@ -52,12 +49,8 @@ public class Registrar extends JPanel {
 	String correo1 = null;
 	String paypal1 = null;
 	boolean administrador = false;
-	private RegistrarController registrarController;
-	private CardLayout cardLayout;
 
 	public Registrar(RegistrarController registrarController, CardLayout cardLayout) {
-		this.registrarController = registrarController;
-		this.cardLayout = cardLayout;
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
@@ -87,7 +80,7 @@ public class Registrar extends JPanel {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					usuario = textFieldUsuario.getText();
 					boolean disponible = true;
-					// TODO: comprobar en la BD si el nombre de usuario est� disponible
+					// TODO: comprobar en la BD si el nombre de usuario esta disponible
 					if (disponible == false) {
 						JOptionPane.showMessageDialog(null, "Este nombre de usuario no est\u00E1 disponible");
 					} else {
@@ -361,16 +354,13 @@ public class Registrar extends JPanel {
 				} else {
 					// TODO: guardar usuario en la BD como usuario
 				}
-				setVisible(false);
+				Login.administrador = false;
+				Login.usuario = false;
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO ARREGLAR
-							// Login frame = new Login(null, null, null);
-							// frame.setVisible(true);
-							// frame.setTitle("Login");
-							// frame.setIconImage(imagen.getImage());
-							// JOptionPane.showMessageDialog(null, "Nuevo usuario registrado");
+							cardLayout.show(getParent(), VentanaPrincipal.LOGIN);
+							JOptionPane.showMessageDialog(null, "Nuevo usuario registrado");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -388,15 +378,12 @@ public class Registrar extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
+				Login.administrador = false;
+				Login.usuario = false;
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO ARREGLAR
-							// Login frame = new Login(null, null, null);
-							// frame.setVisible(true);
-							// frame.setTitle("Login");
-							// frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.LOGIN);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

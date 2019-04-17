@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,25 +8,19 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-public class Pelicula extends JFrame{
+import cliente.es.deusto.spq.controller.PeliculaController;
+
+public class Pelicula extends JPanel{
 
 	private static final long serialVersionUID = 674330126384087764L;
 	private JPanel contentPane;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 	
-	public Pelicula() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
@@ -161,14 +156,10 @@ public class Pelicula extends JFrame{
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							BuscarPelicula frame = new BuscarPelicula();
-							frame.setVisible(true);
-							frame.setTitle("Buscar Pelicula");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.BUSCARPELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

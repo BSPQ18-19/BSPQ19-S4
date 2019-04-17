@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -7,23 +8,17 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
-public class Peliculas extends JFrame {
+import cliente.es.deusto.spq.controller.PeliculasController;
+
+public class Peliculas extends JPanel {
 	private static final long serialVersionUID = 6216694316784718679L;
 	private JPanel contentPane;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
-	public Peliculas() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 246);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public Peliculas(PeliculasController peliculasController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -34,14 +29,10 @@ public class Peliculas extends JFrame {
 		JButton btnAnadir = new JButton("A\u00F1adir pelicula");
 		btnAnadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							AnadirPelicula frame = new AnadirPelicula();
-							frame.setVisible(true);
-							frame.setTitle("A\u00F1adir pelicula");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.ANADIRPELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -58,14 +49,10 @@ public class Peliculas extends JFrame {
 		JButton btnBorrar = new JButton("Borrar pelicula");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							BorrarPelicula frame = new BorrarPelicula();
-							frame.setVisible(true);
-							frame.setTitle("Borrar pelicula");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.BORRARPELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -82,14 +69,10 @@ public class Peliculas extends JFrame {
 		JButton btnMostrarLista = new JButton("Mostrar lista de peliculas");
 		btnMostrarLista.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							MostrarPeliculas frame = new MostrarPeliculas();
-							frame.setVisible(true);
-							frame.setTitle("Mostrar peliculas");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.MOSTRARPELICULAS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -106,14 +89,10 @@ public class Peliculas extends JFrame {
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-//							Administrador frame = new Administrador();
-//							frame.setVisible(true);
-//							frame.setTitle("Administrador");
-//							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.ADMINISTRADOR);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

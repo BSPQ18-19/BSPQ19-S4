@@ -8,17 +8,13 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 
 import cliente.es.deusto.spq.controller.UsuarioController;
 
 public class Usuario extends JPanel{
 	private static final long serialVersionUID = -1644310303190255276L;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
 	public Usuario(UsuarioController usuarioController, CardLayout cardLayout) {
 		
@@ -32,14 +28,11 @@ public class Usuario extends JPanel{
 		JButton btnPerfil = new JButton("Mi perfil de usuario");
 		btnPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-//							Perfil frame = new Perfil();
-//							frame.setVisible(true);
-//							frame.setTitle("Mi perfil");
-//							frame.setIconImage(imagen.getImage());
+							//TODO: ventana perfil
+//							cardLayout.show(getParent(), VentanaPrincipal.PERFIL);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -56,14 +49,10 @@ public class Usuario extends JPanel{
 		JButton btnPelicula = new JButton("Buscar pelicula");
 		btnPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							BuscarPelicula frame = new BuscarPelicula();
-							frame.setVisible(true);
-							frame.setTitle("Buscar pelicula");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.BUSCARPELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -86,11 +75,7 @@ public class Usuario extends JPanel{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO Arreglar
-//							Login frame = new Login(null, null, null);
-//							frame.setVisible(true);
-//							frame.setTitle("Login");
-//							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.LOGIN);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

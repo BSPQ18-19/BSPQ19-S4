@@ -1,5 +1,6 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,17 +12,16 @@ import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.border.EmptyBorder;
 
-public class AnadirPelicula extends JFrame {
+import cliente.es.deusto.spq.controller.AnadirPeliculaController;
+
+public class AnadirPelicula extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;
 	private JPanel contentPane;
 	private JTextField textFieldPelicula;
@@ -48,13 +48,9 @@ public class AnadirPelicula extends JFrame {
 	String sinopsis = null;
 	String fichaTecnica = null;
 	String saga = null;
-	private static ImageIcon imagen = new ImageIcon("Icono//icono.jpg");
 
-	public AnadirPelicula() {
-		setBounds(100, 100, 650, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		setContentPane(contentPane);
+	public AnadirPelicula(AnadirPeliculaController anadirPeliculaController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0};
@@ -84,7 +80,7 @@ public class AnadirPelicula extends JFrame {
 					boolean anadida = false;
 					// TODO: comprobar en la BD si el titulo de la pelicula esta añadido
 					if (anadida == true) {
-						JOptionPane.showMessageDialog(null, "Esta pelicula ya est\u00E1 a�adida");
+						JOptionPane.showMessageDialog(null, "Esta pelicula ya est\u00E1  añadida");
 					} else {
 						lblGenero.setEnabled(true);
 						textFieldGenero.setEnabled(true);
@@ -305,14 +301,10 @@ public class AnadirPelicula extends JFrame {
 		btnAnadirPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: guardar pelicula en la BD como administrador
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Peliculas frame = new Peliculas();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de peliculas");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adido");
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -331,14 +323,10 @@ public class AnadirPelicula extends JFrame {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Peliculas frame = new Peliculas();
-							frame.setVisible(true);
-							frame.setTitle("Base de datos de peliculas");
-							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
