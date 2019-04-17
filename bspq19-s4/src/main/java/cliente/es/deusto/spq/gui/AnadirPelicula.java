@@ -23,7 +23,7 @@ import cliente.es.deusto.spq.controller.AnadirPeliculaController;
 
 public class AnadirPelicula extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;
-	private JPanel contentPane;
+	private JLabel lblPelicula;
 	private JTextField textFieldPelicula;
 	private JLabel lblGenero;
 	private JTextField textFieldGenero;
@@ -56,21 +56,21 @@ public class AnadirPelicula extends JPanel {
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0};
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 , 1.0, 1.0};
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
-		JLabel lblPelicula = new JLabel("Introducir titulo de pelicula: ");
+		lblPelicula = new JLabel("Introducir titulo de pelicula: ");
 		GridBagConstraints gbc_lblPelicula = new GridBagConstraints();
 		gbc_lblPelicula.insets = new Insets(0, 0, 5, 5);
 		gbc_lblPelicula.gridx = 0;
 		gbc_lblPelicula.gridy = 0;
-		contentPane.add(lblPelicula, gbc_lblPelicula);
+		add(lblPelicula, gbc_lblPelicula);
 
 		textFieldPelicula = new JTextField();
 		GridBagConstraints gbc_textFieldPelicula = new GridBagConstraints();
 		gbc_textFieldPelicula.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldPelicula.gridx = 1;
 		gbc_textFieldPelicula.gridy = 0;
-		contentPane.add(textFieldPelicula, gbc_textFieldPelicula);
+		add(textFieldPelicula, gbc_textFieldPelicula);
 		textFieldPelicula.setColumns(20);
 
 		textFieldPelicula.addKeyListener(new KeyAdapter() {
@@ -97,7 +97,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_lblGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGenero.gridx = 0;
 		gbc_lblGenero.gridy = 1;
-		contentPane.add(lblGenero, gbc_lblGenero);
+		add(lblGenero, gbc_lblGenero);
 
 		textFieldGenero = new JTextField();
 		textFieldGenero.setEnabled(false);
@@ -106,7 +106,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_textFieldGenero.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldGenero.gridx = 1;
 		gbc_textFieldGenero.gridy = 1;
-		contentPane.add(textFieldGenero, gbc_textFieldGenero);
+		add(textFieldGenero, gbc_textFieldGenero);
 
 		textFieldGenero.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -126,7 +126,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_lblfEstreno.insets = new Insets(0, 0, 5, 5);
 		gbc_lblfEstreno.gridx = 0;
 		gbc_lblfEstreno.gridy = 2;
-		contentPane.add(lblfEstreno, gbc_lblfEstreno);
+		add(lblfEstreno, gbc_lblfEstreno);
 
 		textFieldfEstreno = new JTextField();
 		textFieldfEstreno.setEnabled(false);
@@ -135,7 +135,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_textFieldfEstreno.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldfEstreno.gridx = 1;
 		gbc_textFieldfEstreno.gridy = 2;
-		contentPane.add(textFieldfEstreno, gbc_textFieldfEstreno);
+		add(textFieldfEstreno, gbc_textFieldfEstreno);
 
 		textFieldfEstreno.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
@@ -155,7 +155,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_lbltrailer.insets = new Insets(0, 0, 5, 5);
 		gbc_lbltrailer.gridx = 0;
 		gbc_lbltrailer.gridy = 3;
-		contentPane.add(lbltrailer, gbc_lbltrailer);
+		add(lbltrailer, gbc_lbltrailer);
 
 		textFieldtrailer = new JTextField();
 		textFieldtrailer.setEnabled(false);
@@ -163,7 +163,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_textFieldtrailer.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldtrailer.gridx = 1;
 		gbc_textFieldtrailer.gridy = 3;
-		contentPane.add(textFieldtrailer, gbc_textFieldtrailer);
+		add(textFieldtrailer, gbc_textFieldtrailer);
 		textFieldtrailer.setColumns(20);
 
 		textFieldtrailer.addKeyListener(new KeyAdapter() {
@@ -184,7 +184,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_lblSinopsis.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSinopsis.gridx = 0;
 		gbc_lblSinopsis.gridy = 4;
-		contentPane.add(lblSinopsis, gbc_lblSinopsis);
+		add(lblSinopsis, gbc_lblSinopsis);
 
 		textFieldSinopsis = new JTextField();
 		textFieldSinopsis.setEnabled(false);
@@ -192,7 +192,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_textFieldSinopsis.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldSinopsis.gridx = 1;
 		gbc_textFieldSinopsis.gridy = 4;
-		contentPane.add(textFieldSinopsis, gbc_textFieldSinopsis);
+		add(textFieldSinopsis, gbc_textFieldSinopsis);
 		textFieldSinopsis.setColumns(20);
 
 		textFieldSinopsis.addKeyListener(new KeyAdapter() {
@@ -214,7 +214,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_lblFichaTecnica.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFichaTecnica.gridx = 0;
 		gbc_lblFichaTecnica.gridy = 5;
-		contentPane.add(lblFichaTecnica, gbc_lblFichaTecnica);
+		add(lblFichaTecnica, gbc_lblFichaTecnica);
 
 		textFieldFichaTecnica = new JTextField();
 		textFieldFichaTecnica.setEnabled(false);
@@ -222,7 +222,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_textFieldFichaTecnica.insets = new Insets(0, 0, 5, 0);
 		gbc_textFieldFichaTecnica.gridx = 1;
 		gbc_textFieldFichaTecnica.gridy = 5;
-		contentPane.add(textFieldFichaTecnica, gbc_textFieldFichaTecnica);
+		add(textFieldFichaTecnica, gbc_textFieldFichaTecnica);
 		textFieldFichaTecnica.setColumns(20);
 
 		textFieldFichaTecnica.addKeyListener(new KeyAdapter() {
@@ -242,7 +242,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_chckbxSaga.insets = new Insets(0, 0, 5, 5);
 		gbc_chckbxSaga.gridx = 0;
 		gbc_chckbxSaga.gridy = 6;
-		contentPane.add(chckbxSaga, gbc_chckbxSaga);
+		add(chckbxSaga, gbc_chckbxSaga);
 		chckbxSaga.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
 				if (chckbxSaga.isSelected()) {
@@ -263,7 +263,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_panel.insets = new Insets(0, 0, 5, 0);
 		gbc_panel.gridx = 1;
 		gbc_panel.gridy = 6;
-		contentPane.add(panel, gbc_panel);
+		add(panel, gbc_panel);
 		GridBagLayout gbl_panel = new GridBagLayout();
 		gbl_panel.columnWidths = new int[] { 0, 0, 0 };
 		gbl_panel.rowHeights = new int[] { 0, 0 };
@@ -300,7 +300,8 @@ public class AnadirPelicula extends JPanel {
 		btnAnadirPelicula = new JButton("A\u00F1adir");
 		btnAnadirPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: guardar pelicula en la BD como administrador
+				// TODO: guardar pelicula en la BD
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -318,11 +319,12 @@ public class AnadirPelicula extends JPanel {
 		gbc_btnAnadirPelicula.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAnadirPelicula.gridx = 1;
 		gbc_btnAnadirPelicula.gridy = 7;
-		contentPane.add(btnAnadirPelicula, gbc_btnAnadirPelicula);
+		add(btnAnadirPelicula, gbc_btnAnadirPelicula);
 
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -337,7 +339,40 @@ public class AnadirPelicula extends JPanel {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 7;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
-
+	
+	public void reinicio() {
+		textFieldPelicula.setText(null);
+		textFieldPelicula.setEnabled(true);
+		textFieldPelicula.setEditable(true);
+		lblPelicula.setEnabled(true);
+		textFieldGenero.setText(null);
+		textFieldGenero.setEnabled(false);
+		textFieldGenero.setEditable(true);
+		lblGenero.setEnabled(false);
+		textFieldfEstreno.setText(null);
+		textFieldfEstreno.setEnabled(false);
+		textFieldfEstreno.setEditable(true);
+		lblfEstreno.setEnabled(false);
+		textFieldtrailer.setText(null);
+		textFieldtrailer.setEnabled(false);
+		textFieldtrailer.setEditable(true);
+		lbltrailer.setEnabled(false);
+		textFieldSinopsis.setText(null);
+		textFieldSinopsis.setEnabled(false);
+		textFieldSinopsis.setEditable(true);
+		lblSinopsis.setEnabled(false);
+		textFieldFichaTecnica.setText(null);
+		textFieldFichaTecnica.setEnabled(false);
+		textFieldFichaTecnica.setEditable(true);
+		lblFichaTecnica.setEnabled(false);
+		chckbxSaga.setEnabled(false);
+		chckbxSaga.setSelected(false);
+		lblSaga.setEnabled(false);
+		textFieldSaga.setText(null);
+		textFieldSaga.setEnabled(false);
+		textFieldSaga.setEditable(true);
+		btnAnadirPelicula.setEnabled(false);
+	}
 }

@@ -21,7 +21,6 @@ import cliente.es.deusto.spq.controller.MostrarPeliculasController;
 
 public class MostrarPeliculas extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
-	private JPanel contentPane;
 
 	public MostrarPeliculas(MostrarPeliculasController mostrarPeliculasController, CardLayout cardLayout) {
 		
@@ -30,14 +29,14 @@ public class MostrarPeliculas extends JPanel {
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, Double.MIN_VALUE };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		JLabel lblMostrarPeliculas = new JLabel("Las peliculas registradas en este momento son:");
 		GridBagConstraints gbc_lblMostrarPeliculas = new GridBagConstraints();
 		gbc_lblMostrarPeliculas.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMostrarPeliculas.gridx = 0;
 		gbc_lblMostrarPeliculas.gridy = 0;
-		contentPane.add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
+		add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -45,7 +44,7 @@ public class MostrarPeliculas extends JPanel {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 1;
-		contentPane.add(scrollPane, gbc_scrollPane);
+		add(scrollPane, gbc_scrollPane);
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
 		String[] peliculas = {"a","b"};
@@ -74,7 +73,7 @@ public class MostrarPeliculas extends JPanel {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 2;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
 
 }

@@ -17,7 +17,6 @@ import cliente.es.deusto.spq.controller.PeliculaController;
 public class Pelicula extends JPanel{
 
 	private static final long serialVersionUID = 674330126384087764L;
-	private JPanel contentPane;
 	
 	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) {
 		
@@ -26,7 +25,7 @@ public class Pelicula extends JPanel{
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0 };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 	
 		//TODO: introducir contenido
 		
@@ -36,7 +35,7 @@ public class Pelicula extends JPanel{
 		gbc_lblTitulo.insets = new Insets(0, 0, 5, 5);
 		gbc_lblTitulo.gridx = 0;
 		gbc_lblTitulo.gridy = 0;
-		contentPane.add(lblTitulo, gbc_lblTitulo);
+		add(lblTitulo, gbc_lblTitulo);
 		
 		JLabel lblGenero = new JLabel("Genero de la pelicula: ");
 		GridBagConstraints gbc_lblGenero = new GridBagConstraints();
@@ -44,7 +43,7 @@ public class Pelicula extends JPanel{
 		gbc_lblGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_lblGenero.gridx = 0;
 		gbc_lblGenero.gridy = 1;
-		contentPane.add(lblGenero, gbc_lblGenero);
+		add(lblGenero, gbc_lblGenero);
 		
 		JLabel lblFecha = new JLabel("Fecha de estreno de la pelicula: ");
 		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
@@ -52,7 +51,7 @@ public class Pelicula extends JPanel{
 		gbc_lblFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFecha.gridx = 0;
 		gbc_lblFecha.gridy = 2;
-		contentPane.add(lblFecha, gbc_lblFecha);
+		add(lblFecha, gbc_lblFecha);
 		
 		JLabel lblSinopsis = new JLabel("Sinopsis de la pelicula: ");
 		GridBagConstraints gbc_lblSinopsis = new GridBagConstraints();
@@ -60,7 +59,7 @@ public class Pelicula extends JPanel{
 		gbc_lblSinopsis.insets = new Insets(0, 0, 5, 5);
 		gbc_lblSinopsis.gridx = 0;
 		gbc_lblSinopsis.gridy = 3;
-		contentPane.add(lblSinopsis, gbc_lblSinopsis);
+		add(lblSinopsis, gbc_lblSinopsis);
 		
 		JLabel lblFTecnica = new JLabel("Ficha tecnica de la pelicula: ");
 		GridBagConstraints gbc_lblFTecnica = new GridBagConstraints();
@@ -68,7 +67,7 @@ public class Pelicula extends JPanel{
 		gbc_lblFTecnica.insets = new Insets(0, 0, 5, 5);
 		gbc_lblFTecnica.gridx = 0;
 		gbc_lblFTecnica.gridy = 4;
-		contentPane.add(lblFTecnica, gbc_lblFTecnica);
+		add(lblFTecnica, gbc_lblFTecnica);
 		
 		JButton btnTrailer = new JButton("Ver trailer");
 		btnTrailer.addActionListener(new ActionListener() {
@@ -89,7 +88,7 @@ public class Pelicula extends JPanel{
 		gbc_btnTrailer.gridwidth = 2;
 		gbc_btnTrailer.gridx = 0;
 		gbc_btnTrailer.gridy = 5;
-		contentPane.add(btnTrailer, gbc_btnTrailer);
+		add(btnTrailer, gbc_btnTrailer);
 		
 		JButton btnVerPuntYOpin = new JButton("Ver puntuaciones y opiniones");
 		btnVerPuntYOpin.addActionListener(new ActionListener() {
@@ -110,7 +109,7 @@ public class Pelicula extends JPanel{
 		gbc_btnVerPuntYOpin.insets = new Insets(0, 0, 5, 5);
 		gbc_btnVerPuntYOpin.gridx = 0;
 		gbc_btnVerPuntYOpin.gridy = 6;
-		contentPane.add(btnVerPuntYOpin, gbc_btnVerPuntYOpin);
+		add(btnVerPuntYOpin, gbc_btnVerPuntYOpin);
 		
 		JButton btnDejarPuntYOpin = new JButton("Dejar puntuacion u opinion");
 		btnDejarPuntYOpin.addActionListener(new ActionListener() {
@@ -131,7 +130,7 @@ public class Pelicula extends JPanel{
 		gbc_btnDejarPuntYOpin.insets = new Insets(0, 0, 5, 0);
 		gbc_btnDejarPuntYOpin.gridx = 1;
 		gbc_btnDejarPuntYOpin.gridy = 6;
-		contentPane.add(btnDejarPuntYOpin, gbc_btnDejarPuntYOpin);
+		add(btnDejarPuntYOpin, gbc_btnDejarPuntYOpin);
 		
 		JButton btnAlquilar = new JButton("Alquilar pelicula");
 		btnAlquilar.addActionListener(new ActionListener() {
@@ -151,7 +150,7 @@ public class Pelicula extends JPanel{
 		GridBagConstraints gbc_btnAlquilar = new GridBagConstraints();
 		gbc_btnAlquilar.gridx = 1;
 		gbc_btnAlquilar.gridy = 7;
-		contentPane.add(btnAlquilar, gbc_btnAlquilar);
+		add(btnAlquilar, gbc_btnAlquilar);
 		
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
@@ -171,6 +170,6 @@ public class Pelicula extends JPanel{
 		gbc_btnAtras.insets = new Insets(0, 0, 0, 5);
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 7;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
 }

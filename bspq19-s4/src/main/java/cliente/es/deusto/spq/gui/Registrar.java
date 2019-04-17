@@ -25,6 +25,7 @@ import cliente.es.deusto.spq.controller.RegistrarController;
 public class Registrar extends JPanel {
 
 	private static final long serialVersionUID = 674330126384087764L;
+	private JLabel lblUsuario;
 	private JTextField textFieldUsuario;
 	private JLabel lblContrasea1;
 	private JPasswordField passwordFieldContrasea1;
@@ -49,7 +50,7 @@ public class Registrar extends JPanel {
 	String correo1 = null;
 	String paypal1 = null;
 	boolean administrador = false;
-
+	
 	public Registrar(RegistrarController registrarController, CardLayout cardLayout) {
 
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -59,7 +60,7 @@ public class Registrar extends JPanel {
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 
-		JLabel lblUsuario = new JLabel("Introducir nombre de usuario: ");
+		lblUsuario = new JLabel("Introducir nombre de usuario: ");
 		GridBagConstraints gbc_lblUsuario = new GridBagConstraints();
 		gbc_lblUsuario.fill = GridBagConstraints.VERTICAL;
 		gbc_lblUsuario.insets = new Insets(0, 0, 5, 5);
@@ -356,6 +357,7 @@ public class Registrar extends JPanel {
 				}
 				Login.administrador = false;
 				Login.usuario = false;
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -380,6 +382,7 @@ public class Registrar extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				Login.administrador = false;
 				Login.usuario = false;
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -396,5 +399,41 @@ public class Registrar extends JPanel {
 		gbc_btnAtras.gridy = 8;
 		add(btnAtras, gbc_btnAtras);
 	}
-
+	public void reinicio(){
+		textFieldUsuario.setText(null);
+		textFieldUsuario.setEnabled(true);
+		textFieldUsuario.setEditable(true);
+		lblUsuario.setEnabled(true);
+		passwordFieldContrasea1.setText(null);
+		passwordFieldContrasea1.setEnabled(false);
+		passwordFieldContrasea1.setEditable(true);
+		lblContrasea1.setEnabled(false);
+		passwordFieldContrasea2.setText(null);
+		passwordFieldContrasea2.setEnabled(false);
+		passwordFieldContrasea2.setEditable(true);
+		lblContrasea2.setEnabled(false);
+		textFieldCorreo1.setText(null);
+		textFieldCorreo1.setEnabled(false);
+		textFieldCorreo1.setEditable(true);
+		lblCorreo1.setEnabled(false);
+		textFieldCorreo2.setText(null);
+		textFieldCorreo2.setEnabled(false);
+		textFieldCorreo2.setEditable(true);
+		lblCorreo2.setEnabled(false);
+		textFieldPaypal1.setText(null);
+		textFieldPaypal1.setEnabled(false);
+		textFieldPaypal1.setEditable(true);
+		lblPaypal1.setEnabled(false);
+		textFieldPaypal2.setText(null);
+		textFieldPaypal2.setEnabled(false);
+		textFieldPaypal2.setEditable(true);
+		lblPaypal2.setEnabled(false);
+		chckbxAdministrador.setEnabled(false);
+		chckbxAdministrador.setSelected(false);
+		lblAdminSiONo.setEnabled(false);
+		textFieldAdminSiONo.setText(null);
+		textFieldAdminSiONo.setEnabled(false);
+		textFieldAdminSiONo.setEditable(true);
+		btnGuardar.setEnabled(false);
+	}
 }

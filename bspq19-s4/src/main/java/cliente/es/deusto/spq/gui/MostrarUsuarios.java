@@ -22,7 +22,6 @@ import cliente.es.deusto.spq.controller.MostrarUsuariosController;
 
 public class MostrarUsuarios extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
-	private JPanel contentPane;
 
 	public MostrarUsuarios(MostrarUsuariosController MostrarUsuariosController, CardLayout cardLayout) {
 		
@@ -31,14 +30,14 @@ public class MostrarUsuarios extends JPanel {
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, Double.MIN_VALUE };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		JLabel lblMostrarUsuarios = new JLabel("Los usuarios registrados en este momento son:");
 		GridBagConstraints gbc_lblMostrarUsuarios = new GridBagConstraints();
 		gbc_lblMostrarUsuarios.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMostrarUsuarios.gridx = 0;
 		gbc_lblMostrarUsuarios.gridy = 0;
-		contentPane.add(lblMostrarUsuarios, gbc_lblMostrarUsuarios);
+		add(lblMostrarUsuarios, gbc_lblMostrarUsuarios);
 
 		JScrollPane scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -46,7 +45,7 @@ public class MostrarUsuarios extends JPanel {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 1;
-		contentPane.add(scrollPane, gbc_scrollPane);
+		add(scrollPane, gbc_scrollPane);
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
 		String[] usuarios = {"a","b"};
@@ -75,7 +74,7 @@ public class MostrarUsuarios extends JPanel {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 2;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
 
 }

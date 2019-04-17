@@ -15,7 +15,6 @@ import cliente.es.deusto.spq.controller.PeliculasController;
 
 public class Peliculas extends JPanel {
 	private static final long serialVersionUID = 6216694316784718679L;
-	private JPanel contentPane;
 
 	public Peliculas(PeliculasController peliculasController, CardLayout cardLayout) {
 		
@@ -24,7 +23,7 @@ public class Peliculas extends JPanel {
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		JButton btnAnadir = new JButton("A\u00F1adir pelicula");
 		btnAnadir.addActionListener(new ActionListener() {
@@ -44,7 +43,7 @@ public class Peliculas extends JPanel {
 		gbc_btnAnadir.insets = new Insets(0, 0, 5, 0);
 		gbc_btnAnadir.gridx = 0;
 		gbc_btnAnadir.gridy = 0;
-		contentPane.add(btnAnadir, gbc_btnAnadir);
+		add(btnAnadir, gbc_btnAnadir);
 
 		JButton btnBorrar = new JButton("Borrar pelicula");
 		btnBorrar.addActionListener(new ActionListener() {
@@ -64,7 +63,7 @@ public class Peliculas extends JPanel {
 		gbc_btnBorrar.insets = new Insets(0, 0, 5, 0);
 		gbc_btnBorrar.gridx = 0;
 		gbc_btnBorrar.gridy = 1;
-		contentPane.add(btnBorrar, gbc_btnBorrar);
+		add(btnBorrar, gbc_btnBorrar);
 
 		JButton btnMostrarLista = new JButton("Mostrar lista de peliculas");
 		btnMostrarLista.addActionListener(new ActionListener() {
@@ -84,7 +83,7 @@ public class Peliculas extends JPanel {
 		gbc_btnMostrarLista.insets = new Insets(0, 0, 5, 0);
 		gbc_btnMostrarLista.gridx = 0;
 		gbc_btnMostrarLista.gridy = 2;
-		contentPane.add(btnMostrarLista, gbc_btnMostrarLista);
+		add(btnMostrarLista, gbc_btnMostrarLista);
 
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
@@ -103,7 +102,7 @@ public class Peliculas extends JPanel {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 3;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
 	}
 
 }

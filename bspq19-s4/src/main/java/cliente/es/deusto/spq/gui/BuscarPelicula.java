@@ -28,7 +28,6 @@ import cliente.es.deusto.spq.controller.BuscarPeliculaController;
 public class BuscarPelicula extends JPanel {
 
 	private static final long serialVersionUID = -1644310303190255276L;
-	private JPanel contentPane;
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
 	private String[] peliculas = {"Elegir como ordenar la lista"};
@@ -51,7 +50,7 @@ public class BuscarPelicula extends JPanel {
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0, 1.0 };
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
-		contentPane.setLayout(gbl_contentPane);
+		setLayout(gbl_contentPane);
 
 		JLabel lblMostrarPeliculas = new JLabel("Las peliculas registradas en este momento son:");
 		GridBagConstraints gbc_lblMostrarPeliculas = new GridBagConstraints();
@@ -59,7 +58,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_lblMostrarPeliculas.insets = new Insets(0, 0, 5, 0);
 		gbc_lblMostrarPeliculas.gridx = 0;
 		gbc_lblMostrarPeliculas.gridy = 2;
-		contentPane.add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
+		add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
 
 		scrollPane = new JScrollPane();
 		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
@@ -68,7 +67,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_scrollPane.fill = GridBagConstraints.BOTH;
 		gbc_scrollPane.gridx = 0;
 		gbc_scrollPane.gridy = 3;
-		contentPane.add(scrollPane, gbc_scrollPane);
+		add(scrollPane, gbc_scrollPane);
 
 		//TODO: cargar lista con peliculas ordenadas por título (por defecto)
 		Arrays.sort(peliculas);
@@ -93,7 +92,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_lblLista.gridwidth = 3;
 		gbc_lblLista.gridx = 0;
 		gbc_lblLista.gridy = 0;
-		contentPane.add(lblLista, gbc_lblLista);
+		add(lblLista, gbc_lblLista);
 
 		JButton btnTitulo = new JButton("Titulo");
 		btnTitulo.addActionListener(new ActionListener() {
@@ -117,7 +116,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnTitulo.insets = new Insets(0, 0, 5, 5);
 		gbc_btnTitulo.gridx = 0;
 		gbc_btnTitulo.gridy = 1;
-		contentPane.add(btnTitulo, gbc_btnTitulo);
+		add(btnTitulo, gbc_btnTitulo);
 
 		JButton btnGenero = new JButton("Genero");
 		btnGenero.addActionListener(new ActionListener() {
@@ -141,7 +140,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnGenero.insets = new Insets(0, 0, 5, 5);
 		gbc_btnGenero.gridx = 1;
 		gbc_btnGenero.gridy = 1;
-		contentPane.add(btnGenero, gbc_btnGenero);
+		add(btnGenero, gbc_btnGenero);
 
 		JButton btnFecha = new JButton("Fecha");
 		btnFecha.addActionListener(new ActionListener() {
@@ -165,7 +164,7 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnFecha.insets = new Insets(0, 0, 5, 5);
 		gbc_btnFecha.gridx = 2;
 		gbc_btnFecha.gridy = 1;
-		contentPane.add(btnFecha, gbc_btnFecha);
+		add(btnFecha, gbc_btnFecha);
 
 		btnVer = new JButton("Ver información película");
 		btnVer.addActionListener(new ActionListener() {
@@ -189,19 +188,16 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnVer.insets = new Insets(0, 0, 5, 0);
 		gbc_btnVer.gridx = 1;
 		gbc_btnVer.gridy = 4;
-		contentPane.add(btnVer, gbc_btnVer);
+		add(btnVer, gbc_btnVer);
 		
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setVisible(false);
-				EventQueue.invokeLater(new Runnable() {
+				reinicio();
+								EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-//							Usuario frame = new Usuario();
-//							frame.setVisible(true);
-//							frame.setTitle("Usuario");
-//							frame.setIconImage(imagen.getImage());
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIO);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -213,6 +209,11 @@ public class BuscarPelicula extends JPanel {
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 4;
-		contentPane.add(btnAtras, gbc_btnAtras);
+		add(btnAtras, gbc_btnAtras);
+	}
+	public void reinicio(){
+		actualizarLista(peliculas);
+		listMostarPeliculas.setEnabled(false);
+		btnVer.setEnabled(false);
 	}
 }
