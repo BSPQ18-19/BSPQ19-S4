@@ -10,6 +10,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -365,11 +367,32 @@ public class RegistrarNuevoUsuario extends JFrame {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							
+							/* Para añadirlo a la base de datos. Ya esta en AnadirUsuario, no se si hay que tenerlo aqui tambien.
+							 Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String nombre = textFieldUsuario.getText();
+							String contrasenna = passwordFieldContrasea1.getText();
+							String correo = textFieldCorreo1.getText();
+							String paypal = textFieldPaypal1.getText();
+							
+							String query = "INSERT INTO usuario (Nombre, Contraseña, Correo, Paypal) values ('"+nombre+"', '"+contrasenna+"', '"+correo+"', '"+paypal+"')";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							 
+							 */
+							
+							
+							
 							VentanaPrincipal frame = new VentanaPrincipal();
 							frame.setVisible(true);
 							frame.setTitle("Login");
 							frame.setIconImage(imagen.getImage());
 							JOptionPane.showMessageDialog(null, "Nuevo usuario registrado");
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
