@@ -389,8 +389,10 @@ public class AnadirUsuario extends JFrame {
 							String contrasenna = passwordFieldContrasea1.getText();
 							String correo = textFieldCorreo1.getText();
 							String paypal = textFieldPaypal1.getText();
+							int privilegio = Integer.parseInt(textFieldAdminSiONo.getText());
+							double gasto = 0.0;
 							
-							String query = "INSERT INTO usuario (Nombre, Contraseña, Correo, Paypal) values ('"+nombre+"', '"+contrasenna+"', '"+correo+"', '"+paypal+"')";
+							String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
 							
 							Statement stmt = conexion.createStatement();
 							stmt.executeUpdate(query);
