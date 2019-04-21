@@ -22,6 +22,4 @@ public class JDO {
 		}
 		transaction.commit();
 	}
-
-	
 }
