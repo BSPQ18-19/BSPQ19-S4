@@ -10,8 +10,8 @@ public class AlquilerController{
 		this.service = service;
     }
     
-    public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id){
-      return service.getService().alquilarPelicula(fAlq, tAlq, correo, id);
+    public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli){
+      return service.getService().alquilarPelicula(fAlq, tAlq, correo, peli);
     }
     
 }

@@ -8,7 +8,7 @@ import servidor.es.deusto.spq.jdo.Pelicula;
 
 public interface IServer extends Remote{
 
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id);
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli);
 	List<Pelicula> buscarPeliculasFavoritas(String favoritas);
 	List<Pelicula> buscarPeliculasVistas(String vistas);
 	void borrarPelicula(Pelicula p, String titulo);

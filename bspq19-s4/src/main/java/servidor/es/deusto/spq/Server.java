@@ -5,8 +5,16 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import javax.jdo.JDOHelper;
+import javax.jdo.PersistenceManager;
+import javax.jdo.PersistenceManagerFactory;
+import javax.jdo.Query;
+import javax.jdo.Transaction;
+
+import cliente.es.deusto.spq.gui.Peliculas;
 import servidor.es.deusto.spq.jdo.Cuenta;
 import servidor.es.deusto.spq.jdo.Pelicula;
+import servidor.es.deusto.spq.jdo.Peliculas_Cuenta;
 
 /**
  * Hello world!
@@ -18,6 +26,10 @@ public class Server extends UnicastRemoteObject implements IServer {
 	* 
 	*/
 	private static final long serialVersionUID = -7646537450779069731L;
+	PersistenceManagerFactory persistentManagerFactory = JDOHelper
+			.getPersistenceManagerFactory("datanucleus.properties");
+	PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
+	Transaction transaction = persistentManager.currentTransaction();
 
 	protected Server() throws RemoteException {
 		super();
@@ -49,10 +61,50 @@ public class Server extends UnicastRemoteObject implements IServer {
 
 	}
 
-	@Override
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id) {
+	public int idPeli(String nombre) {
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		int id = 0;
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"SELECT PELICULA_ID FROM" + Pelicula.class.getName() + "WHERE TITULO = '" + nombre + "';");
+			id = (int) query.execute();
+			transaction.commit();
+			return id;
+		} catch (Exception ex) {
+			return 0;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
 
-		return true;
+			persistentManager.close();
+		}
+	}
+
+	@Override
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) {
+		int id;
+		id = idPeli(peli);
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"INSERT INTO" + Peliculas_Cuenta.class.getName() + "(falq, taql, correo, PELICULA_ID) VALUES('"
+							+ fAlq + "'," + tAlq + ",'" + correo + "'," + id + ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
 	}
 
 	@Override
@@ -76,6 +128,6 @@ public class Server extends UnicastRemoteObject implements IServer {
 	@Override
 	public void borrarUsuario(Cuenta u, String nombre) {
 		// TODO Auto-generated method stub
-		
+
 	}
 }
