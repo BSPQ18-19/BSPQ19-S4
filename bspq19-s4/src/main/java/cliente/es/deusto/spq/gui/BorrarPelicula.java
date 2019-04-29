@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -73,12 +75,21 @@ public class BorrarPelicula extends JPanel {
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO: coger pelicla seleccionada de la lista
-				// int i = listMostarPeliculas.getSelectedIndex();
-				// String n = peliculas[i];
+				int i = listMostarPeliculas.getSelectedIndex();
+				String n = peliculas[i];
 				// TODO: eliminar la pelicula con titulo n de la BD
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String query = "DELETE FROM pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER)";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
 						} catch (Exception e) {
