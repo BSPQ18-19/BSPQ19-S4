@@ -3,6 +3,10 @@ package servidor.es.deusto.spq;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
+
+import servidor.es.deusto.spq.jdo.Cuenta;
+import servidor.es.deusto.spq.jdo.Pelicula;
 
 /**
  * Hello world!
@@ -42,10 +46,36 @@ public class Server extends UnicastRemoteObject implements IServer {
 			System.err.println("$ Server exception: " + e.getMessage());
 			e.printStackTrace();
 		}
+
 	}
+
 	@Override
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id){
-		
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id) {
+
 		return true;
+	}
+
+	@Override
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Pelicula> buscarPeliculasVistas(String vistas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void borrarPelicula(Pelicula p, String titulo) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void borrarUsuario(Cuenta u, String nombre) {
+		// TODO Auto-generated method stub
+		
 	}
 }
