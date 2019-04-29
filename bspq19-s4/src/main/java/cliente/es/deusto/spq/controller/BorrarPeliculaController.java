@@ -11,11 +11,7 @@ public class BorrarPeliculaController {
 	}
 	
 	//TODO Metodos correspondientes
-	public void borrarPelicula(Pelicula p, String titulo){
-    	try{
-    		service.getService().borrarPelicula(p, titulo);
-    	}catch(Exception e){
-    		e.printStackTrace();
-    	}
+	public void borrarPelicula(String titulo){ 	
+		service.getService().borrarPelicula(titulo);
     }
 }

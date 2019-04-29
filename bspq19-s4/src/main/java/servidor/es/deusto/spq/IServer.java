@@ -11,6 +11,6 @@ public interface IServer extends Remote{
 	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, int id);
 	List<Pelicula> buscarPeliculasFavoritas(String favoritas);
 	List<Pelicula> buscarPeliculasVistas(String vistas);
-	void borrarPelicula(Pelicula p, String titulo);
-	void borrarUsuario(Cuenta u, String nombre);
+	void borrarPelicula(String titulo);
+	void borrarUsuario(String nombre);
 }

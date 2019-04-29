@@ -12,13 +12,7 @@ public class PeliculasFavoritasController {
 		this.service = service;
 	}
 	
-	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
-		try {
-    		return service.getService().buscarPeliculasFavoritas(favoritas);
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    	return null;
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {	
+		return service.getService().buscarPeliculasFavoritas(favoritas);
 	}
 }

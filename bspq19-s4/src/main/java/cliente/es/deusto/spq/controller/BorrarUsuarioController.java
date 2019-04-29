@@ -11,11 +11,7 @@ public class BorrarUsuarioController {
 		this.service = service;
 	}
 	//TODO Metodos correspondientes
-	public void borrarUsuario(Cuenta u, String nombre){
-    	try{
-    		service.getService().borrarUsuario(u, nombre);
-    	}catch(Exception e){
-    		e.printStackTrace();
-    	}
+	public void borrarUsuario(String nombre){  	
+		service.getService().borrarUsuario(nombre);
     }
 }

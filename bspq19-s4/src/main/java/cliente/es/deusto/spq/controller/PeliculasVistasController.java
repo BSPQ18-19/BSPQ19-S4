@@ -13,12 +13,6 @@ public class PeliculasVistasController {
 	}
 	
 	public List<Pelicula> buscarPeliculasVistas(String vistas) {
-		try {
-    		return service.getService().buscarPeliculasVistas(vistas);
-        }catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    	return null;
+    		return service.getService().buscarPeliculasVistas(vistas);    
 	}
 }
