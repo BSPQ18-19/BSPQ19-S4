@@ -100,16 +100,59 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public void borrarPelicula(String titulo) throws RemoteException {
-		// TODO Auto-generated method stub
-
+	public void borrarPelicula(String titulo){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			
+			Query<Pelicula> qu = pm.newQuery(Pelicula.class);
+			qu.setFilter("titulo == 'GOT'");
+			qu.deletePersistentAll();
+			System.out.println("Eliminando de la base de datos");
+			tx.commit();
+		} catch (Exception ex) {
+			System.err.println("   $ Error eliminando informacion de la película:" + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
 	}
 
 	@Override
-	public void borrarUsuario(String nombre) throws RemoteException {
-		// TODO Auto-generated method stub
-
+	public void borrarUsuario(String nombre){
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			pm = pmf.getPersistenceManager();
+			tx = pm.currentTransaction();
+			tx.begin();
+			
+			Query<Cuenta> qu = pm.newQuery(Cuenta.class);
+			qu.setFilter("nombre == 'Amaia'");
+			qu.deletePersistentAll();
+			System.out.println("Eliminando de la base de datos");
+			tx.commit();
+		} catch (Exception ex) {
+			System.err.println("   $ Error eliminando informacion de la cuenta:" + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+			
+			if (pm != null && !pm.isClosed()) {
+				pm.close();
+			}
+		}
 	}
+	
 
 	@Override
 	public boolean esAdmin(String correo) throws RemoteException {
@@ -170,4 +213,3 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 }
-
