@@ -127,7 +127,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public void borrarUsuario(String nombre){
+	public void borrarUsuario(String correo){
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
