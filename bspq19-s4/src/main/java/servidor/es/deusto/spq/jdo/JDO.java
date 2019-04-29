@@ -9,6 +9,8 @@ import javax.jdo.PersistenceManager;
 import javax.jdo.PersistenceManagerFactory;
 import javax.jdo.Transaction;
 
+import org.apache.log4j.Logger;
+
 import javax.jdo.Query;
 
 import servidor.es.deusto.spq.IServer;
@@ -18,6 +20,8 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	private static final long serialVersionUID = -5970799150454206362L;
 
 	private String serverName;
+	private PersistenceManagerFactory pmf;
+	private static final Logger logger = Logger.getLogger(JDO.class);
 	PersistenceManagerFactory persistentManagerFactory = JDOHelper
 			.getPersistenceManagerFactory("datanucleus.properties");
 	PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -121,5 +125,49 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	public boolean passCorrecta(String user, String pass) throws RemoteException {
 		return false;
 	}
+		public void almacenarUsuario(Cuenta c) {
+		
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
+		try {
+			tx.begin();
+			logger.info("   * Almacenando informacion de de la cuenta: " + c);
+			pm.makePersistent(c);
+			tx.commit();
+		} catch (Exception ex) {
+			logger.error("   $ Error almacenando informacion de la cuenta:" + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
+		}
+	}
+
+	@Override
+
+		public void almacenarPelicula(Pelicula p) {
+			
+			PersistenceManager pm = pmf.getPersistenceManager();
+			Transaction tx = pm.currentTransaction();
+
+			try {
+				tx.begin();
+				logger.info("   * Almacenando pelicula en la BD: " + p);
+				pm.makePersistent(p);
+				tx.commit();
+			} catch (Exception ex) {
+				logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
+			} finally {
+				if (tx != null && tx.isActive()) {
+					tx.rollback();
+				}
+
+				pm.close();
+			
+		}
+	}
 
 }
+

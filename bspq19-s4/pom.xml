@@ -52,6 +52,33 @@
 			<artifactId>log4j</artifactId>
 			<version>[1.2.17, )</version>
 		</dependency>
+		<dependency>
+			<groupId>com.hynnet</groupId>
+			<artifactId>DJNativeSwing</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.hynnet</groupId>
+			<artifactId>DJNativeSwing-SWT</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jna</groupId>
+			<artifactId>jna</artifactId>
+			<version>3.0.9</version>
+		</dependency>
+		<dependency>
+			<groupId>org.eclipse.platform</groupId>
+			<artifactId>org.eclipse.swt.win32.win32.x86_64</artifactId>
+			<version>3.108.0</version>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.eclipse.platform</groupId>
+					<artifactId>org.eclipse.swt</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -136,7 +163,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.2.1</version>
+						<version>1.6.0</version>
 						<configuration>
 							<mainClass>servidor.es.deusto.spq.Server</mainClass>
 							<systemProperties>
@@ -171,7 +198,7 @@
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
-						<version>1.2.1</version>
+						<version>1.6.0</version>
 						<configuration>
 							<mainClass>cliente.es.deusto.spq.gui.VentanaPrincipal</mainClass>
 							<systemProperties>

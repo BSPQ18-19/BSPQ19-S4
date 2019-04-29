@@ -300,14 +300,17 @@ public class AnadirPelicula extends JFrame {
 							
 							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
 							
+							//int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
+							//int puntuacion = Integer.parseInt(textFieldPuntuacion.getText());
 							String titulo = textFieldPelicula.getText();
 							String genero = textFieldGenero.getText();
 							String festreno = textFieldfEstreno.getText();
 							String trailer = textFieldtrailer.getText();
 							String fichatecnica = textFieldFichaTecnica.getText();
+							//String sinopsis = textFieldSinopsis.getText();
 							
 							
-							String query = "INSERT INTO pelicula (Titulo, Genero, FechaEstreno, Trailer, FichaTecnica) values ('"+titulo+"', '"+genero+"', '"+festreno+"', '"+trailer+"', '"+fichatecnica+"')";
+							String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','\"+sinopsis+\"', '"+titulo+"', '"+trailer+"')";
 							
 							Statement stmt = conexion.createStatement();
 							stmt.executeUpdate(query);

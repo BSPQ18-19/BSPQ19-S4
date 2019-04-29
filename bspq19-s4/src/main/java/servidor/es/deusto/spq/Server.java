@@ -5,6 +5,8 @@ import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 
+import org.apache.log4j.Logger;
+import servidor.es.deusto.spq.jdo.Cuenta;
 import servidor.es.deusto.spq.jdo.JDO;
 
 
@@ -17,6 +19,8 @@ public class Server extends UnicastRemoteObject {
 	/**
 	* 
 	*/
+
+	
 	private static final long serialVersionUID = -7646537450779069731L;
 
 	protected Server() throws RemoteException {
@@ -48,4 +52,6 @@ public class Server extends UnicastRemoteObject {
 		}
 
 	}
+	
+
 }

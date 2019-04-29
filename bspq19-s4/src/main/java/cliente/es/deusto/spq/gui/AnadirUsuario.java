@@ -11,6 +11,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import cliente.es.deusto.spq.controller.AnadirUsuarioController;
+
 
 public class AnadirUsuario extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;
@@ -357,8 +360,29 @@ public class AnadirUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							
+							
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String nombre = textFieldUsuario.getText();
+							String contrasenna = passwordFieldContrasea1.getText();
+							String correo = textFieldCorreo1.getText();
+							String paypal = textFieldPaypal1.getText();
+							int privilegio = Integer.parseInt(textFieldAdminSiONo.getText());
+							double gasto = 0.0;
+							
+							String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							
+						
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido");
+							
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

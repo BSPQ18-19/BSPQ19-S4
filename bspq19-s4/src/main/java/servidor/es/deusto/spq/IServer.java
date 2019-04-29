@@ -4,6 +4,7 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 import java.util.List;
 
+import servidor.es.deusto.spq.jdo.Cuenta;
 import servidor.es.deusto.spq.jdo.Pelicula;
 
 public interface IServer extends Remote{
@@ -17,4 +18,8 @@ public interface IServer extends Remote{
 	List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException;
 	void borrarPelicula(String titulo) throws RemoteException;
 	void borrarUsuario(String nombre) throws RemoteException;
+	public void almacenarUsuario (Cuenta c) throws RemoteException;
+	public void almacenarPelicula (Pelicula p) throws RemoteException;
+	
+
 }
