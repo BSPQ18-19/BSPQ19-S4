@@ -1,123 +1,118 @@
 package cliente.es.deusto.spq.gui;
 
-import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Arrays;
 
-import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.BevelBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import cliente.es.deusto.spq.controller.BorrarUsuarioController;
-import servidor.es.deusto.spq.jdo.Cuenta;
 
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
-import javax.swing.JTable;
-
-public class BorrarUsuario extends JFrame {
+public class BorrarUsuario extends JPanel {
 	private static final long serialVersionUID = -2878465684552734783L;
-	private JPanel contentPane, panelNorte, panelSur, panelCentro;
-	private JLabel lblMostrarUsuario;
-	private JButton btnBorrar, btnAtras;
-	private JScrollPane scrollPaneTabla;
-	private JTable tablaUsuarios;
-	//private JFrame ventanaAnterior;
-	private static BorrarUsuario INSTANCE;
-	private BorrarUsuarioController controller = null;
-	private String correo, nombre;
-	List<Cuenta> usuarios = new ArrayList<>();
-	
-	public static BorrarUsuario getInstance() {
-		return INSTANCE;
-	}
-	
-	public void dispose() {
-		INSTANCE.setVisible(false);
-	}
-	
-	public BorrarUsuario(BorrarUsuarioController controller, String correo, String nombre) {
-		this.controller = controller;
-		this.correo = correo;
-		this.nombre = nombre;
-		ventana();
-		this.setVisible(true);
-	}
+	private JButton btnBorrar;
+	private JList<String> listMostarUsuarios;
+	private String[] usuarios = { "a", "b" };
 
-	public void ventana() {
-		//ventanaAnterior = va;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 572);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		
-		panelNorte = new JPanel();
-		contentPane.add(panelNorte, BorderLayout.NORTH);
-		
-		lblMostrarUsuario = new JLabel("Seleccione el usuario que desea borrar:");
-		panelNorte.add(lblMostrarUsuario);
-		
-		panelSur = new JPanel();
-		contentPane.add(panelSur, BorderLayout.SOUTH);
-		
+	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
+
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		setLayout(gbl_contentPane);
+
+		JLabel lblMostrarUsuarios = new JLabel("Seleccione el usuario que desea borrar:");
+		GridBagConstraints gbc_lblMostrarUsuarios = new GridBagConstraints();
+		gbc_lblMostrarUsuarios.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMostrarUsuarios.gridx = 0;
+		gbc_lblMostrarUsuarios.gridy = 0;
+		add(lblMostrarUsuarios, gbc_lblMostrarUsuarios);
+
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 1;
+		add(scrollPane, gbc_scrollPane);
+
+		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
+		Arrays.sort(usuarios);
+
+		listMostarUsuarios = new JList<String>(usuarios);
+		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listMostarUsuarios);
+
+		listMostarUsuarios.addListSelectionListener(new ListSelectionListener() {
+			public void valueChanged(ListSelectionEvent e) {
+				if (listMostarUsuarios.getSelectedIndex() != -1) {
+					btnBorrar.setEnabled(true);
+				}
+			}
+		});
+
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if(tablaUsuarios.getSelectedRow() >= 0) {
-					System.out.println(tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0));
-					int usuarios = 0;
-					try {
-						String correo = (String)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 0);
-						String nombre = (String)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 1);
-						String contrasenna = (String)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 2);
-						String paypal = (String)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 3);
-						int privilegio = (int)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 4);
-						double gasto = (double)tablaUsuarios.getValueAt(tablaUsuarios.getSelectedRow(), 5);
-						
-						Cuenta u = new Cuenta(correo, nombre, contrasenna, paypal, privilegio, gasto);
-					
-						controller.borrarUsuario(u, nombre);
-						JOptionPane.showMessageDialog(null, "El usuario seleccionado se ha eliminado correctamente", "ENHORABUENA", JOptionPane.INFORMATION_MESSAGE);
-					} catch (NumberFormatException ex) {
-						
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO: coger usuario seleccionado de la lista
+				// int i = listMostarUsuarios.getSelectedIndex();
+				// String n = usuarios[i];
+				// TODO: eliminar el usuarios con nombre n de la BD
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
+							JOptionPane.showMessageDialog(null, "Usuario eliminado");
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
 					}
-				}
-				else {
-					JOptionPane.showMessageDialog(null, "Antes de eliminar un usuario, seleccione uno de ellos", "ERROR", JOptionPane.ERROR_MESSAGE);
-				}
-			}	
-		});
-		panelSur.add(btnBorrar);
-		
-		btnAtras = new JButton("Atrás");
-		panelSur.add(btnAtras);
-		
-		panelCentro = new JPanel();
-		contentPane.add(panelCentro, BorderLayout.CENTER);
-		
-		panelCentro.add(tablaUsuarios);
-		
-		scrollPaneTabla = new JScrollPane();
-		scrollPaneTabla.setBounds(17, 197, 643, 250);
-		panelCentro.add(scrollPaneTabla);
-		
-		tablaUsuarios = new JTable();
-		tablaUsuarios.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Correo", "Nombre", "Contraseña", "PayPal", "Privilegio", "Gasto"
+				});
 			}
-		));
-		scrollPaneTabla.setViewportView(tablaUsuarios);
+		});
+		btnBorrar.setEnabled(false);
+		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
+		gbc_btnBorrar.insets = new Insets(0, 0, 5, 0);
+		gbc_btnBorrar.gridx = 0;
+		gbc_btnBorrar.gridy = 2;
+		add(btnBorrar, gbc_btnBorrar);
+
+		JButton btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
+			}
+		});
+
+		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
+		gbc_btnAtras.gridx = 0;
+		gbc_btnAtras.gridy = 3;
+		add(btnAtras, gbc_btnAtras);
 	}
 
 }
