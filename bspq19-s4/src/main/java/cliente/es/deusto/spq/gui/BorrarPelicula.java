@@ -1,119 +1,130 @@
 package cliente.es.deusto.spq.gui;
 
-import java.awt.CardLayout;
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Arrays;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.ListSelectionModel;
-import javax.swing.border.BevelBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 
 import cliente.es.deusto.spq.controller.BorrarPeliculaController;
+import servidor.es.deusto.spq.jdo.Pelicula;
 
-public class BorrarPelicula extends JPanel {
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JButton;
+import javax.swing.JTable;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+import java.util.List;
+
+
+public class BorrarPelicula extends JFrame {
 	private static final long serialVersionUID = -2878465684552734783L;
-	private JButton btnBorrar;
-	private JList<String> listMostarPeliculas;
-	private String[] peliculas = {"a","b"};
+	private JPanel contentPane, panelNorte, panelSur, panelCentro;
+	private JLabel lblMostrarPelicula;
+	private JButton btnBorrar, btnAtras;
+	private JScrollPane scrollPaneTabla;
+	private JTable tablaPeliculas;
+	//private JFrame ventanaAnterior;
+	private static BorrarPelicula INSTANCE;
+	private BorrarPeliculaController controller = null;
+	private DefaultTableModel modeloTabla = new DefaultTableModel();
+	private String titulo, genero;
+	private JScrollPane scrollPane;
+	private JTable tabla;
+	List<Pelicula> peliculas = new ArrayList<>();
+	
+	public static BorrarPelicula getInstance() {
+		return INSTANCE;
+	}
+	
+	public void dispose() {
+		INSTANCE.setVisible(false);
+	}
+	
+	public BorrarPelicula(BorrarPeliculaController controller, String titulo, String genero) {
+		this.controller = controller;
+		this.titulo = titulo;
+		this.genero = genero;
+		ventana();
+		this.setVisible(true);
+	}
 
-	public BorrarPelicula(BorrarPeliculaController borrarPeliculaController, CardLayout cardLayout) {
+	public void ventana() {
+		//ventanaAnterior = va;
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 700, 572);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		contentPane.setLayout(new BorderLayout(0, 0));
+		setContentPane(contentPane);
 		
-		GridBagLayout gbl_contentPane = new GridBagLayout();
-		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
-		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
-		setLayout(gbl_contentPane);
-
-		JLabel lblMostrarPelicula = new JLabel("Seleccione la pelicula que desea borrar:");
-		GridBagConstraints gbc_lblMostrarPelicula = new GridBagConstraints();
-		gbc_lblMostrarPelicula.insets = new Insets(0, 0, 5, 0);
-		gbc_lblMostrarPelicula.gridx = 0;
-		gbc_lblMostrarPelicula.gridy = 0;
-		add(lblMostrarPelicula, gbc_lblMostrarPelicula);
-
-		JScrollPane scrollPane = new JScrollPane();
-		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
-		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
-		gbc_scrollPane.fill = GridBagConstraints.BOTH;
-		gbc_scrollPane.gridx = 0;
-		gbc_scrollPane.gridy = 1;
-		add(scrollPane, gbc_scrollPane);
-
-		// TODO: Cargar String[]peliculas con los titulos de todas las peliculas de la
-		// BD
-		Arrays.sort(peliculas);
-
-		listMostarPeliculas = new JList<String>(peliculas);
-		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		scrollPane.setViewportView(listMostarPeliculas);
-
-		listMostarPeliculas.addListSelectionListener(new ListSelectionListener() {
-			public void valueChanged(ListSelectionEvent e) {
-				if (listMostarPeliculas.getSelectedIndex() != -1) {
-					btnBorrar.setEnabled(true);
-				}
-			}
-		});
-
+		panelNorte = new JPanel();
+		contentPane.add(panelNorte, BorderLayout.NORTH);
+		
+		lblMostrarPelicula = new JLabel("Seleccione la película que desea borrar:");
+		panelNorte.add(lblMostrarPelicula);
+		
+		panelSur = new JPanel();
+		contentPane.add(panelSur, BorderLayout.SOUTH);
+		
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				//TODO: coger pelicla seleccionada de la lista
-//				int i = listMostarPeliculas.getSelectedIndex();
-//				String n = peliculas[i];
-				// TODO: eliminar la pelicula con titulo n de la BD
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
-							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
+			public void actionPerformed(ActionEvent e) {
+				if(tablaPeliculas.getSelectedRow() >= 0) {
+					System.out.println(tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 0));
+					int peliculas = 0;
+					try {
+						String titulo = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 0);
+						String genero = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 1);
+						String fEstreno = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 2);
+						String trailer = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 3);
+						String fichaTecnica = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 4);
+						String sinopsis = (String)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 5);
+						int puntuacion = (int)tablaPeliculas.getValueAt(tablaPeliculas.getSelectedRow(), 6);
+						
+						Pelicula p = new Pelicula(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion);
+					
+						controller.borrarPelicula(p, titulo);
+						JOptionPane.showMessageDialog(null, "La película seleccionada se ha eliminado correctamente", "ENHORABUENA", JOptionPane.INFORMATION_MESSAGE);
+					} catch (NumberFormatException ex) {
+						
 					}
-				});
-			}
+				}
+				else {
+					JOptionPane.showMessageDialog(null, "Antes de eliminar una película, seleccione una de ellas", "ERROR", JOptionPane.ERROR_MESSAGE);
+				}
+			}	
 		});
-		btnBorrar.setEnabled(false);
-		GridBagConstraints gbc_btnBorrar = new GridBagConstraints();
-		gbc_btnBorrar.insets = new Insets(0, 0, 5, 0);
-		gbc_btnBorrar.gridx = 0;
-		gbc_btnBorrar.gridy = 2;
-		add(btnBorrar, gbc_btnBorrar);
-
-		JButton btnAtras = new JButton("Atr\u00E1s");
-		btnAtras.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
+		panelSur.add(btnBorrar);
+		
+		btnAtras = new JButton("Atrás");
+		panelSur.add(btnAtras);
+		
+		panelCentro = new JPanel();
+		contentPane.add(panelCentro, BorderLayout.CENTER);
+		
+		panelCentro.add(tablaPeliculas);
+		
+		scrollPaneTabla = new JScrollPane();
+		scrollPaneTabla.setBounds(17, 197, 643, 250);
+		panelCentro.add(scrollPaneTabla);
+		
+		tablaPeliculas = new JTable();
+		tablaPeliculas.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Titulo", "Genero", "Fecha Estreno", "Ficha Técnica", "Sinopsis"
 			}
-		});
-
-		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.gridx = 0;
-		gbc_btnAtras.gridy = 3;
-		add(btnAtras, gbc_btnAtras);
+		));
+		scrollPaneTabla.setViewportView(tablaPeliculas);
 	}
 
 }

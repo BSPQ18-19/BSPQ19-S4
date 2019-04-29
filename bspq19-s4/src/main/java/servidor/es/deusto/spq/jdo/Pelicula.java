@@ -9,8 +9,8 @@ import javax.jdo.annotations.Persistent;
 
 @PersistenceCapable
 public class Pelicula {
-	String genero = null;
 	String titulo = null;
+	String genero = null;
 	String fEstreno = null;
 	String trailer = null;
 	String fichaTecnica = null;

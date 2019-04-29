@@ -3,6 +3,9 @@ package servidor.es.deusto.spq;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.List;
+
+import servidor.es.deusto.spq.jdo.Pelicula;
 
 /**
  * Hello world!
@@ -43,4 +46,16 @@ public class Server extends UnicastRemoteObject implements IServer{
 			e.printStackTrace();
 		}
     }
+
+	@Override
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Pelicula> buscarPeliculasVistas(String vistas) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
