@@ -100,16 +100,18 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public void borrarPelicula(String titulo){
+	public void borrarPelicula(String titulo) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			
-			Query<Pelicula> qu = pm.newQuery(Pelicula.class);
-			qu.setFilter("titulo == 'GOT'");
+
+			@SuppressWarnings("unchecked")
+			Query<Pelicula> qu = pm.newQuery("DELETE FROM" + Pelicula.class.getName()
+					+ "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
+			qu.setFilter(titulo);
 			qu.deletePersistentAll();
 			System.out.println("Eliminando de la base de datos");
 			tx.commit();
@@ -119,7 +121,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			
+
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}
@@ -127,16 +129,18 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public void borrarUsuario(String correo){
+	public void borrarUsuario(String correo) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
 			pm = pmf.getPersistenceManager();
 			tx = pm.currentTransaction();
 			tx.begin();
-			
-			Query<Cuenta> qu = pm.newQuery(Cuenta.class);
-			qu.setFilter("nombre == 'Amaia'");
+
+			@SuppressWarnings("unchecked")
+			Query<Cuenta> qu = pm.newQuery("DELETE FROM" + Cuenta.class.getName()
+					+ "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
+			qu.setFilter(correo);
 			qu.deletePersistentAll();
 			System.out.println("Eliminando de la base de datos");
 			tx.commit();
@@ -146,13 +150,12 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			if (tx != null && tx.isActive()) {
 				tx.rollback();
 			}
-			
+
 			if (pm != null && !pm.isClosed()) {
 				pm.close();
 			}
 		}
 	}
-	
 
 	@Override
 	public boolean esAdmin(String correo) throws RemoteException {
@@ -161,12 +164,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		try {
 			transaction.begin();
 			@SuppressWarnings("unchecked")
-			Query<String> query = persistentManager.newQuery(
-					"SELECT CORREO FROM"+Cuenta.class.getName()+" WHERE PRIVILEGIO = 1;");
-			for(String correos : query.executeList()) {
-				if(correos.equals(correo)){
+			Query<String> query = persistentManager
+					.newQuery("SELECT CORREO FROM" + Cuenta.class.getName() + " WHERE PRIVILEGIO = 1;");
+			for (String correos : query.executeList()) {
+				if (correos.equals(correo)) {
 					return true;
-				}else return false;
+				} else
+					return false;
 			}
 			transaction.commit();
 		} catch (Exception ex) {
@@ -188,11 +192,11 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public boolean passCorrecta(String user, String pass) throws RemoteException {
-
 		return false;
 	}
-		public void almacenarUsuario(Cuenta c) {
-		
+
+	public void almacenarUsuario(Cuenta c) {
+
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
 		try {
@@ -213,25 +217,26 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 
-		public void almacenarPelicula(Pelicula p) {
-			
-			PersistenceManager pm = pmf.getPersistenceManager();
-			Transaction tx = pm.currentTransaction();
+	public void almacenarPelicula(Pelicula p) {
 
-			try {
-				tx.begin();
-				logger.info("   * Almacenando pelicula en la BD: " + p);
-				pm.makePersistent(p);
-				tx.commit();
-			} catch (Exception ex) {
-				logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
-			} finally {
-				if (tx != null && tx.isActive()) {
-					tx.rollback();
-				}
+		PersistenceManager pm = pmf.getPersistenceManager();
+		Transaction tx = pm.currentTransaction();
 
-				pm.close();
+		try {
+			tx.begin();
+			logger.info("   * Almacenando pelicula en la BD: " + p);
+			pm.makePersistent(p);
+			tx.commit();
+		} catch (Exception ex) {
+			logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
+		} finally {
+			if (tx != null && tx.isActive()) {
+				tx.rollback();
+			}
+
+			pm.close();
 
 		}
 	}
+
 }
