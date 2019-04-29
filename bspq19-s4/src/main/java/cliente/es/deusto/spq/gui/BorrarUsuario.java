@@ -54,7 +54,7 @@ public class BorrarUsuario extends JPanel {
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 
-		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
+		// TODO: Cargar String[]usuarios con los correos de todos los usuarios de la BD
 		Arrays.sort(usuarios);
 
 		listMostarUsuarios = new JList<String>(usuarios);
