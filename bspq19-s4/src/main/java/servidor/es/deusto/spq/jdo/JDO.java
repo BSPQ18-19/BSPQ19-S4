@@ -108,8 +108,10 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			tx = pm.currentTransaction();
 			tx.begin();
 			
-			Query<Pelicula> qu = pm.newQuery(Pelicula.class);
-			qu.setFilter("titulo == 'GOT'");
+			@SuppressWarnings("unchecked")
+			Query<Pelicula> qu = pm.newQuery(
+					"DELETE FROM" + Pelicula.class.getName() + "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
+			qu.setFilter(titulo);
 			qu.deletePersistentAll();
 			System.out.println("Eliminando de la base de datos");
 			tx.commit();
@@ -135,8 +137,10 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			tx = pm.currentTransaction();
 			tx.begin();
 			
-			Query<Cuenta> qu = pm.newQuery(Cuenta.class);
-			qu.setFilter("nombre == 'Amaia'");
+			@SuppressWarnings("unchecked")
+			Query<Cuenta> qu = pm.newQuery(
+				"DELETE FROM" + Cuenta.class.getName() + "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
+			qu.setFilter(correo);
 			qu.deletePersistentAll();
 			System.out.println("Eliminando de la base de datos");
 			tx.commit();
