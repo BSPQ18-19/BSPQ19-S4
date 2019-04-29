@@ -42,10 +42,8 @@ public class Server extends UnicastRemoteObject {
 		try {
 			IServer servidor = new JDO(args[2]);
 			Naming.rebind(name, servidor);
+			System.out.println("//" + args[0] + ":" + args[1] + "/" + args[2]);
 			System.out.println("- Server active and waiting...");
-			boolean a = false;
-			while (a == false) {
-			}
 		} catch (Exception e) {
 			System.err.println("$ Server exception: " + e.getMessage());
 			e.printStackTrace();

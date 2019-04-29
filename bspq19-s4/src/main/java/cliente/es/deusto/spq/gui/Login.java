@@ -4,12 +4,14 @@ import java.awt.CardLayout;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 //import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 
@@ -64,25 +66,33 @@ public class Login extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					nombre = textFieldUsuario.getText();
-					
+
 					// TODO: combrobar si nombre esta en la BD
-					// if(nombre esta en la BD y es administrador (privilegio==1)){
-					// administrador = true;
-					// lblContrasea.setEnabled(true);
-					// passwordFieldContrasea.setEnabled(true);
-					// btnContraseaOlvidada.setEnabled(true);
-					// passwordFieldContrasea.requestFocus();
-					// textFieldUsuario.setEditable(false);
-					// }else if(nombre esta en la BD y es usuario (privilegio==0))
-					// usuario = true;
-					// lblContrasea.setEnabled(true);
-					// passwordFieldContrasea.setEnabled(true);
-					// btnContraseaOlvidada.setEnabled(true);
-					// passwordFieldContrasea.requestFocus();
-					// textFieldUsuario.setEditable(false);
-					// }
-					if (administrador == false && usuario == false) {
-						JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
+					String correo = textFieldUsuario.getText();
+					try {
+						if (loginController.esAdmin(correo) == false){
+							System.out.println(correo);
+						}
+							// administrador = true;
+							// lblContrasea.setEnabled(true);
+							// passwordFieldContrasea.setEnabled(true);
+							// btnContraseaOlvidada.setEnabled(true);
+							// passwordFieldContrasea.requestFocus();
+							// textFieldUsuario.setEditable(false);
+							// }else if(nombre esta en la BD y es usuario (privilegio==0))
+							// usuario = true;
+							// lblContrasea.setEnabled(true);
+							// passwordFieldContrasea.setEnabled(true);
+							// btnContraseaOlvidada.setEnabled(true);
+							// passwordFieldContrasea.requestFocus();
+							// textFieldUsuario.setEditable(false);
+							// }
+							if (administrador == false && usuario == false) {
+								JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
+							}
+					} catch (HeadlessException | RemoteException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
 					}
 				}
 			}
