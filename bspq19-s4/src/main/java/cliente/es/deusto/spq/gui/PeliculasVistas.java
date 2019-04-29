@@ -61,7 +61,7 @@ public class PeliculasVistas extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							cardLayout.show(getParent(), VentanaPrincipal.VISTAS);
+							cardLayout.show(getParent(), VentanaPrincipal.PERFIL);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
