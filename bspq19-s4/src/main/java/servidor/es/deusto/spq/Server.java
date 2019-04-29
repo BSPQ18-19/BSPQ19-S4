@@ -1,3 +1,4 @@
+
 package servidor.es.deusto.spq;
 
 import java.rmi.Naming;
@@ -120,13 +121,13 @@ public class Server extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public void borrarPelicula(Pelicula p, String titulo) {
+	public void borrarPelicula(String titulo) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void borrarUsuario(Cuenta u, String nombre) {
+	public void borrarUsuario(String nombre) {
 		// TODO Auto-generated method stub
 
 	}
