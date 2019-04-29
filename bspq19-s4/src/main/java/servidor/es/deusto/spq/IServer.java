@@ -17,7 +17,7 @@ public interface IServer extends Remote{
 	List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException;
 	List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException;
 	void borrarPelicula(String titulo) throws RemoteException;
-	void borrarUsuario(String nombre) throws RemoteException;
+	void borrarUsuario(String correo) throws RemoteException;
 	public void almacenarUsuario (Cuenta c) throws RemoteException;
 	public void almacenarPelicula (Pelicula p) throws RemoteException;
 	

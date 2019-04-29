@@ -61,7 +61,7 @@ public class PeliculasFavoritas extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							cardLayout.show(getParent(), VentanaPrincipal.FAVORITAS);
+							cardLayout.show(getParent(), VentanaPrincipal.PERFIL);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

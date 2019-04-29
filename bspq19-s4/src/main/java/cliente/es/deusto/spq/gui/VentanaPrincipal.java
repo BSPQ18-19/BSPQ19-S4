@@ -13,6 +13,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import cliente.es.deusto.spq.controller.AdministradorController;
+import cliente.es.deusto.spq.controller.AlquilerController;
 import cliente.es.deusto.spq.controller.AnadirPeliculaController;
 import cliente.es.deusto.spq.controller.AnadirUsuarioController;
 import cliente.es.deusto.spq.controller.BorrarPeliculaController;
@@ -77,6 +78,7 @@ public class VentanaPrincipal extends JFrame {
 	public static final String USUARIO = "USUARIO";
 	public static final String BUSCARPELICULA= "BUSCARPELICULA";
 	public static final String PELICULA= "PELICULA";
+	public static final String ALQUILER = "ALQUILER";
 	public static final String PERFIL= "PERFIL";
 	public static final String FAVORITAS = "PELICULASFAVORITAS";
 	public static final String VISTAS = "PELICULASVISTAS";
@@ -110,6 +112,7 @@ public class VentanaPrincipal extends JFrame {
 		UsuarioController usuarioController = new UsuarioController(service);
 		BuscarPeliculaController buscarPeliculaController = new BuscarPeliculaController(service);
 		PeliculaController peliculaController = new PeliculaController(service);
+		AlquilerController alquilerController = new AlquilerController(service);
 		PerfilController perfilController = new PerfilController(service);
 		PeliculasFavoritasController peliculasFavoritasController = new PeliculasFavoritasController(service);
 		PeliculasVistasController peliculasVistasController = new PeliculasVistasController(service);
@@ -138,6 +141,7 @@ public class VentanaPrincipal extends JFrame {
 		Usuario user = new Usuario(usuarioController, cardLayout);
 		BuscarPelicula busPeli = new BuscarPelicula(buscarPeliculaController, cardLayout);
 		Pelicula peli = new Pelicula(peliculaController, cardLayout);
+		Alquiler alquiler = new Alquiler(alquilerController, cardLayout);
 		Perfil perfil = new Perfil(perfilController, cardLayout);
 		PeliculasFavoritas favo = new PeliculasFavoritas(peliculasFavoritasController, cardLayout);
 		PeliculasVistas vistas = new PeliculasVistas(peliculasVistasController, cardLayout);
@@ -157,6 +161,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(user, USUARIO);
 		contentPane.add(busPeli, BUSCARPELICULA);
 		contentPane.add(peli, PELICULA);
+		contentPane.add(alquiler, PELICULA);
 		contentPane.add(perfil, PERFIL);
 		contentPane.add(favo, FAVORITAS);
 		contentPane.add(vistas, VISTAS);

@@ -58,7 +58,7 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO: ventana de peliculas favoritas
+							cardLayout.show(getParent(), VentanaPrincipal.FAVORITAS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -78,7 +78,7 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO: ventana de peliculas favoritas
+							cardLayout.show(getParent(), VentanaPrincipal.VISTAS);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

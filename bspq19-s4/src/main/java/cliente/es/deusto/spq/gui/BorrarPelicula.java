@@ -7,8 +7,6 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.DriverManager;
-import java.sql.Statement;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -28,7 +26,9 @@ public class BorrarPelicula extends JPanel {
 	private static final long serialVersionUID = -2878465684552734783L;
 	private JButton btnBorrar;
 	private JList<String> listMostarPeliculas;
+	//TODO;quitar la siguiente linea
 	private String[] peliculas = { "a", "b" };
+	private BorrarPeliculaController controller = null;
 
 	public BorrarPelicula(BorrarPeliculaController borrarPeliculaController, CardLayout cardLayout) {
 
@@ -54,8 +54,7 @@ public class BorrarPelicula extends JPanel {
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 
-		// TODO: Cargar String[]peliculas con los titulos de todas las peliculas de la
-		// BD
+		// TODO: Cargar String[]peliculas con los titulos de todas las peliculas de la BD
 		Arrays.sort(peliculas);
 
 		listMostarPeliculas = new JList<String>(peliculas);
@@ -74,21 +73,12 @@ public class BorrarPelicula extends JPanel {
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO: coger pelicla seleccionada de la lista
 				int i = listMostarPeliculas.getSelectedIndex();
 				String n = peliculas[i];
-				// TODO: eliminar la pelicula con titulo n de la BD
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Class.forName("com.mysql.jdbc.Driver");
-							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-							
-							String query = "DELETE FROM pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER)";
-							
-							Statement stmt = conexion.createStatement();
-							stmt.executeUpdate(query);
+							controller.borrarPelicula(n);
 							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
