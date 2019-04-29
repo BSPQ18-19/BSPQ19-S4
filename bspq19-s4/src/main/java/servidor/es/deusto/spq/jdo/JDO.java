@@ -27,7 +27,14 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		super();
 		this.serverName = serverName;
 	}
-	
+
+	/**
+	 * @return the serverName
+	 */
+	public String getServerName() {
+		return serverName;
+	}
+
 	@Override
 	public int idPeli(String nombre) throws RemoteException {
 		persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -53,7 +60,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException{
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException {
 		int id;
 		id = idPeli(peli);
 		persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -83,30 +90,36 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException{
+	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void borrarPelicula(String titulo) throws RemoteException{
+	public void borrarPelicula(String titulo) throws RemoteException {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void borrarUsuario(String nombre) throws RemoteException{
+	public void borrarUsuario(String nombre) throws RemoteException {
 		// TODO Auto-generated method stub
 
-	} 
-
-	/**
-	 * @return the serverName
-	 */
-	public String getServerName() {
-		return serverName;
 	}
 
-	
-	
+	@Override
+	public boolean esAdmin(String correo) throws RemoteException {
+		return false;
+	}
+
+	@Override
+	public boolean esUser(String user) throws RemoteException {
+		return false;
+	}
+
+	@Override
+	public boolean passCorrecta(String user, String pass) throws RemoteException {
+		return false;
+	}
+
 }

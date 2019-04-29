@@ -64,6 +64,7 @@ public class Login extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					nombre = textFieldUsuario.getText();
+					
 					// TODO: combrobar si nombre esta en la BD
 					// if(nombre esta en la BD y es administrador (privilegio==1)){
 					// administrador = true;
