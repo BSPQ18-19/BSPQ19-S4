@@ -4,16 +4,8 @@ package servidor.es.deusto.spq;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
-import java.util.List;
-
-import javax.jdo.JDOHelper;
-import javax.jdo.PersistenceManager;
-import javax.jdo.PersistenceManagerFactory;
-import javax.jdo.Query;
-import javax.jdo.Transaction;
 
 import servidor.es.deusto.spq.jdo.JDO;
-import servidor.es.deusto.spq.jdo.Pelicula;
 
 
 /**

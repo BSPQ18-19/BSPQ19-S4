@@ -29,7 +29,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 	
 	@Override
-	public int idPeli(String nombre) {
+	public int idPeli(String nombre) throws RemoteException {
 		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
 		int id = 0;
@@ -53,14 +53,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) {
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException{
 		int id;
 		id = idPeli(peli);
 		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
 		try {
 			transaction.begin();
-			@SuppressWarnings("unchecked")
 			Query query = persistentManager.newQuery(
 					"INSERT INTO" + Peliculas_Cuenta.class.getName() + "(falq, taql, correo, PELICULA_ID) VALUES('"
 							+ fAlq + "'," + tAlq + ",'" + correo + "'," + id + ");");
@@ -78,25 +77,25 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Pelicula> buscarPeliculasVistas(String vistas) {
+	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException{
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public void borrarPelicula(String titulo) {
+	public void borrarPelicula(String titulo) throws RemoteException{
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void borrarUsuario(String nombre) {
+	public void borrarUsuario(String nombre) throws RemoteException{
 		// TODO Auto-generated method stub
 
 	} 
