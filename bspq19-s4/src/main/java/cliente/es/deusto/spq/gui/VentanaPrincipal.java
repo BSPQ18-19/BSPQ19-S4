@@ -1,3 +1,4 @@
+
 package cliente.es.deusto.spq.gui;
 
 import java.awt.EventQueue;
@@ -23,6 +24,8 @@ import cliente.es.deusto.spq.controller.MostrarPeliculasController;
 import cliente.es.deusto.spq.controller.MostrarUsuariosController;
 import cliente.es.deusto.spq.controller.PeliculaController;
 import cliente.es.deusto.spq.controller.PeliculasController;
+import cliente.es.deusto.spq.controller.PeliculasFavoritasController;
+import cliente.es.deusto.spq.controller.PeliculasVistasController;
 import cliente.es.deusto.spq.controller.PerfilController;
 import cliente.es.deusto.spq.controller.RegistrarController;
 import cliente.es.deusto.spq.controller.UsuarioController;
@@ -75,6 +78,8 @@ public class VentanaPrincipal extends JFrame {
 	public static final String BUSCARPELICULA= "BUSCARPELICULA";
 	public static final String PELICULA= "PELICULA";
 	public static final String PERFIL= "PERFIL";
+	public static final String FAVORITAS = "PELICULASFAVORITAS";
+	public static final String VISTAS = "PELICULASVISTAS";
 
 	/**
 	 * Create the frame.
@@ -106,6 +111,8 @@ public class VentanaPrincipal extends JFrame {
 		BuscarPeliculaController buscarPeliculaController = new BuscarPeliculaController(service);
 		PeliculaController peliculaController = new PeliculaController(service);
 		PerfilController perfilController = new PerfilController(service);
+		PeliculasFavoritasController peliculasFavoritasController = new PeliculasFavoritasController(service);
+		PeliculasVistasController peliculasVistasController = new PeliculasVistasController(service);
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 750, 563);
@@ -132,6 +139,8 @@ public class VentanaPrincipal extends JFrame {
 		BuscarPelicula busPeli = new BuscarPelicula(buscarPeliculaController, cardLayout);
 		Pelicula peli = new Pelicula(peliculaController, cardLayout);
 		Perfil perfil = new Perfil(perfilController, cardLayout);
+		PeliculasFavoritas favo = new PeliculasFavoritas(peliculasFavoritasController, cardLayout);
+		PeliculasVistas vistas = new PeliculasVistas(peliculasVistasController, cardLayout);
 		
 		contentPane.add(login, LOGIN);
 		contentPane.add(registrar, REGISTRAR);
@@ -149,6 +158,8 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(busPeli, BUSCARPELICULA);
 		contentPane.add(peli, PELICULA);
 		contentPane.add(perfil, PERFIL);
+		contentPane.add(favo, FAVORITAS);
+		contentPane.add(vistas, VISTAS);
 	
 	}
 	

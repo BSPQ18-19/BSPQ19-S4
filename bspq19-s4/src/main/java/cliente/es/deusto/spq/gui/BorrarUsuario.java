@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -26,10 +28,10 @@ public class BorrarUsuario extends JPanel {
 	private static final long serialVersionUID = -2878465684552734783L;
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
-	private String[] usuarios = {"a","b"};
+	private String[] usuarios = { "a", "b" };
 
 	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
-		
+
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -71,13 +73,23 @@ public class BorrarUsuario extends JPanel {
 		btnBorrar = new JButton("Borrar");
 		btnBorrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//TODO: coger usuario seleccionado de la lista
-//				int i = listMostarUsuarios.getSelectedIndex();
-//				String n = usuarios[i];
+				// TODO: coger usuario seleccionado de la lista
+				int i = listMostarUsuarios.getSelectedIndex();
+				String n = usuarios[i];
 				// TODO: eliminar el usuarios con nombre n de la BD
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							String query = "DELETE FROM cuenta (CORREO, NOMBRE, CONTRASENNA, PAYPAL, PRIVILEGIO, GASTO)";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							
+							
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {
