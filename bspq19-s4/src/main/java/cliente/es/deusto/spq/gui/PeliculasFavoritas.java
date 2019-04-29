@@ -1,128 +1,79 @@
 package cliente.es.deusto.spq.gui;
 
-import java.awt.BorderLayout;
+import java.awt.CardLayout;
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
-
-import cliente.es.deusto.spq.controller.PeliculasFavoritasController;
-import servidor.es.deusto.spq.jdo.Pelicula;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Arrays;
 
 import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
+import javax.swing.border.BevelBorder;
 
-public class PeliculasFavoritas extends JFrame implements ActionListener {
+import cliente.es.deusto.spq.controller.PeliculasFavoritasController;
+
+public class PeliculasFavoritas extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
-	private static PeliculasFavoritas INSTANCE;
-	private JPanel contentPane, panelNorte, panelSur, panelCentro;
-	private JLabel lblPeliculasFavoritas;
-	private JButton btnVolver;
-	private JFrame ventanaAnterior;
-	private JScrollPane scrollPaneTabla;
-	private JTable tablaPeliculasFavoritas;
-	private DefaultTableModel modeloTabla = new DefaultTableModel();
-	private PeliculasFavoritasController controller = null;
-	String favoritas = null;
 
-	public static PeliculasFavoritas getInstance() {
-		return INSTANCE;
-	}
-		
-	public void dispose(){
-		INSTANCE.setVisible(false);
-	}
+	public PeliculasFavoritas(PeliculasFavoritasController PeliculasFavoritasController, CardLayout cardLayout) {
+	
+		GridBagLayout gbl_contentPane = new GridBagLayout();
+		gbl_contentPane.columnWidths = new int[] { 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
+		gbl_contentPane.columnWeights = new double[] { 1.0, Double.MIN_VALUE };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, Double.MIN_VALUE };
+		setLayout(gbl_contentPane);
 
+		JLabel lblMostrarPeliculas = new JLabel("Las peliculas favoritas de este usuario son:");
+		GridBagConstraints gbc_lblMostrarPeliculas = new GridBagConstraints();
+		gbc_lblMostrarPeliculas.insets = new Insets(0, 0, 5, 0);
+		gbc_lblMostrarPeliculas.gridx = 0;
+		gbc_lblMostrarPeliculas.gridy = 0;
+		add(lblMostrarPeliculas, gbc_lblMostrarPeliculas);
 
-	public PeliculasFavoritas(JFrame va) {
-		ventanaAnterior = va;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 700, 500);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
-		setContentPane(contentPane);
-		
-		panelNorte = new JPanel();
-		contentPane.add(panelNorte, BorderLayout.NORTH);
-		
-		lblPeliculasFavoritas = new JLabel("Las películas favoritas son las siguientes:");
-		panelNorte.add(lblPeliculasFavoritas);
-		
-		panelSur = new JPanel();
-		contentPane.add(panelSur, BorderLayout.SOUTH);
-		
-		btnVolver = new JButton("Volver");
-		btnVolver.addActionListener(this);
-		panelSur.add(btnVolver);
-		
-		panelCentro = new JPanel();
-		contentPane.add(panelCentro, BorderLayout.CENTER);
-		
-		scrollPaneTabla = new JScrollPane();
-		scrollPaneTabla.setToolTipText("");
-		scrollPaneTabla.setBounds(20, 90, 200, 250);
-		panelCentro.add(scrollPaneTabla);
-		
-		tablaPeliculasFavoritas = new JTable();
-		tablaPeliculasFavoritas.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-					"Titulo", "Genero", "Fecha Estreno", "Ficha Tecnica", "Sinopsis" 
+		JScrollPane scrollPane = new JScrollPane();
+		GridBagConstraints gbc_scrollPane = new GridBagConstraints();
+		gbc_scrollPane.insets = new Insets(0, 0, 5, 0);
+		gbc_scrollPane.fill = GridBagConstraints.BOTH;
+		gbc_scrollPane.gridx = 0;
+		gbc_scrollPane.gridy = 1;
+		add(scrollPane, gbc_scrollPane);
+
+		// TODO: Cargar String[]usuarios con los nombres de todas las películas favoritas de la BD
+		String[] peliculasFavoritasUsuario = {"a","b"};
+		Arrays.sort(peliculasFavoritasUsuario);
+
+		JList<String> listMostarPeliculas = new JList<String>(peliculasFavoritasUsuario);
+		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		scrollPane.setViewportView(listMostarPeliculas);
+
+		JButton btnAtras = new JButton("Atr\u00E1s");
+		btnAtras.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
+							cardLayout.show(getParent(), VentanaPrincipal.FAVORITAS);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+				});
 			}
-		));
-		scrollPaneTabla.setViewportView(tablaPeliculasFavoritas);
+		});
 
-		List<Pelicula> peliculasFavoritas = new ArrayList<>();
-		
-		peliculasFavoritas = (List<Pelicula>)controller.buscarPeliculasFavoritas(favoritas);
-		for (int i = 0; i < peliculasFavoritas.size(); i++) {
-			cargarPeliculasFavoritasEnTabla(peliculasFavoritas.get(i));
-		}
-		
-		this.setVisible(true);
+		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
+		gbc_btnAtras.gridx = 0;
+		gbc_btnAtras.gridy = 2;
+		add(btnAtras, gbc_btnAtras);
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		
-		JButton botonPulsado = (JButton) e.getSource();
-		if(botonPulsado == btnVolver){
-			this.dispose();
-			ventanaAnterior.setVisible(true);
-		}
-	}
-	
-	private void cargarPeliculasFavoritasEnTabla(Pelicula p){
-		modeloTabla = (DefaultTableModel)tablaPeliculasFavoritas.getModel();
-		String titulo = p.getTitulo();
-		String genero = p.getGenero();
-		String fEstreno = p.getfEstreno();
-		String fichaTecnica = p.getFichaTecnica();
-		String sinopsis = p.getSinopsis();
-
-		Object[] fila = {titulo, genero, fEstreno, fichaTecnica, sinopsis};
-		modeloTabla.addRow(fila);                   
-	}
-	
-	private static List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
-		return PeliculasFavoritas.getInstance().getController().buscarPeliculasFavoritas(favoritas);
-	}
-	
-	public PeliculasFavoritasController getController() {
-		return controller;
-	}
-		
-	public void setController(PeliculasFavoritasController controller) {
-			this.controller = controller;
-	}
 }
