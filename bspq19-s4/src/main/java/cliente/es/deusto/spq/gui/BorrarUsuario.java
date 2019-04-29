@@ -29,6 +29,7 @@ public class BorrarUsuario extends JPanel {
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
 	private String[] usuarios = { "a", "b" };
+	private BorrarUsuarioController controller = null;
 
 	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
 
@@ -80,15 +81,7 @@ public class BorrarUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Class.forName("com.mysql.jdbc.Driver");
-							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-							
-							String query = "DELETE FROM cuenta (CORREO, NOMBRE, CONTRASENNA, PAYPAL, PRIVILEGIO, GASTO)";
-							
-							Statement stmt = conexion.createStatement();
-							stmt.executeUpdate(query);
-							
+							controller.borrarUsuario(n);
 							
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");

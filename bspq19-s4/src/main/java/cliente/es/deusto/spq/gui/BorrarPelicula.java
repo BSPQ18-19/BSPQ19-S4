@@ -29,6 +29,7 @@ public class BorrarPelicula extends JPanel {
 	private JButton btnBorrar;
 	private JList<String> listMostarPeliculas;
 	private String[] peliculas = { "a", "b" };
+	private BorrarPeliculaController controller = null;
 
 	public BorrarPelicula(BorrarPeliculaController borrarPeliculaController, CardLayout cardLayout) {
 
@@ -81,14 +82,7 @@ public class BorrarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Class.forName("com.mysql.jdbc.Driver");
-							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-							
-							String query = "DELETE FROM pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER)";
-							
-							Statement stmt = conexion.createStatement();
-							stmt.executeUpdate(query);
+							controller.borrarPelicula(n);
 							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
