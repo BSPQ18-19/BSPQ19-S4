@@ -119,11 +119,11 @@ public class VentanaPrincipal extends JFrame {
 		Administrador admin = new Administrador(administradorController, cardLayout);
 		Peliculas pelis = new Peliculas(peliculasController, cardLayout);
 		AnadirPelicula anPeli = new AnadirPelicula(anadirPeliculaController, cardLayout);
-		BorrarPelicula borPeli = new BorrarPelicula(borrarPeliculaController, titulo, genero);
+		//BorrarPelicula borPeli = new BorrarPelicula(borrarPeliculaController, titulo, genero);
 		MostrarPeliculas mosPelis = new MostrarPeliculas(mostrarPeliculasController, cardLayout);
 		Usuarios users = new Usuarios(usuariosController, cardLayout);
 		AnadirUsuario anUser = new AnadirUsuario(anadirUsuarioController, cardLayout);
-		BorrarUsuario borUser = new BorrarUsuario(borrarUsuarioController, correo, nombre);
+		//BorrarUsuario borUser = new BorrarUsuario(borrarUsuarioController, correo, nombre);
 		MostrarUsuarios mosUsers = new MostrarUsuarios(mostrarUsuariosController, cardLayout);
 		Usuario user = new Usuario(usuarioController, cardLayout);
 		BuscarPelicula busPeli = new BuscarPelicula(buscarPeliculaController, cardLayout);
@@ -135,11 +135,11 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(admin, ADMINISTRADOR);
 		contentPane.add(pelis, PELICULAS);
 		contentPane.add(anPeli, ANADIRPELICULA);
-		contentPane.add(borPeli, BORRARPELICULA);
+		//contentPane.add(borPeli, BORRARPELICULA);
 		contentPane.add(mosPelis, MOSTRARPELICULAS);
 		contentPane.add(users, USUARIOS);
 		contentPane.add(anUser, ANADIRUSUARIO);
-		contentPane.add(borUser, BORRARUSUARIO);
+		//contentPane.add(borUser, BORRARUSUARIO);
 		contentPane.add(mosUsers, MOSTRARUSUARIOS);
 		contentPane.add(user, USUARIO);
 		contentPane.add(busPeli, BUSCARPELICULA);

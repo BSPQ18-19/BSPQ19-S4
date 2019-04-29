@@ -5,6 +5,7 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.List;
 
+import servidor.es.deusto.spq.jdo.Cuenta;
 import servidor.es.deusto.spq.jdo.Pelicula;
 
 /**
@@ -57,5 +58,17 @@ public class Server extends UnicastRemoteObject implements IServer{
 	public List<Pelicula> buscarPeliculasVistas(String vistas) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public void borrarPelicula(Pelicula p, String titulo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void borrarUsuario(Cuenta u, String nombre) {
+		// TODO Auto-generated method stub
+		
 	}
 }
