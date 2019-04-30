@@ -20,6 +20,7 @@ public interface IServer extends Remote{
 	public void borrarUsuario(String correo) throws RemoteException;
 	public void almacenarUsuario (Cuenta c) throws RemoteException;
 	public void almacenarPelicula (Pelicula p) throws RemoteException;
-	
+	public boolean correo(String nombre, String correo) throws RemoteException;
+	public String contrasenya(String nombre) throws RemoteException;
 
 }
