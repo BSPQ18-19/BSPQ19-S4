@@ -12,16 +12,16 @@ public class LoginController {
 	}
 	
 
-	public boolean esAdmin(String correo) throws RemoteException {
-		return service.getService().esAdmin(correo);
+	public boolean esAdmin(String nombre) throws RemoteException {
+		return service.getService().esAdmin(nombre);
 	}
 
-	public boolean esUser(String correo) throws RemoteException {
-		return service.getService().esUser(correo);
+	public boolean esUser(String nombre) throws RemoteException {
+		return service.getService().esUser(nombre);
 	}
 
-	public boolean contrasenna(String correo, String pass) throws RemoteException {
-		return service.getService().passCorrecta(correo, pass);
+	public boolean contrasenna(String nombre, String pass) throws RemoteException {
+		return service.getService().passCorrecta(nombre, pass);
 	}
 
 	/**

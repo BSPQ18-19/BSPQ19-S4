@@ -66,32 +66,26 @@ public class Login extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					nombre = textFieldUsuario.getText();
-
-					// TODO: combrobar si nombre esta en la BD
-					String correo = textFieldUsuario.getText();
 					try {
-						if (loginController.esAdmin(correo) == false){
-							System.out.println(correo);
+						if (loginController.esAdmin(nombre) == true){
+							administrador = true;
+							lblContrasea.setEnabled(true);
+							passwordFieldContrasea.setEnabled(true);
+							btnContraseaOlvidada.setEnabled(true);
+							passwordFieldContrasea.requestFocus();
+							textFieldUsuario.setEditable(false);
+						}else if(loginController.esUser(nombre) == true){
+							usuario = true;
+							lblContrasea.setEnabled(true);
+							passwordFieldContrasea.setEnabled(true);
+							btnContraseaOlvidada.setEnabled(true);
+							passwordFieldContrasea.requestFocus();
+							textFieldUsuario.setEditable(false);
+						 }
+						if (administrador == false && usuario == false) {
+							JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
 						}
-							// administrador = true;
-							// lblContrasea.setEnabled(true);
-							// passwordFieldContrasea.setEnabled(true);
-							// btnContraseaOlvidada.setEnabled(true);
-							// passwordFieldContrasea.requestFocus();
-							// textFieldUsuario.setEditable(false);
-							// }else if(nombre esta en la BD y es usuario (privilegio==0))
-							// usuario = true;
-							// lblContrasea.setEnabled(true);
-							// passwordFieldContrasea.setEnabled(true);
-							// btnContraseaOlvidada.setEnabled(true);
-							// passwordFieldContrasea.requestFocus();
-							// textFieldUsuario.setEditable(false);
-							// }
-							if (administrador == false && usuario == false) {
-								JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
-							}
 					} catch (HeadlessException | RemoteException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
 				}
@@ -119,14 +113,17 @@ public class Login extends JPanel {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					contrasenya = new String(passwordFieldContrasea.getPassword());
-					// TODO: comprobar contrasenya correcta para nombre
-					// if(contraseña correcta){
-					// btnIniciarSesion.setEnabled(true);
-					// passwordFieldContrasea.setEnabled(false);
-					// btnIniciarSesion.requestFocus();
-					// }else{
-					// JOptionPane.showMessageDialog(null, "Contrase\u00F1a incorrecta");
-					// }
+					 try {
+						if(loginController.contrasenna(nombre, contrasenya) == true){
+							 btnIniciarSesion.setEnabled(true);
+							 passwordFieldContrasea.setEnabled(false);
+							 btnIniciarSesion.requestFocus();
+						 }else{
+							 JOptionPane.showMessageDialog(null, "Contrase\u00F1a incorrecta");
+						 }
+					} catch (HeadlessException | RemoteException e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
