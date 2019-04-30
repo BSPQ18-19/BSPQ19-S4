@@ -38,8 +38,8 @@ public class Login extends JPanel {
 	static String nombre = null;
 	static String contrasenya = null;
 
-	public Login(LoginController loginController, CardLayout cardLayout) {
-
+		public Login(LoginController loginController, CardLayout cardLayout) {
+		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
