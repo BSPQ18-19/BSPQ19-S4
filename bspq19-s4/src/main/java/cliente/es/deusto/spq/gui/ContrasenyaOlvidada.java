@@ -65,18 +65,16 @@ public class ContrasenyaOlvidada extends JPanel {
 		textFieldCorreo.addKeyListener(new KeyAdapter() {
 			public void keyPressed(KeyEvent e) {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-					// String correo = textFieldCorreo.getText();
-					// String nombre = VentanaPrincipal.nombre;
+					String correo = textFieldCorreo.getText();
+					String nombre = Login.nombre;
 					// TODO: Buscar correo del usuario con dicho nombre y si es correcto devolver
 					// contraseña
 					// if(Correo es correcto para ese usuario){
 					// String contrasenya = lo que sea;
 					// JOptionPane.showMessageDialog(null, "La contrase\u00F1a del usuario
-					// "+nombre+" es "+contrasenya);
+					// "+nombre+" con correo "+correo+" es "+contrasenya);
 					// }
-					Login.administrador = false;
-					Login.usuario = false;
-					setVisible(false);
+					reinicio();
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
@@ -93,8 +91,7 @@ public class ContrasenyaOlvidada extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login.administrador = false;
-				Login.usuario = false;
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -110,6 +107,16 @@ public class ContrasenyaOlvidada extends JPanel {
 		gbc_btnAtras.gridx = 0;
 		gbc_btnAtras.gridy = 1;
 		add(btnAtras, gbc_btnAtras);
+	}
+	public void reinicio(){
+		Login.administrador = false;
+		Login.usuario = false;
+		Login.nombre = null;
+		Login.contrasenya = null;
+		Login.lblContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setEnabled(false);
+		Login.btnContraseaOlvidada.setEnabled(false);
+		Login.btnIniciarSesion.setEnabled(false);
 	}
 
 }

@@ -69,8 +69,7 @@ public class Administrador extends JPanel {
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Login.administrador = false;
-				Login.usuario = false;
+				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -87,5 +86,14 @@ public class Administrador extends JPanel {
 		gbc_btnAtras.gridy = 2;
 		add(btnAtras, gbc_btnAtras);
 	}
-
+	public void reinicio(){
+		Login.administrador = false;
+		Login.usuario = false;
+		Login.nombre = null;
+		Login.contrasenya = null;
+		Login.lblContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setEnabled(false);
+		Login.btnContraseaOlvidada.setEnabled(false);
+		Login.btnIniciarSesion.setEnabled(false);
+	}
 }

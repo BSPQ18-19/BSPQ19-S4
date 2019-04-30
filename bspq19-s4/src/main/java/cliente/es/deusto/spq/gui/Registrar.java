@@ -355,8 +355,6 @@ public class Registrar extends JPanel {
 				} else {
 					// TODO: guardar usuario en la BD como usuario
 				}
-				Login.administrador = false;
-				Login.usuario = false;
 				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
@@ -380,8 +378,6 @@ public class Registrar extends JPanel {
 		btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				Login.administrador = false;
-				Login.usuario = false;
 				reinicio();
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
@@ -435,5 +431,13 @@ public class Registrar extends JPanel {
 		textFieldAdminSiONo.setEnabled(false);
 		textFieldAdminSiONo.setEditable(true);
 		btnGuardar.setEnabled(false);
+		Login.administrador = false;
+		Login.usuario = false;
+		Login.nombre = null;
+		Login.contrasenya = null;
+		Login.lblContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setEnabled(false);
+		Login.btnContraseaOlvidada.setEnabled(false);
+		Login.btnIniciarSesion.setEnabled(false);
 	}
 }

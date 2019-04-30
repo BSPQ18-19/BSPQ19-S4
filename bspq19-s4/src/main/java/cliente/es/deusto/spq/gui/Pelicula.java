@@ -75,7 +75,13 @@ public class Pelicula extends JPanel{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO: reproducir trailer
+							try {
+								VentanaTrailerPelicula frame = new VentanaTrailerPelicula();
+								frame.setVisible(true);
+								frame.setTitle("Trailer");
+							} catch (Exception e) {
+								e.printStackTrace();
+							}
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
