@@ -195,7 +195,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public boolean passCorrecta(String user, String pass) throws RemoteException {
-		return false;
+		return true;
 	}
 
 	public void almacenarUsuario(Cuenta c) {
