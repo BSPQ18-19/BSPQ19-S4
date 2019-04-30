@@ -315,19 +315,20 @@ public class AnadirPelicula extends JPanel {
 //							
 //							//int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
 //							
-//							String titulo = textFieldPelicula.getText();
-//							String genero = textFieldGenero.getText();
-//							String festreno = textFieldfEstreno.getText();
-//							String trailer = textFieldtrailer.getText();
-//							String fichatecnica = textFieldFichaTecnica.getText();
-//							String sinopsis = textFieldSinopsis.getText();
-//							int puntuacion = 8;
+							String titulo = textFieldPelicula.getText();
+							String genero = textFieldGenero.getText();
+							String festreno = textFieldfEstreno.getText();
+							String trailer = textFieldtrailer.getText();
+							String fichatecnica = textFieldFichaTecnica.getText();
+							String sinopsis = textFieldSinopsis.getText();
+							int puntuacion = 8;
 //							
 //							String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','"+sinopsis+"', '"+titulo+"', '"+trailer+"')";
 //							
 //							Statement stmt = conexion.createStatement();
 //							stmt.executeUpdate(query);
 //							
+							anadirPeliculaController.almacenarPelicula(null);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adida a la BD");
 						} catch (Exception e) {
