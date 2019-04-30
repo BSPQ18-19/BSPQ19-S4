@@ -283,4 +283,14 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	 
 	 */
 
+	public boolean correo(String nombre, String correo)  {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public String contrasenya(String nombre)  {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

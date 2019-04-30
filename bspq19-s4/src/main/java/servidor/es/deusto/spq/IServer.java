@@ -22,4 +22,5 @@ public interface IServer extends Remote{
 	public void almacenarPelicula (Pelicula p);
 	
 
+
 }
