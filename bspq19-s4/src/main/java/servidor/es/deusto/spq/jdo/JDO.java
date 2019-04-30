@@ -2,6 +2,8 @@ package servidor.es.deusto.spq.jdo;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -14,7 +16,7 @@ import org.apache.log4j.Logger;
 import javax.jdo.Query;
 
 import servidor.es.deusto.spq.IServer;
-
+import cliente.es.deusto.spq.gui.AnadirUsuario;
 public class JDO extends UnicastRemoteObject implements IServer {
 
 	private static final long serialVersionUID = -5970799150454206362L;
@@ -40,7 +42,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public int idPeli(String nombre) throws RemoteException {
+	public int idPeli(String nombre) {
 		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
 		int id = 0;
@@ -64,7 +66,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException {
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) {
 		int id;
 		id = idPeli(peli);
 		persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -88,13 +90,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
+	public List<Pelicula> buscarPeliculasVistas(String vistas) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -156,7 +158,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean esAdmin(String correo) throws RemoteException {
+	public boolean esAdmin(String correo) {
 		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
 		try {
@@ -184,12 +186,12 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean esUser(String user) throws RemoteException {
+	public boolean esUser(String user) {
 		return false;
 	}
 
 	@Override
-	public boolean passCorrecta(String user, String pass) throws RemoteException {
+	public boolean passCorrecta(String user, String pass) {
 		return false;
 	}
 
@@ -211,6 +213,26 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 			pm.close();
 		}
+		
+		
+		
+		/*
+		Class.forName("com.mysql.jdbc.Driver");
+		
+		java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+		
+		String nombre = textFieldUsuario.getText();
+		String contrasenna = passwordFieldContrasea1.getText();
+		String correo = textFieldCorreo1.getText();
+		String paypal = textFieldPaypal1.getText();
+		int privilegio = Integer.parseInt(textFieldAdminSiONo.getText());
+		double gasto = 0.0;
+		
+		String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
+		
+		Statement stmt = conexion.createStatement();
+		stmt.executeUpdate(query);
+		*/
 	}
 
 	@Override
@@ -236,15 +258,37 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 		}
 	}
+	
+	
+	/*
+	 		Class.forName("com.mysql.jdbc.Driver");
+					
+			java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+			int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
+							
+			String titulo = textFieldPelicula.getText();
+			String genero = textFieldGenero.getText();
+			String festreno = textFieldfEstreno.getText();
+			String trailer = textFieldtrailer.getText();
+			String fichatecnica = textFieldFichaTecnica.getText();
+			String sinopsis = textFieldSinopsis.getText();
+			int puntuacion = 8;
+			
+			String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','"+sinopsis+"', '"+titulo+"', '"+trailer+"')";
+							
+			Statement stmt = conexion.createStatement();
+			stmt.executeUpdate(query);
+	 
+	 
+	 */
 
-	@Override
-	public boolean correo(String nombre, String correo) throws RemoteException {
+	public boolean correo(String nombre, String correo)  {
 		// TODO Auto-generated method stub
 		return false;
 	}
 
-	@Override
-	public String contrasenya(String nombre) throws RemoteException {
+	public String contrasenya(String nombre)  {
 		// TODO Auto-generated method stub
 		return null;
 	}

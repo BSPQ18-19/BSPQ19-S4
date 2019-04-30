@@ -9,18 +9,18 @@ import servidor.es.deusto.spq.jdo.Pelicula;
 
 public interface IServer extends Remote{
 
-	public int idPeli(String nombre) throws RemoteException;
-	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException;
-	public boolean esAdmin(String correo) throws RemoteException;
-	public boolean esUser(String user) throws RemoteException;
-	public boolean passCorrecta(String user, String pass) throws RemoteException;
-	List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException;
-	List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException;
-	public void borrarPelicula(String titulo) throws RemoteException;
-	public void borrarUsuario(String correo) throws RemoteException;
-	public void almacenarUsuario (Cuenta c) throws RemoteException;
-	public void almacenarPelicula (Pelicula p) throws RemoteException;
-	public boolean correo(String nombre, String correo) throws RemoteException;
-	public String contrasenya(String nombre) throws RemoteException;
+	public int idPeli(String nombre);
+	public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli);
+	public boolean esAdmin(String correo);
+	public boolean esUser(String user);
+	public boolean passCorrecta(String user, String pass);
+	List<Pelicula> buscarPeliculasFavoritas(String favoritas);
+	List<Pelicula> buscarPeliculasVistas(String vistas);
+	public void borrarPelicula(String titulo);
+	public void borrarUsuario(String correo);
+	public void almacenarUsuario (Cuenta c);
+	public void almacenarPelicula (Pelicula p);
+	
+
 
 }
