@@ -20,7 +20,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	private static final long serialVersionUID = -5970799150454206362L;
 
 	private String serverName;
-	private PersistenceManagerFactory pmf;
+	private static PersistenceManagerFactory pmf;
 	private static final Logger logger = Logger.getLogger(JDO.class);
 	PersistenceManagerFactory persistentManagerFactory = JDOHelper
 			.getPersistenceManagerFactory("datanucleus.properties");
@@ -99,7 +99,6 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		return null;
 	}
 
-	@Override
 	public void borrarPelicula(String titulo) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();
@@ -128,7 +127,6 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		}
 	}
 
-	@Override
 	public void borrarUsuario(String correo) {
 		PersistenceManager pm = pmf.getPersistenceManager();
 		Transaction tx = pm.currentTransaction();

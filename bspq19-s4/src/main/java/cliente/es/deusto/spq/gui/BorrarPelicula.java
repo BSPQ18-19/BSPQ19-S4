@@ -28,7 +28,6 @@ public class BorrarPelicula extends JPanel {
 	private JList<String> listMostarPeliculas;
 	//TODO;quitar la siguiente linea
 	private String[] peliculas = { "a", "b" };
-	private BorrarPeliculaController controller = null;
 
 	public BorrarPelicula(BorrarPeliculaController borrarPeliculaController, CardLayout cardLayout) {
 
@@ -78,7 +77,7 @@ public class BorrarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							controller.borrarPelicula(n);
+							borrarPeliculaController.borrarPelicula(n);
 							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");

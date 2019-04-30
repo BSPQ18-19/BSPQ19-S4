@@ -20,6 +20,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import cliente.es.deusto.spq.controller.BorrarPeliculaController;
 import cliente.es.deusto.spq.controller.BorrarUsuarioController;
 
 public class BorrarUsuario extends JPanel {
@@ -28,7 +29,6 @@ public class BorrarUsuario extends JPanel {
 	private JList<String> listMostarUsuarios;
 	//TODO: eliminar la siguiente linea
 	private String[] usuarios = { "a", "b" };
-	private BorrarUsuarioController controller = null;
 
 	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
 
@@ -78,7 +78,7 @@ public class BorrarUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							controller.borrarUsuario(n);
+							borrarUsuarioController.borrarUsuario(n);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {

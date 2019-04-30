@@ -309,28 +309,25 @@ public class AnadirPelicula extends JPanel {
 					public void run() {
 						try {
 							
-							Class.forName("com.mysql.jdbc.Driver");
-							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-							
-							//int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
-							
-							String titulo = textFieldPelicula.getText();
-							String genero = textFieldGenero.getText();
-							String festreno = textFieldfEstreno.getText();
-							String trailer = textFieldtrailer.getText();
-							String fichatecnica = textFieldFichaTecnica.getText();
-							String sinopsis = textFieldSinopsis.getText();
-							int puntuacion = 8;
-							
-							String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','"+sinopsis+"', '"+titulo+"', '"+trailer+"')";
-							
-							Statement stmt = conexion.createStatement();
-							stmt.executeUpdate(query);
-							
-						
-							
-							
+//							Class.forName("com.mysql.jdbc.Driver");
+//							
+//							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+//							
+//							//int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
+//							
+//							String titulo = textFieldPelicula.getText();
+//							String genero = textFieldGenero.getText();
+//							String festreno = textFieldfEstreno.getText();
+//							String trailer = textFieldtrailer.getText();
+//							String fichatecnica = textFieldFichaTecnica.getText();
+//							String sinopsis = textFieldSinopsis.getText();
+//							int puntuacion = 8;
+//							
+//							String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','"+sinopsis+"', '"+titulo+"', '"+trailer+"')";
+//							
+//							Statement stmt = conexion.createStatement();
+//							stmt.executeUpdate(query);
+//							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adida a la BD");
 						} catch (Exception e) {

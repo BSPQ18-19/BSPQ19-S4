@@ -28,11 +28,11 @@ public class Login extends JPanel {
 	private static final long serialVersionUID = 8689513507453358451L;
 	private JLabel lblUsuario;
 	private JTextField textFieldUsuario;
-	private JLabel lblContrasea;
-	private JPasswordField passwordFieldContrasea;
+	static JLabel lblContrasea;
+	static JPasswordField passwordFieldContrasea;
 	private JButton btnNuevoUsuario;
-	private JButton btnContraseaOlvidada;
-	private JButton btnIniciarSesion;
+	static JButton btnContraseaOlvidada;
+	static JButton btnIniciarSesion;
 	static boolean usuario = false;
 	static boolean administrador = false;
 	static String nombre = null;
