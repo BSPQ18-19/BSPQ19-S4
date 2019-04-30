@@ -71,6 +71,7 @@ public class Login extends JPanel {
 							administrador = true;
 							lblContrasea.setEnabled(true);
 							passwordFieldContrasea.setEnabled(true);
+							passwordFieldContrasea.setEditable(true);
 							btnContraseaOlvidada.setEnabled(true);
 							passwordFieldContrasea.requestFocus();
 							textFieldUsuario.setEditable(false);
@@ -78,6 +79,7 @@ public class Login extends JPanel {
 							usuario = true;
 							lblContrasea.setEnabled(true);
 							passwordFieldContrasea.setEnabled(true);
+							passwordFieldContrasea.setEditable(true);
 							btnContraseaOlvidada.setEnabled(true);
 							passwordFieldContrasea.requestFocus();
 							textFieldUsuario.setEditable(false);
