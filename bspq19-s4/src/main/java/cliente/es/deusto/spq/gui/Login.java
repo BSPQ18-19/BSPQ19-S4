@@ -27,7 +27,7 @@ import cliente.es.deusto.spq.controller.LoginController;
 public class Login extends JPanel {
 	private static final long serialVersionUID = 8689513507453358451L;
 	private JLabel lblUsuario;
-	private JTextField textFieldUsuario;
+	static JTextField textFieldUsuario;
 	static JLabel lblContrasea;
 	static JPasswordField passwordFieldContrasea;
 	private JButton btnNuevoUsuario;

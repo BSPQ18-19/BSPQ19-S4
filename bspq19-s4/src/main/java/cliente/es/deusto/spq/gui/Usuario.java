@@ -91,8 +91,11 @@ public class Usuario extends JPanel{
 		Login.usuario = false;
 		Login.nombre = null;
 		Login.contrasenya = null;
+		Login.textFieldUsuario.setText(null);
 		Login.lblContrasea.setEnabled(false);
 		Login.passwordFieldContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setText(null);
+		Login.passwordFieldContrasea.setEditable(false);
 		Login.btnContraseaOlvidada.setEnabled(false);
 		Login.btnIniciarSesion.setEnabled(false);
 	}

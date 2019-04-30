@@ -5,14 +5,17 @@ import java.awt.EventQueue;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -67,13 +70,14 @@ public class ContrasenyaOlvidada extends JPanel {
 				if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 					String correo = textFieldCorreo.getText();
 					String nombre = Login.nombre;
-					// TODO: Buscar correo del usuario con dicho nombre y si es correcto devolver
-					// contraseña
-					// if(Correo es correcto para ese usuario){
-					// String contrasenya = lo que sea;
-					// JOptionPane.showMessageDialog(null, "La contrase\u00F1a del usuario
-					// "+nombre+" con correo "+correo+" es "+contrasenya);
-					// }
+					 try {
+						if(contrasenyaController.correo(nombre, correo) == true){
+						 String contrasenya = contrasenyaController.contrasenya(nombre);
+						 JOptionPane.showMessageDialog(null, "La contrase\u00F1a del usuario "+nombre+" con correo "+correo+" es "+contrasenya);
+						 }
+					} catch (HeadlessException | RemoteException e1) {
+						e1.printStackTrace();
+					}
 					reinicio();
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
@@ -113,8 +117,11 @@ public class ContrasenyaOlvidada extends JPanel {
 		Login.usuario = false;
 		Login.nombre = null;
 		Login.contrasenya = null;
+		Login.textFieldUsuario.setText(null);
 		Login.lblContrasea.setEnabled(false);
 		Login.passwordFieldContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setText(null);
+		Login.passwordFieldContrasea.setEditable(false);
 		Login.btnContraseaOlvidada.setEnabled(false);
 		Login.btnIniciarSesion.setEnabled(false);
 	}
