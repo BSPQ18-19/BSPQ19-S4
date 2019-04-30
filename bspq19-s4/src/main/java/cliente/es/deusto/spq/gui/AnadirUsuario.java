@@ -360,22 +360,23 @@ public class AnadirUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-//							Class.forName("com.mysql.jdbc.Driver");
-//							
-//							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-//							
+							/*
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
 							String nombre = textFieldUsuario.getText();
 							String contrasenna = passwordFieldContrasea1.getText();
 							String correo = textFieldCorreo1.getText();
 							String paypal = textFieldPaypal1.getText();
 							int privilegio = Integer.parseInt(textFieldAdminSiONo.getText());
 							double gasto = 0.0;
-//							
-//							String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
-//							
-//							Statement stmt = conexion.createStatement();
-//							stmt.executeUpdate(query);
-
+							
+							String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
+							
+							Statement stmt = conexion.createStatement();
+							stmt.executeUpdate(query);
+							 */
 							
 							anadirUsuarioController.almacenarUsuario(null);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
