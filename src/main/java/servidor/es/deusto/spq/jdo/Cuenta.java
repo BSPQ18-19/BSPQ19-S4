@@ -77,18 +77,10 @@ public class Cuenta {
 		this.gasto = gasto;
 	}
 
-	public Set<Pelicula> getPeliculas() {
-		return peliculas;
-	}
-
-	public void setPeliculas(Set<Pelicula> peliculas) {
-		this.peliculas = peliculas;
-	}
-
 	@Override
 	public String toString() {
 		return "Usuario [correo=" + correo + ", nombre=" + nombre + ", contrasenna=" + contrasenna + ", paypal="
-				+ paypal + ", privilegio=" + privilegio + ", gasto=" + gasto + ", peliculas=" + peliculas + "]";
+				+ paypal + ", privilegio=" + privilegio + ", gasto=" + gasto +"]";
 	}
 	
 }
