@@ -146,6 +146,21 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<filesets>
+						<fileset>
+							<directory>${basedir}</directory>
+							<includes>
+								<include>**.log</include>
+								<include>**.ods</include>
+							</includes>
+						</fileset>
+					</filesets>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 	<profiles>
@@ -164,21 +179,6 @@
 					</resource>
 				</resources>
 				<plugins>
-					<plugin>
-						<artifactId>maven-clean-plugin</artifactId>
-						<version>3.0.0</version>
-						<configuration>
-							<filesets>
-								<fileset>
-									<directory>${basedir}</directory>
-									<includes>
-										<include>*.log</include>
-										<include>*.ods</include>
-									</includes>
-								</fileset>
-							</filesets>
-						</configuration>
-					</plugin>
 					<plugin>
 						<groupId>org.codehaus.mojo</groupId>
 						<artifactId>exec-maven-plugin</artifactId>
