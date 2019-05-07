@@ -4,6 +4,7 @@ package servidor.es.deusto.spq;
 import java.rmi.Naming;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.Scanner;
 
 import servidor.es.deusto.spq.jdo.JDO;
 
@@ -42,8 +43,9 @@ public class Server extends UnicastRemoteObject {
 			Naming.rebind(name, servidor);
 			System.out.println("//" + args[0] + ":" + args[1] + "/" + args[2]);
 			System.out.println("- Server active and waiting...");
-			int i = 1;
-			while(i==1);
+			Scanner scanner = new Scanner(System.in);
+			scanner.nextLine();
+			scanner.close();
 		} catch (Exception e) {
 			System.err.println("$ Server exception: " + e.getMessage());
 			e.printStackTrace();
