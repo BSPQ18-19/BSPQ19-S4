@@ -1,4 +1,4 @@
-# BSPQ19-S4
+# BSPQ19-S4 [![Build Status](https://travis-ci.com/BSPQ18-19/BSPQ19-S4.svg?branch=master)](https://travis-ci.com/BSPQ18-19/BSPQ19-S4)
 Videoclub online
 
 ## Descripción
