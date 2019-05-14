@@ -1,4 +1,4 @@
-package es.deusto.spq.server.jdo;
+package servidor.es.deusto.spq.jdo;
 
 import static org.junit.Assert.assertEquals;
 
