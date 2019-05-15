@@ -18,10 +18,12 @@ public interface IServer extends Remote{
 	List<Pelicula> buscarPeliculasVistas(String vistas)throws RemoteException;
 	public void borrarPelicula(String titulo)throws RemoteException;
 	public void borrarUsuario(String correo)throws RemoteException;
-	public void almacenarUsuario (Cuenta c)throws RemoteException;
-	public void almacenarPelicula (Pelicula p)throws RemoteException;
+	//public void almacenarUsuario (Cuenta c)throws RemoteException;
+	//public void almacenarPelicula (Pelicula p)throws RemoteException;
 	public boolean correo(String nombre, String correo)throws RemoteException;
 	public String contrasenya(String nombre)throws RemoteException;
+	public boolean almacenarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion);
+	public boolean almacenarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto);
 	
 
 

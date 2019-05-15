@@ -329,7 +329,7 @@ public class AnadirPelicula extends JPanel {
 							stmt.executeUpdate(query);
 							 */		
 							
-							anadirPeliculaController.almacenarPelicula(null);
+							//anadirPeliculaController.almacenarPelicula(null);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adida a la BD");
 						} catch (Exception e) {

@@ -198,10 +198,30 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		return true;
 	}
 
-	public void almacenarUsuario(Cuenta c) {
+	public boolean almacenarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) {
 
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+	
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"INSERT INTO" + Cuenta.class.getName() + "(CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) VALUES('"
+															+ correo + "'," + contrasenna + ",'" + gasto + "'," + nombre +",'" +paypal+"', "+privilegio+ ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
+		
+			
+		/*
 		try {
 			tx.begin();
 			logger.info("   * Almacenando informacion de de la cuenta: " + c);
@@ -216,15 +236,33 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 			pm.close();
 		}
+		*/
 	}
 
 	@Override
 
-	public void almacenarPelicula(Pelicula p) {
+	public boolean almacenarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion) {
+		
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"INSERT INTO" + Pelicula.class.getName() + "(FESTRENO, FICHATECNICA, GENERO, PUNTUACION, SINOPSIS, TITULO, TRAILER) VALUES('"
+							+fEstreno+ "'," + fichatecnica + ",'" + genero + "'," + puntuacion +",'" +sinopsis+"', "+titulo+ ",'"+trailer+ ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
 
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-
+			persistentManager.close();
+		}
+		
+		/*
 		try {
 			tx.begin();
 			logger.info("   * Almacenando pelicula en la BD: " + p);
@@ -240,6 +278,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			pm.close();
 
 		}
+		*/
 	}
 
 	public boolean correo(String nombre, String correo)  {
