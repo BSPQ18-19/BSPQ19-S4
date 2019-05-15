@@ -99,59 +99,45 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		return null;
 	}
 
-	public void borrarPelicula(String titulo) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+	public boolean borrarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion) {
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
 		try {
-			pm = pmf.getPersistenceManager();
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			@SuppressWarnings("unchecked")
-			Query<Pelicula> qu = pm.newQuery("DELETE FROM" + Pelicula.class.getName()
-					+ "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
-			qu.setFilter(titulo);
-			qu.deletePersistentAll();
-			System.out.println("Eliminando de la base de datos");
-			tx.commit();
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"DELETE FROM" + Pelicula.class.getName() + "(FESTRENO, FICHATECNICA, GENERO, PUNTUACION, SINOPSIS, TITULO, TRAILER) VALUES('"
+							+ fEstreno + "'," + fichatecnica + ",'" + genero + "'," + puntuacion + ",'" + sinopsis + "', " + titulo + ",'" + trailer + ");");
+			transaction.commit();
+			return true;
 		} catch (Exception ex) {
-			System.err.println("   $ Error eliminando informacion de la película:" + ex.getMessage());
+			return false;
 		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
+			if (transaction.isActive()) {
+				transaction.rollback();
 			}
 
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-			}
+			persistentManager.close();
 		}
 	}
 
-	public void borrarUsuario(String correo) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
+	public boolean borrarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) {
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
 		try {
-			pm = pmf.getPersistenceManager();
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			@SuppressWarnings("unchecked")
-			Query<Cuenta> qu = pm.newQuery("DELETE FROM" + Cuenta.class.getName()
-					+ "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
-			qu.setFilter(correo);
-			qu.deletePersistentAll();
-			System.out.println("Eliminando de la base de datos");
-			tx.commit();
+			transaction.begin();
+			Query query = persistentManager.newQuery(
+					"DELETE FROM" + Cuenta.class.getName() + "(CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) VALUES('"
+							+ correo + "'," + contrasenna + ",'" + gasto + "'," + nombre +",'" +paypal+"', "+privilegio+ ");");
+			transaction.commit();
+			return true;
 		} catch (Exception ex) {
-			System.err.println("   $ Error eliminando informacion de la cuenta:" + ex.getMessage());
+			return false;
 		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
+			if (transaction.isActive()) {
+				transaction.rollback();
 			}
 
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-			}
+			persistentManager.close();
 		}
 	}
 

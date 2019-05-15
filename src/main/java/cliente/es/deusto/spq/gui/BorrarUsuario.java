@@ -28,7 +28,8 @@ public class BorrarUsuario extends JPanel {
 	private JButton btnBorrar;
 	private JList<String> listMostarUsuarios;
 	//TODO: eliminar la siguiente linea
-	private String[] usuarios = { "a", "b" };
+	//private String[] usuarios = { "a", "b" };
+	private String[] usuarios = new String[20];
 
 	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
 
@@ -78,7 +79,8 @@ public class BorrarUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							borrarUsuarioController.borrarUsuario(n);
+							//borrarUsuarioController.borrarUsuario(n);
+							//borrarUsuarioController.borrarUsuario(correo, nombre, contrasenna, paypal, privilegio, gasto);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {
