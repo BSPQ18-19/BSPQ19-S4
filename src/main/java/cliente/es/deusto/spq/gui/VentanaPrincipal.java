@@ -161,7 +161,7 @@ public class VentanaPrincipal extends JFrame {
 		contentPane.add(user, USUARIO);
 		contentPane.add(busPeli, BUSCARPELICULA);
 		contentPane.add(peli, PELICULA);
-		contentPane.add(alquiler, PELICULA);
+		contentPane.add(alquiler, ALQUILER);
 		contentPane.add(perfil, PERFIL);
 		contentPane.add(favo, FAVORITAS);
 		contentPane.add(vistas, VISTAS);
