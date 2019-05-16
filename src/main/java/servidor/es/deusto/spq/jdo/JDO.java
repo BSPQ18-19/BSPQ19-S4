@@ -444,7 +444,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction.begin();
 			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY genero ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
-				String peli = pelis.getTitulo();
+				String peli = pelis.getGenero() + ": " + "\t " + pelis.getTitulo();
 				System.out.println(peli);
 				peliculas.add(peli);
 			}
@@ -472,7 +472,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction.begin();
 			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY fEstreno ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
-				String peli = pelis.getTitulo();
+				String peli = pelis.getfEstreno() + ": " + "\t" + pelis.getTitulo();
 				System.out.println(peli);
 				peliculas.add(peli);
 			}
