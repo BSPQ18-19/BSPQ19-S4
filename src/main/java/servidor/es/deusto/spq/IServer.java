@@ -11,12 +11,13 @@ public interface IServer extends Remote{
 
 	public int idPeli(String nombre) throws RemoteException;
 	public boolean alquilarPelicula(String fAlq, int tAlq, String nombre, String titulo)throws RemoteException;
-	public boolean esAdmin(String correo)throws RemoteException;
+	public boolean esAdmin(String admin)throws RemoteException;
 	public boolean esUser(String user)throws RemoteException;
 	public boolean passCorrecta(String user, String pass)throws RemoteException;
 	List<Pelicula> buscarPeliculasFavoritas(String favoritas)throws RemoteException;
 	List<Pelicula> buscarPeliculasVistas(String vistas)throws RemoteException;
 	public void borrarPelicula(String titulo)throws RemoteException;
+	public String[] mostrarPeliculas()throws RemoteException;
 	public void borrarUsuario(String correo)throws RemoteException;
 	public void almacenarUsuario (Cuenta c)throws RemoteException;
 	public void almacenarPelicula (Pelicula p)throws RemoteException;

@@ -48,6 +48,7 @@ public class MostrarPeliculas extends JPanel {
 
 		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
 		String[] peliculas = {"a","b"};
+//		String[] peliculas = mostrarPeliculasController.mostrarPeliculas();
 		Arrays.sort(peliculas);
 
 		JList<String> listMostarPeliculas = new JList<String>(peliculas);

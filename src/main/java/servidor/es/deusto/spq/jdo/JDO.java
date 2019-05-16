@@ -2,6 +2,7 @@ package servidor.es.deusto.spq.jdo;
 
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.jdo.JDOHelper;
@@ -170,9 +171,6 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				if (nombres.getPrivilegio() == 1 && nombre.equals(admin)) {
 					transaction.commit();
 					resultado =  true;
-				} else {
-					transaction.commit();
-					resultado = false;
 				}
 			}
 		} catch (Exception ex) {
@@ -203,9 +201,6 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				if (nombres.getPrivilegio() == 0 && nombre.equals(user)) {
 					transaction.commit();
 					resultado =  true;
-				} else {
-					transaction.commit();
-					resultado = false;
 				}
 			}
 		} catch (Exception ex) {
@@ -235,13 +230,9 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(user);
 				System.out.println(password);
 				System.out.println(pass);
-				System.out.println(nombres.getPrivilegio());
 				if (password.equals(pass) && nombre.equals(user)) {
 					transaction.commit();
 					resultado =  true;
-				} else {
-					transaction.commit();
-					resultado = false;
 				}
 			}
 		} catch (Exception ex) {
@@ -308,6 +299,34 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	public String contrasenya(String nombre)  {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public String[] mostrarPeliculas() throws RemoteException {
+		String[] resultado = null;
+		ArrayList<String> peliculas = new ArrayList<String>();
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName());
+			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
+				String peli = pelis.getTitulo();
+				System.out.println(peli);
+				transaction.commit();
+				peliculas.add(peli);
+			}
+			resultado = peliculas.toArray(new String[peliculas.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
 	}
 
 }
