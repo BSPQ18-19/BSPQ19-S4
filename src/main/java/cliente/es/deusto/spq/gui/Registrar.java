@@ -435,8 +435,13 @@ public class Registrar extends JPanel {
 		Login.usuario = false;
 		Login.nombre = null;
 		Login.contrasenya = null;
+		Login.textFieldUsuario.setText(null);
+		Login.textFieldUsuario.setEnabled(true);
+		Login.textFieldUsuario.setEditable(true);
 		Login.lblContrasea.setEnabled(false);
 		Login.passwordFieldContrasea.setEnabled(false);
+		Login.passwordFieldContrasea.setText(null);
+		Login.passwordFieldContrasea.setEditable(true);
 		Login.btnContraseaOlvidada.setEnabled(false);
 		Login.btnIniciarSesion.setEnabled(false);
 	}

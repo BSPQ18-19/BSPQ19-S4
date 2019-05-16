@@ -118,10 +118,12 @@ public class ContrasenyaOlvidada extends JPanel {
 		Login.nombre = null;
 		Login.contrasenya = null;
 		Login.textFieldUsuario.setText(null);
+		Login.textFieldUsuario.setEnabled(true);
+		Login.textFieldUsuario.setEditable(true);
 		Login.lblContrasea.setEnabled(false);
 		Login.passwordFieldContrasea.setEnabled(false);
 		Login.passwordFieldContrasea.setText(null);
-		Login.passwordFieldContrasea.setEditable(false);
+		Login.passwordFieldContrasea.setEditable(true);
 		Login.btnContraseaOlvidada.setEnabled(false);
 		Login.btnIniciarSesion.setEnabled(false);
 	}
