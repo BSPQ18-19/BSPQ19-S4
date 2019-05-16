@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -18,7 +19,8 @@ public class Perfil extends JPanel{
 	private static final long serialVersionUID = 6216694316784718679L;
 	
 	static JLabel lblGetNombre;
-	public Perfil(PerfilController perfilController, CardLayout cardLayout) {
+	servidor.es.deusto.spq.jdo.Cuenta user;
+	public Perfil(PerfilController perfilController, CardLayout cardLayout) throws RemoteException {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -27,7 +29,7 @@ public class Perfil extends JPanel{
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 	
-		//TODO: introducir contenido
+		user = perfilController.conseguirUsuario(lblGetNombre.getText());		
 		
 		JLabel lblNombre = new JLabel("Nombre: ");
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
@@ -53,7 +55,7 @@ public class Perfil extends JPanel{
 		gbc_lblCorreo.gridy = 1;
 		add(lblCorreo, gbc_lblCorreo);
 		
-		JLabel lblGetCorreo = new JLabel("");
+		JLabel lblGetCorreo = new JLabel(user.getCorreo());
 		GridBagConstraints gbc_lblGetCorreo = new GridBagConstraints();
 		gbc_lblGetCorreo.fill = GridBagConstraints.BOTH;
 		gbc_lblGetCorreo.insets = new Insets(0, 0, 5, 0);
@@ -69,6 +71,14 @@ public class Perfil extends JPanel{
 		gbc_lblPaypal.gridy = 2;
 		add(lblPaypal, gbc_lblPaypal);
 		
+		JLabel lblGetPaypal = new JLabel(user.getPaypal());
+		GridBagConstraints gbc_lblGetPaypal = new GridBagConstraints();
+		gbc_lblGetPaypal.fill = GridBagConstraints.BOTH;
+		gbc_lblGetPaypal.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetPaypal.gridx = 1;
+		gbc_lblGetPaypal.gridy = 2;
+		add(lblGetPaypal, gbc_lblGetPaypal);
+		
 		JButton btnPelFav = new JButton("Lista películas favoritas");
 		btnPelFav.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -83,14 +93,6 @@ public class Perfil extends JPanel{
 				});
 			}
 		});
-		
-		JLabel lblGetPaypal = new JLabel("");
-		GridBagConstraints gbc_lblGetPaypal = new GridBagConstraints();
-		gbc_lblGetPaypal.fill = GridBagConstraints.BOTH;
-		gbc_lblGetPaypal.insets = new Insets(0, 0, 5, 0);
-		gbc_lblGetPaypal.gridx = 1;
-		gbc_lblGetPaypal.gridy = 2;
-		add(lblGetPaypal, gbc_lblGetPaypal);
 		GridBagConstraints gbc_btnPelFav = new GridBagConstraints();
 		gbc_btnPelFav.insets = new Insets(0, 0, 5, 5);
 		gbc_btnPelFav.gridx = 0;

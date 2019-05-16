@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -19,7 +20,8 @@ public class Pelicula extends JPanel{
 	private static final long serialVersionUID = 674330126384087764L;
 	 
 	static JLabel lblGetTit;
-	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) {
+	servidor.es.deusto.spq.jdo.Pelicula peli;
+	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) throws RemoteException {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -28,7 +30,7 @@ public class Pelicula extends JPanel{
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 	
-		//TODO: introducir contenido
+		peli = peliculaController.conseguirPelicula(lblGetTit.getText());
 		
 		JLabel lblTitulo = new JLabel("Titulo de la pelicula: ");
 		GridBagConstraints gbc_lblTitulo = new GridBagConstraints();
@@ -56,7 +58,7 @@ public class Pelicula extends JPanel{
 		gbc_lblGenero.gridy = 1;
 		add(lblGenero, gbc_lblGenero);
 		
-		JLabel lblGetGen = new JLabel("");
+		JLabel lblGetGen = new JLabel(peli.getGenero());
 		GridBagConstraints gbc_lblGetGen = new GridBagConstraints();
 		gbc_lblGetGen.fill = GridBagConstraints.BOTH;
 		gbc_lblGetGen.insets = new Insets(0, 0, 5, 0);
@@ -73,7 +75,7 @@ public class Pelicula extends JPanel{
 		gbc_lblFecha.gridy = 2;
 		add(lblFecha, gbc_lblFecha);
 		
-		JLabel lblGesEstreno = new JLabel("");
+		JLabel lblGesEstreno = new JLabel(peli.getfEstreno());
 		GridBagConstraints gbc_lblGesEstreno = new GridBagConstraints();
 		gbc_lblGesEstreno.fill = GridBagConstraints.BOTH;
 		gbc_lblGesEstreno.insets = new Insets(0, 0, 5, 0);
@@ -90,7 +92,7 @@ public class Pelicula extends JPanel{
 		gbc_lblSinopsis.gridy = 3;
 		add(lblSinopsis, gbc_lblSinopsis);
 		
-		JLabel lblGetSinopsis = new JLabel("");
+		JLabel lblGetSinopsis = new JLabel(peli.getSinopsis());
 		GridBagConstraints gbc_lblGetSinopsis = new GridBagConstraints();
 		gbc_lblGetSinopsis.fill = GridBagConstraints.BOTH;
 		gbc_lblGetSinopsis.insets = new Insets(0, 0, 5, 0);
@@ -106,6 +108,14 @@ public class Pelicula extends JPanel{
 		gbc_lblFTecnica.gridx = 0;
 		gbc_lblFTecnica.gridy = 4;
 		add(lblFTecnica, gbc_lblFTecnica);
+		
+		JLabel lblGetFicha = new JLabel(peli.getFichaTecnica());
+		GridBagConstraints gbc_lblGetFicha = new GridBagConstraints();
+		gbc_lblGetFicha.fill = GridBagConstraints.BOTH;
+		gbc_lblGetFicha.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetFicha.gridx = 1;
+		gbc_lblGetFicha.gridy = 4;
+		add(lblGetFicha, gbc_lblGetFicha);
 		
 		JButton btnTrailer = new JButton("Ver trailer");
 		btnTrailer.addActionListener(new ActionListener() {
@@ -127,14 +137,6 @@ public class Pelicula extends JPanel{
 				});
 			}
 		});
-		
-		JLabel lblGetFicha = new JLabel("");
-		GridBagConstraints gbc_lblGetFicha = new GridBagConstraints();
-		gbc_lblGetFicha.fill = GridBagConstraints.BOTH;
-		gbc_lblGetFicha.insets = new Insets(0, 0, 5, 0);
-		gbc_lblGetFicha.gridx = 1;
-		gbc_lblGetFicha.gridy = 4;
-		add(lblGetFicha, gbc_lblGetFicha);
 		GridBagConstraints gbc_btnTrailer = new GridBagConstraints();
 		gbc_btnTrailer.insets = new Insets(0, 0, 5, 0);
 		gbc_btnTrailer.gridwidth = 2;
@@ -145,7 +147,6 @@ public class Pelicula extends JPanel{
 		JButton btnVerPuntYOpin = new JButton("Ver puntuaciones y opiniones");
 		btnVerPuntYOpin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
@@ -166,7 +167,6 @@ public class Pelicula extends JPanel{
 		JButton btnDejarPuntYOpin = new JButton("Dejar puntuacion u opinion");
 		btnDejarPuntYOpin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				//setVisible(false);
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {

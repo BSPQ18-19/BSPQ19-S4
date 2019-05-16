@@ -330,11 +330,15 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction.begin();
 			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
 			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String name = nombres.getNombre();
 				String pass = nombres.getContrasenna();
 				System.out.println(nombre);
+				System.out.println(name);
 				System.out.println(pass);
-				transaction.commit();
-				resultado = pass;
+				if (nombre.equals(name)) {
+					transaction.commit();
+					resultado = pass;
+				}
 			}
 		} catch (Exception ex) {
 			return null;
@@ -474,6 +478,64 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			}
 			transaction.commit();
 			resultado = peliculas.toArray(new String[peliculas.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
+
+	@Override
+	public Pelicula conseguirPelicula(String titulo) throws RemoteException {
+		Pelicula resultado = null;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName());
+			for (Pelicula peliculas : (List<Pelicula>) query.executeList()) {
+				String peli = peliculas.getTitulo();
+				System.out.println(titulo);
+				System.out.println(peli);
+				if (titulo.equals(peli)) {
+					transaction.commit();
+					resultado = peliculas;
+				}
+			}
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
+
+	@Override
+	public Cuenta conseguirUsuario(String nombre) throws RemoteException {
+		Cuenta resultado = null;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String name = nombres.getNombre();
+				System.out.println(nombre);
+				System.out.println(name);
+				if (nombre.equals(name)) {
+					transaction.commit();
+					resultado = nombres;
+				}
+			}
 		} catch (Exception ex) {
 			return null;
 		} finally {
