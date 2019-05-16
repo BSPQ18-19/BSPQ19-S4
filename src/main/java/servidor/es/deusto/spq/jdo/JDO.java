@@ -155,7 +155,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	@Override
-	public boolean esAdmin(String correo) throws RemoteException {
+	public boolean esAdmin(String admin) throws RemoteException {
 		boolean resultado = false;
 		try {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -165,9 +165,9 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
 				String nombre = nombres.getNombre();
 				System.out.println(nombre);
-				System.out.println(correo);
+				System.out.println(admin);
 				System.out.println(nombres.getPrivilegio());
-				if (nombres.getPrivilegio() == 1 && nombre.equals(correo)) {
+				if (nombres.getPrivilegio() == 1 && nombre.equals(admin)) {
 					transaction.commit();
 					resultado =  true;
 				} else {
@@ -189,12 +189,71 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public boolean esUser(String user) throws RemoteException {
-		return false;
+		boolean resultado = false;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String nombre = nombres.getNombre();
+				System.out.println(nombre);
+				System.out.println(user);
+				System.out.println(nombres.getPrivilegio());
+				if (nombres.getPrivilegio() == 0 && nombre.equals(user)) {
+					transaction.commit();
+					resultado =  true;
+				} else {
+					transaction.commit();
+					resultado = false;
+				}
+			}
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return false;
+			}
+			persistentManager.close();
+			return resultado;
+		}
 	}
 
 	@Override
 	public boolean passCorrecta(String user, String pass) throws RemoteException {
-		return true;
+		boolean resultado = false;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String nombre = nombres.getNombre();
+				String password = nombres.getContrasenna();
+				System.out.println(nombre);
+				System.out.println(user);
+				System.out.println(password);
+				System.out.println(pass);
+				System.out.println(nombres.getPrivilegio());
+				if (password.equals(pass) && nombre.equals(user)) {
+					transaction.commit();
+					resultado =  true;
+				} else {
+					transaction.commit();
+					resultado = false;
+				}
+			}
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return false;
+			}
+			persistentManager.close();
+			return resultado;
+		}
 	}
 
 	public void almacenarUsuario(Cuenta c) {
