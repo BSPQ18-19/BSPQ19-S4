@@ -7,6 +7,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -22,8 +23,8 @@ import cliente.es.deusto.spq.controller.MostrarPeliculasController;
 public class MostrarPeliculas extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
 
-	public MostrarPeliculas(MostrarPeliculasController mostrarPeliculasController, CardLayout cardLayout) {
-		
+	public MostrarPeliculas(MostrarPeliculasController mostrarPeliculasController, CardLayout cardLayout) throws RemoteException {
+
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
@@ -46,9 +47,7 @@ public class MostrarPeliculas extends JPanel {
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 
-		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
-		String[] peliculas = {"a","b"};
-//		String[] peliculas = mostrarPeliculasController.mostrarPeliculas();
+		String[] peliculas = mostrarPeliculasController.mostrarPeliculas();
 		Arrays.sort(peliculas);
 
 		JList<String> listMostarPeliculas = new JList<String>(peliculas);
