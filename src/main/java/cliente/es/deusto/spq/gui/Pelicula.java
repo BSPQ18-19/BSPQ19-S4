@@ -41,6 +41,7 @@ public class Pelicula extends JPanel{
 		
 		lblGetTit = new JLabel(BuscarPelicula.pelicula);
 		GridBagConstraints gbc_lblGetTit = new GridBagConstraints();
+		gbc_lblGetTit.fill = GridBagConstraints.BOTH;
 		gbc_lblGetTit.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetTit.gridx = 1;
 		gbc_lblGetTit.gridy = 0;
@@ -57,6 +58,7 @@ public class Pelicula extends JPanel{
 		
 		JLabel lblGetGen = new JLabel("");
 		GridBagConstraints gbc_lblGetGen = new GridBagConstraints();
+		gbc_lblGetGen.fill = GridBagConstraints.BOTH;
 		gbc_lblGetGen.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetGen.gridx = 1;
 		gbc_lblGetGen.gridy = 1;
@@ -73,6 +75,7 @@ public class Pelicula extends JPanel{
 		
 		JLabel lblGesEstreno = new JLabel("");
 		GridBagConstraints gbc_lblGesEstreno = new GridBagConstraints();
+		gbc_lblGesEstreno.fill = GridBagConstraints.BOTH;
 		gbc_lblGesEstreno.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGesEstreno.gridx = 1;
 		gbc_lblGesEstreno.gridy = 2;
@@ -89,6 +92,7 @@ public class Pelicula extends JPanel{
 		
 		JLabel lblGetSinopsis = new JLabel("");
 		GridBagConstraints gbc_lblGetSinopsis = new GridBagConstraints();
+		gbc_lblGetSinopsis.fill = GridBagConstraints.BOTH;
 		gbc_lblGetSinopsis.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetSinopsis.gridx = 1;
 		gbc_lblGetSinopsis.gridy = 3;
@@ -126,6 +130,7 @@ public class Pelicula extends JPanel{
 		
 		JLabel lblGetFicha = new JLabel("");
 		GridBagConstraints gbc_lblGetFicha = new GridBagConstraints();
+		gbc_lblGetFicha.fill = GridBagConstraints.BOTH;
 		gbc_lblGetFicha.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetFicha.gridx = 1;
 		gbc_lblGetFicha.gridy = 4;

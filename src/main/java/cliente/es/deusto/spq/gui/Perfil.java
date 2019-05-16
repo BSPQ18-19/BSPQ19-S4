@@ -36,8 +36,9 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		gbc_lblNombre.gridy = 0;
 		add(lblNombre, gbc_lblNombre);
 		
-		JLabel lblGetNombre = new JLabel("");
+		JLabel lblGetNombre = new JLabel(Login.nombre);
 		GridBagConstraints gbc_lblGetNombre = new GridBagConstraints();
+		gbc_lblGetNombre.fill = GridBagConstraints.BOTH;
 		gbc_lblGetNombre.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetNombre.gridx = 1;
 		gbc_lblGetNombre.gridy = 0;
@@ -53,6 +54,7 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		
 		JLabel lblGetCorreo = new JLabel("");
 		GridBagConstraints gbc_lblGetCorreo = new GridBagConstraints();
+		gbc_lblGetCorreo.fill = GridBagConstraints.BOTH;
 		gbc_lblGetCorreo.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetCorreo.gridx = 1;
 		gbc_lblGetCorreo.gridy = 1;
@@ -83,6 +85,7 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		
 		JLabel lblGetPaypal = new JLabel("");
 		GridBagConstraints gbc_lblGetPaypal = new GridBagConstraints();
+		gbc_lblGetPaypal.fill = GridBagConstraints.BOTH;
 		gbc_lblGetPaypal.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetPaypal.gridx = 1;
 		gbc_lblGetPaypal.gridy = 2;
