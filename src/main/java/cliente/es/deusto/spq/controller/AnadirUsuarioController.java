@@ -12,8 +12,8 @@ public class AnadirUsuarioController {
 		this.service = service;
 	}
 	//TODO Metodos correspondientes
-	public boolean almacenarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) throws RemoteException {
-		return service.getService().almacenarUsuario(correo, nombre, contrasenna, paypal, privilegio, gasto);
+	public boolean almacenarUsuario(Cuenta c) throws RemoteException {
+		return service.getService().almacenarUsuario(c);
 		
 	}
 }

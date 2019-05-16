@@ -13,7 +13,7 @@ public class AnadirPeliculaController {
 		this.service = service;
 	}
 	//TODO Metodos correspondientes
-	public boolean almacenarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion) throws RemoteException {
-		return service.getService().almacenarPelicula(titulo, genero, fEstreno, trailer, fichatecnica, sinopsis, puntuacion);
+	public boolean almacenarPelicula(Pelicula p) throws RemoteException {
+		return service.getService().almacenarPelicula(p);
 	}
 }

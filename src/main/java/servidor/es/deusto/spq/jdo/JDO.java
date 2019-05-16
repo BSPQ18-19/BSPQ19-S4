@@ -184,7 +184,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		return true;
 	}
 
-	public boolean almacenarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) {
+	public boolean almacenarUsuario(Cuenta c) {
 
 	
 		persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -193,7 +193,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction.begin();
 			Query query = persistentManager.newQuery(
 					"INSERT INTO" + Cuenta.class.getName() + "(CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) VALUES('"
-															+ correo + "'," + contrasenna + ",'" + gasto + "'," + nombre +",'" +paypal+"', "+privilegio+ ");");
+															+ c.correo + "'," + c.contrasenna + ",'" + c.gasto + "'," + c.nombre +",'" +c.paypal+"', "+c.privilegio+ ");");
 			transaction.commit();
 			return true;
 		} catch (Exception ex) {
@@ -227,7 +227,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 
-	public boolean almacenarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion) {
+	public boolean almacenarPelicula(Pelicula p) {
 		
 		persistentManager = persistentManagerFactory.getPersistenceManager();
 		transaction = persistentManager.currentTransaction();
@@ -235,7 +235,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction.begin();
 			Query query = persistentManager.newQuery(
 					"INSERT INTO" + Pelicula.class.getName() + "(FESTRENO, FICHATECNICA, GENERO, PUNTUACION, SINOPSIS, TITULO, TRAILER) VALUES('"
-							+fEstreno+ "'," + fichatecnica + ",'" + genero + "'," + puntuacion +",'" +sinopsis+"', "+titulo+ ",'"+trailer+ ");");
+							+p.fEstreno+ "'," + p.fichaTecnica+ ",'" + p.genero + "'," + p.puntuacion +",'" +p.sinopsis+"', "+p.titulo+ ",'"+p.trailer+ ");");
 			transaction.commit();
 			return true;
 		} catch (Exception ex) {
