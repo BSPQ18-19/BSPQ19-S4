@@ -116,8 +116,7 @@ public class Pelicula {
 	@Override
 	public String toString() {
 		return "Pelicula [genero=" + genero + ", titulo=" + titulo + ", fEstreno=" + fEstreno + ", trailer=" + trailer
-				+ ", fichaTecnica=" + fichaTecnica + ", sinopsis=" + sinopsis + ", puntuacion=" + puntuacion
-				+ ", usuarios=" + usuarios + "]";
+				+ ", fichaTecnica=" + fichaTecnica + ", sinopsis=" + sinopsis + ", puntuacion=" + puntuacion+ "]";
 	}
     
 }
