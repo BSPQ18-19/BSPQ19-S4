@@ -172,7 +172,7 @@ public class BuscarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Pelicula.titulo =pelicula;
+							Pelicula.lblGetTit.setText(pelicula);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
