@@ -359,10 +359,9 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName());
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
 				String peli = pelis.getTitulo();
-				System.out.println(peli);
-				transaction.commit();
 				peliculas.add(peli);
 			}
+			transaction.commit();
 			resultado = peliculas.toArray(new String[peliculas.size()]);
 		} catch (Exception ex) {
 			return null;
@@ -388,9 +387,9 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
 				String peli = pelis.getTitulo();
 				System.out.println(peli);
-				transaction.commit();
 				peliculas.add(peli);
 			}
+			transaction.commit();
 			resultado = peliculas.toArray(new String[peliculas.size()]);
 		} catch (Exception ex) {
 			return null;
@@ -416,9 +415,9 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
 				String peli = pelis.getTitulo();
 				System.out.println(peli);
-				transaction.commit();
 				peliculas.add(peli);
 			}
+			transaction.commit();
 			resultado = peliculas.toArray(new String[peliculas.size()]);
 		} catch (Exception ex) {
 			return null;
@@ -440,13 +439,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
 			transaction = persistentManager.currentTransaction();
 			transaction.begin();
-			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY festreno ASC");
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY fEstreno ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
 				String peli = pelis.getTitulo();
 				System.out.println(peli);
-				transaction.commit();
 				peliculas.add(peli);
 			}
+			transaction.commit();
 			resultado = peliculas.toArray(new String[peliculas.size()]);
 		} catch (Exception ex) {
 			return null;
