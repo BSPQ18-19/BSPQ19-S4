@@ -1,5 +1,5 @@
 # BSPQ19-S4
-
+[![Build Status](https://travis-ci.com/koldou98/BSPQ19-S4LuKol.svg?token=DAto13p3rDajGqmgtHt8&branch=master)](https://travis-ci.com/koldou98/BSPQ19-S4LuKol)
 # Videoclub online
 
 ## Descripción
