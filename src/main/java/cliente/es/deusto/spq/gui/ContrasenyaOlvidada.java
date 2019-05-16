@@ -113,6 +113,7 @@ public class ContrasenyaOlvidada extends JPanel {
 		add(btnAtras, gbc_btnAtras);
 	}
 	public void reinicio(){
+		textFieldCorreo.setText(null);
 		Login.administrador = false;
 		Login.usuario = false;
 		Login.nombre = null;

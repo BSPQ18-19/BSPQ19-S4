@@ -24,7 +24,6 @@ public class Server extends UnicastRemoteObject {
 
 	protected Server() throws RemoteException {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public static void main(String[] args) {

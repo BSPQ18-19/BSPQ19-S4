@@ -99,10 +99,7 @@ public class BuscarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO: Cargar String[]peliculasTitulo con todas las peliculas de la BD ordenadas por
-							// titulo
 							String[] peliculasTitulo = buscarPeliculaController.buscarPeliculasTitulo();
-//							String[] peliculasTitulo = {"a","b","c"};
 							actualizarLista(peliculasTitulo);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -124,10 +121,7 @@ public class BuscarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO: Cargar String[]peliculasGenero con todas las peliculas de la BD ordenadas por
-							// genero
 							String[] peliculasGenero = buscarPeliculaController.buscarPeliculasGenero();
-//							String[] peliculasGenero = {"a","b","c","d"};
 							actualizarLista(peliculasGenero);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -149,10 +143,7 @@ public class BuscarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							// TODO: Cargar String[]peliculasFecha con todas las peliculas de la BD ordenadas por
-							// fecha
 							String[] peliculasFecha = buscarPeliculaController.buscarPeliculasFecha();
-//							String[] peliculasFecha = {"a","b","c","d","e"};
 							actualizarLista(peliculasFecha);
 						} catch (Exception e) {
 							e.printStackTrace();

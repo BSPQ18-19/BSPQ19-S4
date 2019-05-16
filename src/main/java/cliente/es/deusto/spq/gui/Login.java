@@ -179,7 +179,6 @@ public class Login extends JPanel {
 					EventQueue.invokeLater(new Runnable() {
 						public void run() {
 							try {
-								//TODO: pasar info usuario
 								cardLayout.show(getParent(), VentanaPrincipal.USUARIO);
 							} catch (Exception e) {
 								e.printStackTrace();
