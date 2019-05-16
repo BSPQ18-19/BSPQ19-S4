@@ -18,7 +18,7 @@ public class Pelicula extends JPanel{
 
 	private static final long serialVersionUID = 674330126384087764L;
 	 
-	static JLabel lblGetTit;
+	static String titulo;
 	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
@@ -39,7 +39,7 @@ public class Pelicula extends JPanel{
 		gbc_lblTitulo.gridy = 0;
 		add(lblTitulo, gbc_lblTitulo);
 		
-		lblGetTit = new JLabel(BuscarPelicula.pelicula);
+		JLabel lblGetTit = new JLabel(titulo);
 		GridBagConstraints gbc_lblGetTit = new GridBagConstraints();
 		gbc_lblGetTit.fill = GridBagConstraints.BOTH;
 		gbc_lblGetTit.insets = new Insets(0, 0, 5, 0);
