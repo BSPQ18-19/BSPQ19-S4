@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cliente.es.deusto.spq.controller.PerfilController;
-import javax.swing.JTextField;
 
 public class Perfil extends JPanel{
 	private static final long serialVersionUID = 6216694316784718679L;

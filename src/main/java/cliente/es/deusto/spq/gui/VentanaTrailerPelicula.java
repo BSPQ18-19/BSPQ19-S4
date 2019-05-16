@@ -1,19 +1,22 @@
 package cliente.es.deusto.spq.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Component;
-import java.awt.EventQueue;
-import java.net.URL;
+
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-import javax.swing.border.EmptyBorder;
 
 import chrriis.dj.nativeswing.swtimpl.NativeInterface;
 import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 
 public class VentanaTrailerPelicula extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+
 	public VentanaTrailerPelicula() {
 	}
 

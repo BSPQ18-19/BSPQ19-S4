@@ -78,7 +78,6 @@ public class BorrarPelicula extends JPanel {
 					public void run() {
 						try {
 							borrarPeliculaController.borrarPelicula(n);
-							
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
 						} catch (Exception e) {

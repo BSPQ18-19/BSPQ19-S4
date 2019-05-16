@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import cliente.es.deusto.spq.controller.PeliculaController;
-import javax.swing.JTextField;
 
 public class Pelicula extends JPanel{
 
@@ -40,7 +39,7 @@ public class Pelicula extends JPanel{
 		gbc_lblTitulo.gridy = 0;
 		add(lblTitulo, gbc_lblTitulo);
 		
-		lblGetTit = new JLabel("");
+		lblGetTit = new JLabel(BuscarPelicula.pelicula);
 		GridBagConstraints gbc_lblGetTit = new GridBagConstraints();
 		gbc_lblGetTit.insets = new Insets(0, 0, 5, 0);
 		gbc_lblGetTit.gridx = 1;

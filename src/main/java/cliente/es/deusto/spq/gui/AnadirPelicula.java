@@ -11,8 +11,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.DriverManager;
-import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;

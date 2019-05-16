@@ -11,8 +11,6 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.sql.DriverManager;
-import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -23,7 +21,6 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import cliente.es.deusto.spq.controller.AnadirUsuarioController;
-import servidor.es.deusto.spq.jdo.Cuenta;
 
 public class AnadirUsuario extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;

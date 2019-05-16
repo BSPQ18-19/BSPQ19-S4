@@ -31,8 +31,10 @@ public class BuscarPelicula extends JPanel {
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
 	private String[] peliculas = {"Elegir como ordenar la lista"};
+	private String[] pelis = null;
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
+	static String pelicula = null;
 
 	public void actualizarLista(String[] peliculas) {
 		listMostarPeliculas.setEnabled(true);
@@ -101,6 +103,7 @@ public class BuscarPelicula extends JPanel {
 						try {
 							String[] peliculasTitulo = buscarPeliculaController.buscarPeliculasTitulo();
 							actualizarLista(peliculasTitulo);
+							pelis = peliculasTitulo;
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -123,6 +126,7 @@ public class BuscarPelicula extends JPanel {
 						try {
 							String[] peliculasGenero = buscarPeliculaController.buscarPeliculasGenero();
 							actualizarLista(peliculasGenero);
+							pelis = peliculasGenero;
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -145,6 +149,7 @@ public class BuscarPelicula extends JPanel {
 						try {
 							String[] peliculasFecha = buscarPeliculaController.buscarPeliculasFecha();
 							actualizarLista(peliculasFecha);
+							pelis = peliculasFecha;
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -162,11 +167,11 @@ public class BuscarPelicula extends JPanel {
 		btnVer = new JButton("Ver información película");
 		btnVer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				int i = listMostarPeliculas.getSelectedIndex();
+				pelicula = pelis[i];
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO: coger pelicula seleccionada de la lista
-							//TODO: pasar pelicula seleccionada
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();

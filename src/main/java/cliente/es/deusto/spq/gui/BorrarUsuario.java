@@ -20,7 +20,6 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import cliente.es.deusto.spq.controller.BorrarPeliculaController;
 import cliente.es.deusto.spq.controller.BorrarUsuarioController;
 
 public class BorrarUsuario extends JPanel {

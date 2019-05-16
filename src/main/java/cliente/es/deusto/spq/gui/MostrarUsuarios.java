@@ -51,6 +51,7 @@ public class MostrarUsuarios extends JPanel {
 		Arrays.sort(usuarios);
 
 		JList<String> listMostarUsuarios = new JList<String>(usuarios);
+		listMostarUsuarios.setEnabled(false);
 		listMostarUsuarios.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listMostarUsuarios.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listMostarUsuarios);
