@@ -292,13 +292,60 @@ public class JDO extends UnicastRemoteObject implements IServer {
 	}
 
 	public boolean correo(String nombre, String correo)  {
-		// TODO Auto-generated method stub
-		return false;
+		boolean resultado = false;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String user = nombres.getNombre();
+				String mail = nombres.getCorreo();
+				System.out.println(nombre);
+				System.out.println(user);
+				System.out.println(correo);
+				System.out.println(mail);
+				if (correo.equals(mail) && nombre.equals(user)) {
+					transaction.commit();
+					resultado =  true;
+				}
+			}
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return false;
+			}
+			persistentManager.close();
+			return resultado;
+		}
 	}
 
 	public String contrasenya(String nombre)  {
-		// TODO Auto-generated method stub
-		return null;
+		String resultado = null;
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
+				String pass = nombres.getContrasenna();
+				System.out.println(nombre);
+				System.out.println(pass);
+				transaction.commit();
+				resultado = pass;
+			}
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
 	}
 
 	@Override
