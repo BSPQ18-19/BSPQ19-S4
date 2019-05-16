@@ -17,7 +17,8 @@ import cliente.es.deusto.spq.controller.PerfilController;
 public class Perfil extends JPanel{
 	private static final long serialVersionUID = 6216694316784718679L;
 	
-public Perfil(PerfilController perfilController, CardLayout cardLayout) {
+	static JLabel lblGetNombre;
+	public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -36,7 +37,7 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		gbc_lblNombre.gridy = 0;
 		add(lblNombre, gbc_lblNombre);
 		
-		JLabel lblGetNombre = new JLabel(Login.nombre);
+		lblGetNombre = new JLabel("");
 		GridBagConstraints gbc_lblGetNombre = new GridBagConstraints();
 		gbc_lblGetNombre.fill = GridBagConstraints.BOTH;
 		gbc_lblGetNombre.insets = new Insets(0, 0, 5, 0);

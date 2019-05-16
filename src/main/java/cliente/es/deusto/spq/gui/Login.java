@@ -83,6 +83,7 @@ public class Login extends JPanel {
 							btnContraseaOlvidada.setEnabled(true);
 							passwordFieldContrasea.requestFocus();
 							textFieldUsuario.setEditable(false);
+							Perfil.lblGetNombre.setText(nombre);
 						 }
 						if (administrador == false && usuario == false) {
 							JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
