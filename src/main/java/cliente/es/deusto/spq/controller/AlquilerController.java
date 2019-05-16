@@ -12,8 +12,8 @@ public class AlquilerController {
     this.service = service;
   }
 
-  public boolean alquilarPelicula(String fAlq, int tAlq, String correo, String peli) throws RemoteException {
-      return service.getService().alquilarPelicula(fAlq, tAlq, correo, peli);
+  public boolean alquilarPelicula(String fAlq, int tAlq, String nombre, String peli) throws RemoteException {
+      return service.getService().alquilarPelicula(fAlq, tAlq, nombre, peli);
     }
     
 }

@@ -7,6 +7,8 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -54,7 +56,13 @@ private static final long serialVersionUID = 674330126384087764L;
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO:guardar alquiler
+							SimpleDateFormat formatter= new SimpleDateFormat("yyyy-MM-dd 'at' HH:mm:ss z");  
+							Date date = new Date(System.currentTimeMillis());  
+							String fAlq = formatter.format(date);
+							int tAlq = comboBox.getSelectedIndex();
+							String nombre = Login.textFieldUsuario.getText();
+							String peli = Pelicula.lblGetTit.getText();
+							alquilerController.alquilarPelicula(fAlq, tAlq, nombre, peli);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 							JOptionPane.showMessageDialog(null, "Película alquilada");
 						} catch (Exception e) {
