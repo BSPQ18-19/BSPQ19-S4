@@ -376,4 +376,88 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		}
 	}
 
+	@Override
+	public String[] buscarPeliculasTitulo() throws RemoteException {
+		String[] resultado = null;
+		ArrayList<String> peliculas = new ArrayList<String>();
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY titulo ASC" );
+			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
+				String peli = pelis.getTitulo();
+				System.out.println(peli);
+				transaction.commit();
+				peliculas.add(peli);
+			}
+			resultado = peliculas.toArray(new String[peliculas.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
+
+	@Override
+	public String[] buscarPeliculasGenero() throws RemoteException {
+		String[] resultado = null;
+		ArrayList<String> peliculas = new ArrayList<String>();
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY genero ASC");
+			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
+				String peli = pelis.getTitulo();
+				System.out.println(peli);
+				transaction.commit();
+				peliculas.add(peli);
+			}
+			resultado = peliculas.toArray(new String[peliculas.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
+
+	@Override
+	public String[] buscarPeliculasFecha() throws RemoteException {
+		String[] resultado = null;
+		ArrayList<String> peliculas = new ArrayList<String>();
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY festreno ASC");
+			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
+				String peli = pelis.getTitulo();
+				System.out.println(peli);
+				transaction.commit();
+				peliculas.add(peli);
+			}
+			resultado = peliculas.toArray(new String[peliculas.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
+
 }

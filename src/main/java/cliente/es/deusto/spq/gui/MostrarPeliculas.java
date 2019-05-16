@@ -51,6 +51,7 @@ public class MostrarPeliculas extends JPanel {
 		Arrays.sort(peliculas);
 
 		JList<String> listMostarPeliculas = new JList<String>(peliculas);
+		listMostarPeliculas.setEnabled(false);
 		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listMostarPeliculas);

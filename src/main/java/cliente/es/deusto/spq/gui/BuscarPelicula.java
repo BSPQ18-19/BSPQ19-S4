@@ -69,7 +69,6 @@ public class BuscarPelicula extends JPanel {
 		gbc_scrollPane.gridy = 3;
 		add(scrollPane, gbc_scrollPane);
 
-		//TODO: cargar lista con peliculas ordenadas por título (por defecto)
 		Arrays.sort(peliculas);
 		
 		listMostarPeliculas = new JList<String>(peliculas);
@@ -102,7 +101,8 @@ public class BuscarPelicula extends JPanel {
 						try {
 							// TODO: Cargar String[]peliculasTitulo con todas las peliculas de la BD ordenadas por
 							// titulo
-							String[] peliculasTitulo = {"a","b","c"};
+							String[] peliculasTitulo = buscarPeliculaController.buscarPeliculasTitulo();
+//							String[] peliculasTitulo = {"a","b","c"};
 							actualizarLista(peliculasTitulo);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -126,7 +126,8 @@ public class BuscarPelicula extends JPanel {
 						try {
 							// TODO: Cargar String[]peliculasGenero con todas las peliculas de la BD ordenadas por
 							// genero
-							String[] peliculasGenero = {"a","b","c","d"};
+							String[] peliculasGenero = buscarPeliculaController.buscarPeliculasGenero();
+//							String[] peliculasGenero = {"a","b","c","d"};
 							actualizarLista(peliculasGenero);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -150,7 +151,8 @@ public class BuscarPelicula extends JPanel {
 						try {
 							// TODO: Cargar String[]peliculasFecha con todas las peliculas de la BD ordenadas por
 							// fecha
-							String[] peliculasFecha = {"a","b","c","d","e"};
+							String[] peliculasFecha = buscarPeliculaController.buscarPeliculasFecha();
+//							String[] peliculasFecha = {"a","b","c","d","e"};
 							actualizarLista(peliculasFecha);
 						} catch (Exception e) {
 							e.printStackTrace();

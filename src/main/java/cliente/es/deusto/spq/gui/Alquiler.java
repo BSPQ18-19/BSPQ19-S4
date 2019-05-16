@@ -56,7 +56,7 @@ private static final long serialVersionUID = 674330126384087764L;
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							SimpleDateFormat formatter= new SimpleDateFormat("dd-MM-yyyy");  
+							SimpleDateFormat formatter= new SimpleDateFormat("yyyy/MM/dd");  
 							Date date = new Date(System.currentTimeMillis());  
 							String fAlq = formatter.format(date);
 							int tAlq = comboBox.getSelectedIndex()+1;
