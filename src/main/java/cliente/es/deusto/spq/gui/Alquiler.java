@@ -23,6 +23,7 @@ import javax.swing.DefaultComboBoxModel;
 public class Alquiler extends JPanel {
 private static final long serialVersionUID = 674330126384087764L;
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public Alquiler(AlquilerController alquilerController, CardLayout cardLayout) {
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
