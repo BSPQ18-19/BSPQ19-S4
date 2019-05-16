@@ -374,6 +374,33 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			return resultado;
 		}
 	}
+	
+	@Override
+	public String[] mostrarUsuarios() throws RemoteException {
+		String[] resultado = null;
+		ArrayList<String> usuarios = new ArrayList<String>();
+		try {
+			persistentManager = persistentManagerFactory.getPersistenceManager();
+			transaction = persistentManager.currentTransaction();
+			transaction.begin();
+			Query query = persistentManager.newQuery("SELECT  FROM " + Cuenta.class.getName());
+			for (Cuenta users : (List<Cuenta>) query.executeList()) {
+				String user = users.getNombre();
+				usuarios.add(user);
+			}
+			transaction.commit();
+			resultado = usuarios.toArray(new String[usuarios.size()]);
+		} catch (Exception ex) {
+			return null;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+				return null;
+			}
+			persistentManager.close();
+			return resultado;
+		}
+	}
 
 	@Override
 	public String[] buscarPeliculasTitulo() throws RemoteException {
@@ -458,5 +485,4 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			return resultado;
 		}
 	}
-
 }

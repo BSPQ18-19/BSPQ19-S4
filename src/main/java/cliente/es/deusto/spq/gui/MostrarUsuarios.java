@@ -2,12 +2,12 @@ package cliente.es.deusto.spq.gui;
 
 import java.awt.CardLayout;
 import java.awt.EventQueue;
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.rmi.RemoteException;
 import java.util.Arrays;
 
 import javax.swing.JButton;
@@ -23,7 +23,7 @@ import cliente.es.deusto.spq.controller.MostrarUsuariosController;
 public class MostrarUsuarios extends JPanel {
 	private static final long serialVersionUID = 8617549966130702827L;
 
-	public MostrarUsuarios(MostrarUsuariosController MostrarUsuariosController, CardLayout cardLayout) {
+	public MostrarUsuarios(MostrarUsuariosController mostrarUsuariosController, CardLayout cardLayout) throws RemoteException{
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -47,8 +47,7 @@ public class MostrarUsuarios extends JPanel {
 		gbc_scrollPane.gridy = 1;
 		add(scrollPane, gbc_scrollPane);
 
-		// TODO: Cargar String[]usuarios con los nombres de todos los usuarios de la BD
-		String[] usuarios = {"a","b"};
+		String[] usuarios = mostrarUsuariosController.mostrarUsuarios();
 		Arrays.sort(usuarios);
 
 		JList<String> listMostarUsuarios = new JList<String>(usuarios);
