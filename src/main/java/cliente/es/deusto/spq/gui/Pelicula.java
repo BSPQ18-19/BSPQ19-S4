@@ -18,11 +18,6 @@ import javax.swing.JTextField;
 public class Pelicula extends JPanel{
 
 	private static final long serialVersionUID = 674330126384087764L;
-	private JTextField textFieldTitulo;
-	private JTextField textFieldGenero;
-	private JTextField textFieldFEstreno;
-	private JTextField textFieldSinopsis;
-	private JTextField textFieldFicha;
 	
 	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) {
 		
@@ -44,15 +39,12 @@ public class Pelicula extends JPanel{
 		gbc_lblTitulo.gridy = 0;
 		add(lblTitulo, gbc_lblTitulo);
 		
-		textFieldTitulo = new JTextField();
-		textFieldTitulo.setEditable(false);
-		GridBagConstraints gbc_textFieldTitulo = new GridBagConstraints();
-		gbc_textFieldTitulo.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldTitulo.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldTitulo.gridx = 1;
-		gbc_textFieldTitulo.gridy = 0;
-		add(textFieldTitulo, gbc_textFieldTitulo);
-		textFieldTitulo.setColumns(10);
+		JLabel lblGetTit = new JLabel("");
+		GridBagConstraints gbc_lblGetTit = new GridBagConstraints();
+		gbc_lblGetTit.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetTit.gridx = 1;
+		gbc_lblGetTit.gridy = 0;
+		add(lblGetTit, gbc_lblGetTit);
 		
 		JLabel lblGenero = new JLabel("Genero de la pelicula: ");
 		GridBagConstraints gbc_lblGenero = new GridBagConstraints();
@@ -63,15 +55,12 @@ public class Pelicula extends JPanel{
 		gbc_lblGenero.gridy = 1;
 		add(lblGenero, gbc_lblGenero);
 		
-		textFieldGenero = new JTextField();
-		textFieldGenero.setEditable(false);
-		GridBagConstraints gbc_textFieldGenero = new GridBagConstraints();
-		gbc_textFieldGenero.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldGenero.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldGenero.gridx = 1;
-		gbc_textFieldGenero.gridy = 1;
-		add(textFieldGenero, gbc_textFieldGenero);
-		textFieldGenero.setColumns(10);
+		JLabel lblGetGen = new JLabel("");
+		GridBagConstraints gbc_lblGetGen = new GridBagConstraints();
+		gbc_lblGetGen.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetGen.gridx = 1;
+		gbc_lblGetGen.gridy = 1;
+		add(lblGetGen, gbc_lblGetGen);
 		
 		JLabel lblFecha = new JLabel("Fecha de estreno de la pelicula: ");
 		GridBagConstraints gbc_lblFecha = new GridBagConstraints();
@@ -82,15 +71,12 @@ public class Pelicula extends JPanel{
 		gbc_lblFecha.gridy = 2;
 		add(lblFecha, gbc_lblFecha);
 		
-		textFieldFEstreno = new JTextField();
-		textFieldFEstreno.setEditable(false);
-		GridBagConstraints gbc_textFieldFEstreno = new GridBagConstraints();
-		gbc_textFieldFEstreno.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldFEstreno.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldFEstreno.gridx = 1;
-		gbc_textFieldFEstreno.gridy = 2;
-		add(textFieldFEstreno, gbc_textFieldFEstreno);
-		textFieldFEstreno.setColumns(10);
+		JLabel lblGesEstreno = new JLabel("");
+		GridBagConstraints gbc_lblGesEstreno = new GridBagConstraints();
+		gbc_lblGesEstreno.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGesEstreno.gridx = 1;
+		gbc_lblGesEstreno.gridy = 2;
+		add(lblGesEstreno, gbc_lblGesEstreno);
 		
 		JLabel lblSinopsis = new JLabel("Sinopsis de la pelicula: ");
 		GridBagConstraints gbc_lblSinopsis = new GridBagConstraints();
@@ -101,15 +87,12 @@ public class Pelicula extends JPanel{
 		gbc_lblSinopsis.gridy = 3;
 		add(lblSinopsis, gbc_lblSinopsis);
 		
-		textFieldSinopsis = new JTextField();
-		textFieldSinopsis.setEditable(false);
-		GridBagConstraints gbc_textFieldSinopsis = new GridBagConstraints();
-		gbc_textFieldSinopsis.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldSinopsis.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldSinopsis.gridx = 1;
-		gbc_textFieldSinopsis.gridy = 3;
-		add(textFieldSinopsis, gbc_textFieldSinopsis);
-		textFieldSinopsis.setColumns(10);
+		JLabel lblGetSinopsis = new JLabel("");
+		GridBagConstraints gbc_lblGetSinopsis = new GridBagConstraints();
+		gbc_lblGetSinopsis.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetSinopsis.gridx = 1;
+		gbc_lblGetSinopsis.gridy = 3;
+		add(lblGetSinopsis, gbc_lblGetSinopsis);
 		
 		JLabel lblFTecnica = new JLabel("Ficha tecnica de la pelicula: ");
 		GridBagConstraints gbc_lblFTecnica = new GridBagConstraints();
@@ -141,15 +124,12 @@ public class Pelicula extends JPanel{
 			}
 		});
 		
-		textFieldFicha = new JTextField();
-		textFieldFicha.setEditable(false);
-		GridBagConstraints gbc_textFieldFicha = new GridBagConstraints();
-		gbc_textFieldFicha.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldFicha.fill = GridBagConstraints.HORIZONTAL;
-		gbc_textFieldFicha.gridx = 1;
-		gbc_textFieldFicha.gridy = 4;
-		add(textFieldFicha, gbc_textFieldFicha);
-		textFieldFicha.setColumns(10);
+		JLabel lblGetFicha = new JLabel("");
+		GridBagConstraints gbc_lblGetFicha = new GridBagConstraints();
+		gbc_lblGetFicha.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetFicha.gridx = 1;
+		gbc_lblGetFicha.gridy = 4;
+		add(lblGetFicha, gbc_lblGetFicha);
 		GridBagConstraints gbc_btnTrailer = new GridBagConstraints();
 		gbc_btnTrailer.insets = new Insets(0, 0, 5, 0);
 		gbc_btnTrailer.gridwidth = 2;
@@ -206,7 +186,7 @@ public class Pelicula extends JPanel{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO: ventana alquilar pelicula
+							cardLayout.show(getParent(), VentanaPrincipal.ALQUILER);
 						} catch (Exception e) {
 							e.printStackTrace();
 						}

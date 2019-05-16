@@ -17,9 +17,6 @@ import javax.swing.JTextField;
 
 public class Perfil extends JPanel{
 	private static final long serialVersionUID = 6216694316784718679L;
-	private JTextField textFieldNombre;
-	private JTextField textFieldCorreo;
-	private JTextField textFieldPayPal;
 	
 public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		
@@ -40,14 +37,12 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		gbc_lblNombre.gridy = 0;
 		add(lblNombre, gbc_lblNombre);
 		
-		textFieldNombre = new JTextField();
-		textFieldNombre.setEditable(false);
-		GridBagConstraints gbc_textFieldNombre = new GridBagConstraints();
-		gbc_textFieldNombre.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldNombre.gridx = 1;
-		gbc_textFieldNombre.gridy = 0;
-		add(textFieldNombre, gbc_textFieldNombre);
-		textFieldNombre.setColumns(10);
+		JLabel lblGetNombre = new JLabel("");
+		GridBagConstraints gbc_lblGetNombre = new GridBagConstraints();
+		gbc_lblGetNombre.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetNombre.gridx = 1;
+		gbc_lblGetNombre.gridy = 0;
+		add(lblGetNombre, gbc_lblGetNombre);
 		
 		JLabel lblCorreo = new JLabel("Correo: ");
 		GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
@@ -57,14 +52,12 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 		gbc_lblCorreo.gridy = 1;
 		add(lblCorreo, gbc_lblCorreo);
 		
-		textFieldCorreo = new JTextField();
-		textFieldCorreo.setEditable(false);
-		GridBagConstraints gbc_textFieldCorreo = new GridBagConstraints();
-		gbc_textFieldCorreo.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldCorreo.gridx = 1;
-		gbc_textFieldCorreo.gridy = 1;
-		add(textFieldCorreo, gbc_textFieldCorreo);
-		textFieldCorreo.setColumns(10);
+		JLabel lblGetCorreo = new JLabel("");
+		GridBagConstraints gbc_lblGetCorreo = new GridBagConstraints();
+		gbc_lblGetCorreo.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetCorreo.gridx = 1;
+		gbc_lblGetCorreo.gridy = 1;
+		add(lblGetCorreo, gbc_lblGetCorreo);
 		
 		JLabel lblPaypal = new JLabel("Cuenta de Paypal: ");
 		GridBagConstraints gbc_lblPaypal = new GridBagConstraints();
@@ -89,14 +82,12 @@ public Perfil(PerfilController perfilController, CardLayout cardLayout) {
 			}
 		});
 		
-		textFieldPayPal = new JTextField();
-		textFieldPayPal.setEditable(false);
-		GridBagConstraints gbc_textFieldPayPal = new GridBagConstraints();
-		gbc_textFieldPayPal.insets = new Insets(0, 0, 5, 0);
-		gbc_textFieldPayPal.gridx = 1;
-		gbc_textFieldPayPal.gridy = 2;
-		add(textFieldPayPal, gbc_textFieldPayPal);
-		textFieldPayPal.setColumns(10);
+		JLabel lblGetPaypal = new JLabel("");
+		GridBagConstraints gbc_lblGetPaypal = new GridBagConstraints();
+		gbc_lblGetPaypal.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetPaypal.gridx = 1;
+		gbc_lblGetPaypal.gridy = 2;
+		add(lblGetPaypal, gbc_lblGetPaypal);
 		GridBagConstraints gbc_btnPelFav = new GridBagConstraints();
 		gbc_btnPelFav.insets = new Insets(0, 0, 5, 5);
 		gbc_btnPelFav.gridx = 0;
