@@ -88,7 +88,7 @@ public class CuentaPerfTest {
 		assertEquals("koldo", actual);
 	}
 
-	@PerfTest(invocations = 10000, threads = 8)
+	@PerfTest(invocations = 1000, threads = 8)
 	@Required(max = 10, average = 10)
 	@Test
 	public void testsetContrasenna() {
@@ -106,7 +106,7 @@ public class CuentaPerfTest {
 		assertEquals("Paypal", actual);
 	}
 
-	@PerfTest(invocations = 10000, threads = 20)
+	@PerfTest(invocations = 5000, threads = 20)
 	@Required(max = 30, average = 1)
 	@Test
 	public void testsetPrivilegio() {
@@ -115,8 +115,8 @@ public class CuentaPerfTest {
 		assertEquals(0, actual);
 	}
 
-	@PerfTest(invocations = 10000, threads = 20)
-	@Required(max = 10, average = 1)
+	@PerfTest(invocations = 5000, threads = 20)
+	@Required(max = 15, average = 5)
 	@Test
 	public void testsetGasto() {
 		double gasto = 5.3;
@@ -126,8 +126,8 @@ public class CuentaPerfTest {
 	}
 
 	@Test
-	@PerfTest(invocations = 100000, threads = 1)
-	@Required(max = 20, average = 1)
+	@PerfTest(invocations = 5000, threads = 1)
+	@Required(max = 20, average = 5)
 	public void testtoString() {
 		String actual = cuenta.toString();
 		assertEquals("Usuario [correo=test@test.test, nombre=test, contrasenna=test, paypal=test, privilegio=0, gasto=0.0]",
