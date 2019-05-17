@@ -21,7 +21,6 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 
 	private static final long serialVersionUID = -5970799150454206362L;
 
-	private String serverName;
 	private static PersistenceManagerFactory pmf;
 	private static final Logger logger = Logger.getLogger(JDO.class);
 	PersistenceManagerFactory persistentManagerFactory = JDOHelper
@@ -31,13 +30,6 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 
 	public JDO() throws RemoteException {
 		super();
-	}
-
-	/**
-	 * @return the serverName
-	 */
-	public String getServerName() {
-		return serverName;
 	}
 
 	@Override

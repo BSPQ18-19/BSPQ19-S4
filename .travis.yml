@@ -1,1 +1,14 @@
 language: java
+dist: xenial
+services:
+    - xvfb
+    - mysql
+
+cache:
+    directories:
+        - "$HOME/.m2"
+before_install:
+    - rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false &
+    - mysql -u root -e "create database BSPQ19-S4";
+    - mysql -u root -e "CREATE USER 'spq'@'%' IDENTIFIED BY 'spq'";
+    - mysql -u root -e "GRANT ALL ON BSPQ19-S4.* TO 'spq'@'%'";
