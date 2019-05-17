@@ -79,7 +79,7 @@ public class CuentaPerfTest {
 		assertEquals("correo@correo.correo", actual);
 	}
 
-	@PerfTest(invocations = 6000, threads = 50)
+	@PerfTest(invocations = 4000, threads = 50)
 	@Required(max = 10, average = 10)
 	@Test
 	public void testsetNombre() {
