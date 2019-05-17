@@ -23,9 +23,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetGenero() {
-		pelicula.setGenero("Superheroes");
+		pelicula.setGenero("Espacio");
 		String actual = pelicula.getGenero();
-		assertEquals("Superheroes", actual);
+		assertEquals("Espacio", actual);
 	}
 	
 	@Test
@@ -36,9 +36,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetTitulo() {
-		pelicula.setTitulo("Avengers");
+		pelicula.setTitulo("StarWars");
 		String actual = pelicula.getTitulo();
-		assertEquals("Avengers", actual);
+		assertEquals("StarWars", actual);
 	}
 	
 	@Test
@@ -49,9 +49,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetfEstreno() {
-		pelicula.setfEstreno("2018/01/01");
+		pelicula.setfEstreno("1970/01/01");
 		String actual = pelicula.getfEstreno();
-		assertEquals("2018/01/01", actual);
+		assertEquals("1970/01/01", actual);
 	}
 	
 	@Test
@@ -62,9 +62,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetTrailer() {
-		pelicula.setTrailer("youtube");
+		pelicula.setTrailer("youtube2");
 		String actual = pelicula.getTrailer();
-		assertEquals("youtube", actual);
+		assertEquals("youtube2", actual);
 	}
 	
 	@Test
@@ -75,9 +75,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetFichaTecnica() {
-		pelicula.setFichaTecnica("HermanosRusso");
+		pelicula.setFichaTecnica("George Lucas");
 		String actual = pelicula.getFichaTecnica();
-		assertEquals("HermanosRusso", actual);
+		assertEquals("George Lucas", actual);
 	}
 	
 	@Test
@@ -88,9 +88,9 @@ public class PeliculaTest {
 	
 	@Test
 	public void testsetSinopsis() {
-		pelicula.setSinopsis("Los vengadores contra Loki");
+		pelicula.setSinopsis("La guerra de las galaxias");
 		String actual = pelicula.getSinopsis();
-		assertEquals("Los vengadores contra Loki", actual);
+		assertEquals("La guerra de las galaxias", actual);
 	}
 	
 	@Test
