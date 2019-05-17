@@ -1,5 +1,6 @@
 package servidor.es.deusto.spq.jdo;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -65,10 +66,75 @@ public class JDOTest {
 		assertFalse(db.esUser(c2.getNombre()));
 	}
 	
+	@Test
+	public void testpassCorrecta() throws RemoteException {
+		db.passCorrecta(c.getNombre(), c.getContrasenna());
+		assertTrue(db.passCorrecta(c.getNombre(), c.getContrasenna()));
+	}
 	
+	@Test
+	public void testpassCorrecta2() throws RemoteException {
+		db.passCorrecta(c.getNombre(), "pass");
+		assertFalse(db.passCorrecta(c.getNombre(), "pass"));
+	}
 	
+	@Test
+	public void testpassCorreo() throws RemoteException {
+		db.correo(c.getNombre(), c.getCorreo());
+		assertTrue(db.correo(c.getNombre(), c.getCorreo()));
+	}
 	
+	@Test
+	public void testpassCorreo2() throws RemoteException {
+		db.correo(c.getNombre(), "mail");
+		assertFalse(db.correo(c.getNombre(), "mail"));
+	}
 	
+	@Test
+	public void testcontrasenya() throws RemoteException {
+		String actual = db.contrasenya(c.getNombre());
+		assertEquals("contrasenna",actual);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testmostrarPeliculas() throws RemoteException {
+		String peliculas[] = {"titulo"};
+		String pelis[] = db.mostrarPeliculas();
+		assertEquals(peliculas, pelis);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testmostrarUsuarios() throws RemoteException {
+		String usuarios[] = {"nombre","nombre2"};
+		String users[] = db.mostrarUsuarios();
+		assertEquals(usuarios, users);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testbuscarPeliculasTitulo() throws RemoteException {
+		String peliculas[] = {"titulo"};
+		String pelis[] = db.buscarPeliculasTitulo();
+		assertEquals(peliculas, pelis);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testbuscarPeliculasGenero() throws RemoteException {
+		String peliculas[] = {"titulo"};
+		String pelis[] = db.buscarPeliculasGenero();
+		assertEquals(peliculas, pelis);
+	}
+	
+	@SuppressWarnings("deprecation")
+	@Test
+	public void testbuscarPeliculasFecha() throws RemoteException {
+		String peliculas[] = {"titulo"};
+		String pelis[] = db.buscarPeliculasFecha();
+		assertEquals(peliculas, pelis);
+	}
 	
 	
 	
