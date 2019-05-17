@@ -45,7 +45,6 @@ public class BuscarPelicula extends JPanel {
 	}
 
 	public BuscarPelicula(BuscarPeliculaController buscarPeliculaController, CardLayout cardLayout) {
-
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 130, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -77,7 +76,6 @@ public class BuscarPelicula extends JPanel {
 		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listMostarPeliculas);
-
 		listMostarPeliculas.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if (listMostarPeliculas.getSelectedIndex() != -1) {
@@ -85,12 +83,7 @@ public class BuscarPelicula extends JPanel {
 				}
 			}
 		});
-
-		lblLista = new JLabel("Ordenar lista por: ");
 		GridBagConstraints gbc_lblLista = new GridBagConstraints();
-		gbc_lblLista.insets = new Insets(0, 0, 5, 0);
-		gbc_lblLista.gridwidth = 3;
-		gbc_lblLista.gridx = 0;
 		gbc_lblLista.gridy = 0;
 		add(lblLista, gbc_lblLista);
 

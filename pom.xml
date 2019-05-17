@@ -10,7 +10,6 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<config.files.dir>${basedir}/src/main/resources</config.files.dir>
-		<doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<policy.file>${basedir}/src/main/resources/security/java.policy</policy.file>
 		<server.IP>127.0.0.1</server.IP>
