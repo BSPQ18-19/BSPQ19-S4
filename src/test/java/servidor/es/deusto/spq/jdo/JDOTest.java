@@ -19,6 +19,7 @@ import servidor.es.deusto.spq.IServer;
 public class JDOTest {
 	private IServer db;
 	private Cuenta c;
+	private Cuenta c2;
 	private Pelicula p;
 	
 	@BeforeClass
@@ -26,8 +27,10 @@ public class JDOTest {
 		IServer db = new JDO();
 		Pelicula peli = new Pelicula("genero", "titulo", "fEstreno", "trailer", "fichaTecnica", "sinopsis", 5);
 		Cuenta user = new Cuenta("correo", "nombre", "contrasenna", "paypal", 0, 5);
+		Cuenta user2 = new Cuenta("correo2", "nombre2", "contrasenna2", "paypal2", 1, 5);
 		anadirPeli(peli);
 		anadirUser(user);
+		anadirUser(user2);
 	}
 	
 	@Before
@@ -35,6 +38,7 @@ public class JDOTest {
 		db = new JDO();
 		p = db.conseguirPelicula("titulo");
 		c = db.conseguirUsuario("nombre");
+		c2 = db.conseguirUsuario("nombre2");
 	}
 	
 	@Test
@@ -47,6 +51,18 @@ public class JDOTest {
 	public void testesUser() throws RemoteException {
 		db.esUser(c.getNombre());
 		assertTrue(db.esUser(c.getNombre()));
+	}
+	
+	@Test
+	public void testesAdmin2() throws RemoteException {
+		db.esAdmin(c2.getNombre());
+		assertTrue(db.esAdmin(c2.getNombre()));
+	}
+	
+	@Test
+	public void testesUser2() throws RemoteException {
+		db.esUser(c2.getNombre());
+		assertFalse(db.esUser(c2.getNombre()));
 	}
 	
 	
