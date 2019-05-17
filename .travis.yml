@@ -1,9 +1,11 @@
 language: java
 dist: xenial
 jdk:
+    - oraclejdk8
     - openjdk11
     - openjdk10
     - openjdk8
+    
 services:
     - xvfb
     - mysql
@@ -13,6 +15,6 @@ cache:
         - "$HOME/.m2"
 before_install:
     - rmiregistry -J-Djava.rmi.server.useCodebaseOnly=false &
-    - mysql -u root -e "create database bspq19-s4";
+    - mysql -u root -e "create database bspq19s4";
     - mysql -u root -e "CREATE USER 'spq'@'%' IDENTIFIED BY 'spq'";
-    - mysql -u root -e "GRANT ALL ON bspq19-s4.* TO 'spq'@'%'";
+    - mysql -u root -e "GRANT ALL ON bspq19s4.* TO 'spq'@'%'";
