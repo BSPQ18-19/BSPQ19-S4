@@ -1,5 +1,6 @@
 package servidor.es.deusto.spq.jdo;
 
+import java.io.Serializable;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.util.ArrayList;
@@ -16,7 +17,7 @@ import javax.jdo.Query;
 
 import servidor.es.deusto.spq.IServer;
 
-public class JDO extends UnicastRemoteObject implements IServer {
+public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 
 	private static final long serialVersionUID = -5970799150454206362L;
 
@@ -89,13 +90,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 
 	@Override
 	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
-		//TODO:metodo
+		// TODO:metodo
 		return null;
 	}
 
 	@Override
 	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
-		//TODO:metodo
+		// TODO:metodo
 		return null;
 	}
 
@@ -170,7 +171,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(nombres.getPrivilegio());
 				if (nombres.getPrivilegio() == 1 && nombre.equals(admin)) {
 					transaction.commit();
-					resultado =  true;
+					return resultado = true;
 				}
 			}
 		} catch (Exception ex) {
@@ -200,7 +201,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(nombres.getPrivilegio());
 				if (nombres.getPrivilegio() == 0 && nombre.equals(user)) {
 					transaction.commit();
-					resultado =  true;
+					return resultado = true;
 				}
 			}
 		} catch (Exception ex) {
@@ -232,7 +233,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(pass);
 				if (password.equals(pass) && nombre.equals(user)) {
 					transaction.commit();
-					resultado =  true;
+					return resultado = true;
 				}
 			}
 		} catch (Exception ex) {
@@ -291,7 +292,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		}
 	}
 
-	public boolean correo(String nombre, String correo)  {
+	public boolean correo(String nombre, String correo) {
 		boolean resultado = false;
 		try {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -307,7 +308,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(mail);
 				if (correo.equals(mail) && nombre.equals(user)) {
 					transaction.commit();
-					resultado =  true;
+					return resultado = true;
 				}
 			}
 		} catch (Exception ex) {
@@ -322,7 +323,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 		}
 	}
 
-	public String contrasenya(String nombre)  {
+	public String contrasenya(String nombre) {
 		String resultado = null;
 		try {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
@@ -337,7 +338,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				System.out.println(pass);
 				if (nombre.equals(name)) {
 					transaction.commit();
-					resultado = pass;
+					return resultado = pass;
 				}
 			}
 		} catch (Exception ex) {
@@ -366,7 +367,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				peliculas.add(peli);
 			}
 			transaction.commit();
-			resultado = peliculas.toArray(new String[peliculas.size()]);
+			return resultado = peliculas.toArray(new String[peliculas.size()]);
 		} catch (Exception ex) {
 			return null;
 		} finally {
@@ -378,7 +379,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			return resultado;
 		}
 	}
-	
+
 	@Override
 	public String[] mostrarUsuarios() throws RemoteException {
 		String[] resultado = null;
@@ -393,7 +394,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				usuarios.add(user);
 			}
 			transaction.commit();
-			resultado = usuarios.toArray(new String[usuarios.size()]);
+			return resultado = usuarios.toArray(new String[usuarios.size()]);
 		} catch (Exception ex) {
 			return null;
 		} finally {
@@ -414,7 +415,8 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
 			transaction = persistentManager.currentTransaction();
 			transaction.begin();
-			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY titulo ASC" );
+			Query query = persistentManager
+					.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY titulo ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
 				String peli = pelis.getTitulo();
 				System.out.println(peli);
@@ -442,9 +444,10 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
 			transaction = persistentManager.currentTransaction();
 			transaction.begin();
-			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY genero ASC");
+			Query query = persistentManager
+					.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY genero ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
-				String peli = pelis.getGenero() + ": " + "\t " + pelis.getTitulo();
+				String peli = pelis.getTitulo();
 				System.out.println(peli);
 				peliculas.add(peli);
 			}
@@ -470,9 +473,10 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			persistentManager = persistentManagerFactory.getPersistenceManager();
 			transaction = persistentManager.currentTransaction();
 			transaction.begin();
-			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY fEstreno ASC");
+			Query query = persistentManager
+					.newQuery("SELECT  FROM " + Pelicula.class.getName() + " ORDER BY fEstreno ASC");
 			for (Pelicula pelis : (List<Pelicula>) query.executeList()) {
-				String peli = pelis.getfEstreno() + ": " + "\t" + pelis.getTitulo();
+				String peli = pelis.getTitulo();
 				System.out.println(peli);
 				peliculas.add(peli);
 			}
@@ -498,13 +502,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			transaction = persistentManager.currentTransaction();
 			transaction.begin();
 			Query query = persistentManager.newQuery("SELECT  FROM " + Pelicula.class.getName());
-			for (Pelicula peliculas : (List<Pelicula>) query.executeList()) {
-				String peli = peliculas.getTitulo();
-				System.out.println(titulo);
-				System.out.println(peli);
+			for (Pelicula film : (List<Pelicula>) query.executeList()) {
+				String peli = film.getTitulo();
 				if (titulo.equals(peli)) {
 					transaction.commit();
-					resultado = peliculas;
+					System.out.println(film.toString());
+					resultado = film;
+					return resultado;
 				}
 			}
 		} catch (Exception ex) {
@@ -515,8 +519,8 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				return null;
 			}
 			persistentManager.close();
-			return resultado;
 		}
+		return resultado;
 	}
 
 	@Override
@@ -530,10 +534,13 @@ public class JDO extends UnicastRemoteObject implements IServer {
 			for (Cuenta nombres : (List<Cuenta>) query.executeList()) {
 				String name = nombres.getNombre();
 				System.out.println(nombre);
-				System.out.println(name);
+				System.out.println("caca" + name);
 				if (nombre.equals(name)) {
 					transaction.commit();
+					System.out.println(nombres.toString());
 					resultado = nombres;
+					System.out.println(resultado.toString());
+					return resultado;
 				}
 			}
 		} catch (Exception ex) {
@@ -544,7 +551,7 @@ public class JDO extends UnicastRemoteObject implements IServer {
 				return null;
 			}
 			persistentManager.close();
-			return resultado;
 		}
+		return resultado;
 	}
 }

@@ -1,10 +1,12 @@
 package servidor.es.deusto.spq.jdo;
 
+import java.io.Serializable;
+
 import javax.jdo.annotations.PersistenceCapable;
 
 
 @PersistenceCapable
-public class Peliculas_Cuenta{
+public class Peliculas_Cuenta implements Serializable{
 
     private String fAlq;    //Fecha hasta que se alquila la peli
     private int tAql;    //Tiempo de alquiler de la peli

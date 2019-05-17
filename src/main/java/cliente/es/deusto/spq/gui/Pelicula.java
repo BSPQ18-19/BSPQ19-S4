@@ -20,8 +20,26 @@ public class Pelicula extends JPanel{
 	private static final long serialVersionUID = 674330126384087764L;
 	 
 	static JLabel lblGetTit;
-	servidor.es.deusto.spq.jdo.Pelicula peli;
+	static JLabel lblGetGen;
+	static JLabel lblGetEstreno;
+	static JLabel lblGetSinopsis;
+	static JLabel lblGetFicha;
+	
+	static PeliculaController peliculaController;
+	static servidor.es.deusto.spq.jdo.Pelicula peli;
+	
+	public static void init(String titulo) throws RemoteException {
+		lblGetTit.setText(titulo);
+		peli = peliculaController.conseguirPelicula(titulo);
+		System.out.println(peli.toString());
+		lblGetGen.setText(peli.getGenero());
+		lblGetEstreno.setText(peli.getfEstreno());
+		lblGetSinopsis.setText(peli.getSinopsis());
+		lblGetFicha.setText(peli.getFichaTecnica());
+	}
+	
 	public Pelicula(PeliculaController peliculaController, CardLayout cardLayout) throws RemoteException {
+		this.peliculaController = peliculaController;
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -30,8 +48,6 @@ public class Pelicula extends JPanel{
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 	
-		peli = peliculaController.conseguirPelicula(lblGetTit.getText());
-		
 		JLabel lblTitulo = new JLabel("Titulo de la pelicula: ");
 		GridBagConstraints gbc_lblTitulo = new GridBagConstraints();
 		gbc_lblTitulo.anchor = GridBagConstraints.EAST;
@@ -58,7 +74,7 @@ public class Pelicula extends JPanel{
 		gbc_lblGenero.gridy = 1;
 		add(lblGenero, gbc_lblGenero);
 		
-		JLabel lblGetGen = new JLabel(peli.getGenero());
+		lblGetGen = new JLabel("");
 		GridBagConstraints gbc_lblGetGen = new GridBagConstraints();
 		gbc_lblGetGen.fill = GridBagConstraints.BOTH;
 		gbc_lblGetGen.insets = new Insets(0, 0, 5, 0);
@@ -75,13 +91,13 @@ public class Pelicula extends JPanel{
 		gbc_lblFecha.gridy = 2;
 		add(lblFecha, gbc_lblFecha);
 		
-		JLabel lblGesEstreno = new JLabel(peli.getfEstreno());
-		GridBagConstraints gbc_lblGesEstreno = new GridBagConstraints();
-		gbc_lblGesEstreno.fill = GridBagConstraints.BOTH;
-		gbc_lblGesEstreno.insets = new Insets(0, 0, 5, 0);
-		gbc_lblGesEstreno.gridx = 1;
-		gbc_lblGesEstreno.gridy = 2;
-		add(lblGesEstreno, gbc_lblGesEstreno);
+		lblGetEstreno = new JLabel("");
+		GridBagConstraints gbc_lblGetEstreno = new GridBagConstraints();
+		gbc_lblGetEstreno.fill = GridBagConstraints.BOTH;
+		gbc_lblGetEstreno.insets = new Insets(0, 0, 5, 0);
+		gbc_lblGetEstreno.gridx = 1;
+		gbc_lblGetEstreno.gridy = 2;
+		add(lblGetEstreno, gbc_lblGetEstreno);
 		
 		JLabel lblSinopsis = new JLabel("Sinopsis de la pelicula: ");
 		GridBagConstraints gbc_lblSinopsis = new GridBagConstraints();
@@ -92,7 +108,7 @@ public class Pelicula extends JPanel{
 		gbc_lblSinopsis.gridy = 3;
 		add(lblSinopsis, gbc_lblSinopsis);
 		
-		JLabel lblGetSinopsis = new JLabel(peli.getSinopsis());
+		lblGetSinopsis = new JLabel("");
 		GridBagConstraints gbc_lblGetSinopsis = new GridBagConstraints();
 		gbc_lblGetSinopsis.fill = GridBagConstraints.BOTH;
 		gbc_lblGetSinopsis.insets = new Insets(0, 0, 5, 0);
@@ -109,7 +125,7 @@ public class Pelicula extends JPanel{
 		gbc_lblFTecnica.gridy = 4;
 		add(lblFTecnica, gbc_lblFTecnica);
 		
-		JLabel lblGetFicha = new JLabel(peli.getFichaTecnica());
+		lblGetFicha = new JLabel("");
 		GridBagConstraints gbc_lblGetFicha = new GridBagConstraints();
 		gbc_lblGetFicha.fill = GridBagConstraints.BOTH;
 		gbc_lblGetFicha.insets = new Insets(0, 0, 5, 0);

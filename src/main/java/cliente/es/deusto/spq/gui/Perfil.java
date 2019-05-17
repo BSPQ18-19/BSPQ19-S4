@@ -19,8 +19,23 @@ public class Perfil extends JPanel{
 	private static final long serialVersionUID = 6216694316784718679L;
 	
 	static JLabel lblGetNombre;
-	servidor.es.deusto.spq.jdo.Cuenta user;
+	static JLabel lblGetCorreo;
+	static JLabel lblGetPaypal;
+
+	static PerfilController perfilController;
+	static servidor.es.deusto.spq.jdo.Cuenta user;
+	
+	
+	public static void init(String nombre) throws RemoteException {
+		lblGetNombre.setText(nombre);
+		user = perfilController.conseguirUsuario(nombre);
+		System.out.println(user.toString());
+		lblGetCorreo.setText(user.getCorreo());
+		lblGetPaypal.setText(user.getPaypal());
+	}
+	
 	public Perfil(PerfilController perfilController, CardLayout cardLayout) throws RemoteException {
+		this.perfilController = perfilController;
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
@@ -29,8 +44,6 @@ public class Perfil extends JPanel{
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 	
-		user = perfilController.conseguirUsuario(lblGetNombre.getText());		
-		
 		JLabel lblNombre = new JLabel("Nombre: ");
 		GridBagConstraints gbc_lblNombre = new GridBagConstraints();
 		gbc_lblNombre.fill = GridBagConstraints.VERTICAL;
@@ -47,6 +60,8 @@ public class Perfil extends JPanel{
 		gbc_lblGetNombre.gridy = 0;
 		add(lblGetNombre, gbc_lblGetNombre);
 		
+			
+
 		JLabel lblCorreo = new JLabel("Correo: ");
 		GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
 		gbc_lblCorreo.fill = GridBagConstraints.VERTICAL;
@@ -55,7 +70,7 @@ public class Perfil extends JPanel{
 		gbc_lblCorreo.gridy = 1;
 		add(lblCorreo, gbc_lblCorreo);
 		
-		JLabel lblGetCorreo = new JLabel(user.getCorreo());
+		lblGetCorreo = new JLabel("");
 		GridBagConstraints gbc_lblGetCorreo = new GridBagConstraints();
 		gbc_lblGetCorreo.fill = GridBagConstraints.BOTH;
 		gbc_lblGetCorreo.insets = new Insets(0, 0, 5, 0);
@@ -71,7 +86,7 @@ public class Perfil extends JPanel{
 		gbc_lblPaypal.gridy = 2;
 		add(lblPaypal, gbc_lblPaypal);
 		
-		JLabel lblGetPaypal = new JLabel(user.getPaypal());
+		lblGetPaypal = new JLabel("");
 		GridBagConstraints gbc_lblGetPaypal = new GridBagConstraints();
 		gbc_lblGetPaypal.fill = GridBagConstraints.BOTH;
 		gbc_lblGetPaypal.insets = new Insets(0, 0, 5, 0);

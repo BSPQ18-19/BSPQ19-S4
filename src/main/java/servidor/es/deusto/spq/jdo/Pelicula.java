@@ -1,5 +1,6 @@
 package servidor.es.deusto.spq.jdo;
 
+import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -9,7 +10,7 @@ import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 
 @PersistenceCapable
-public class Pelicula {
+public class Pelicula implements Serializable{
 	String titulo = null;
 	String genero = null;
 	String fEstreno = null;

@@ -1,5 +1,6 @@
 package servidor.es.deusto.spq.jdo;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.jdo.annotations.PersistenceCapable;
@@ -7,7 +8,7 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class Cuenta {
+public class Cuenta implements Serializable {
 	@PrimaryKey
 	String correo = null;
 	String nombre = null;

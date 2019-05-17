@@ -3,8 +3,6 @@ package cliente.es.deusto.spq.gui;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 
-
-
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
@@ -30,7 +28,7 @@ public class BuscarPelicula extends JPanel {
 	private static final long serialVersionUID = -1644310303190255276L;
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
-	private String[] peliculas = {"Elegir como ordenar la lista"};
+	private String[] peliculas = { "Elegir como ordenar la lista" };
 	private String[] pelis = null;
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
@@ -39,14 +37,14 @@ public class BuscarPelicula extends JPanel {
 	public void actualizarLista(String[] peliculas) {
 		listMostarPeliculas.setEnabled(true);
 		DefaultListModel<String> model = new DefaultListModel<String>();
-		for (String s:peliculas) {
+		for (String s : peliculas) {
 			model.addElement(s);
 		}
 		listMostarPeliculas.setModel(model);
 	}
 
 	public BuscarPelicula(BuscarPeliculaController buscarPeliculaController, CardLayout cardLayout) {
-		
+
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 130, 0 };
 		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
@@ -72,13 +70,13 @@ public class BuscarPelicula extends JPanel {
 		add(scrollPane, gbc_scrollPane);
 
 		Arrays.sort(peliculas);
-		
+
 		listMostarPeliculas = new JList<String>(peliculas);
 		listMostarPeliculas.setEnabled(false);
 		listMostarPeliculas.setBorder(new BevelBorder(BevelBorder.LOWERED, null, null, null, null));
 		listMostarPeliculas.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		scrollPane.setViewportView(listMostarPeliculas);
-		
+
 		listMostarPeliculas.addListSelectionListener(new ListSelectionListener() {
 			public void valueChanged(ListSelectionEvent e) {
 				if (listMostarPeliculas.getSelectedIndex() != -1) {
@@ -86,7 +84,7 @@ public class BuscarPelicula extends JPanel {
 				}
 			}
 		});
-		
+
 		lblLista = new JLabel("Ordenar lista por: ");
 		GridBagConstraints gbc_lblLista = new GridBagConstraints();
 		gbc_lblLista.insets = new Insets(0, 0, 5, 0);
@@ -169,10 +167,11 @@ public class BuscarPelicula extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				int i = listMostarPeliculas.getSelectedIndex();
 				pelicula = pelis[i];
+	
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Pelicula.lblGetTit.setText(pelicula);
+							Pelicula.init(pelicula);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();
@@ -188,12 +187,12 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnVer.gridx = 1;
 		gbc_btnVer.gridy = 4;
 		add(btnVer, gbc_btnVer);
-		
+
 		JButton btnAtras = new JButton("Atr\u00E1s");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				reinicio();
-								EventQueue.invokeLater(new Runnable() {
+				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIO);
@@ -210,7 +209,8 @@ public class BuscarPelicula extends JPanel {
 		gbc_btnAtras.gridy = 4;
 		add(btnAtras, gbc_btnAtras);
 	}
-	public void reinicio(){
+
+	public void reinicio() {
 		actualizarLista(peliculas);
 		listMostarPeliculas.setEnabled(false);
 		btnVer.setEnabled(false);
