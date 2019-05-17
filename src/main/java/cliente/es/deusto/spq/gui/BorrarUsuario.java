@@ -77,7 +77,8 @@ public class BorrarUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							borrarUsuarioController.borrarUsuario(n);
+							//TODO:borrar usuario
+							//borrarUsuarioController.borrarUsuario(n);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {

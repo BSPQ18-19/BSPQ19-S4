@@ -15,7 +15,7 @@ import servidor.es.deusto.spq.jdo.Pelicula;
  */
 public interface IServer extends Remote{
 
-	public int idPeli(String nombre) throws RemoteException;
+//	public int idPeli(String nombre) throws RemoteException;
 	/**
 	 * Añade una pelicula a la tabla peliculas_cuenta
 	 * @param fAlq Fecha en la que se alquila la pelicula
@@ -48,9 +48,9 @@ public interface IServer extends Remote{
 	 * @throws RemoteException
 	 */
 	public boolean passCorrecta(String user, String pass)throws RemoteException;
-	List<Pelicula> buscarPeliculasFavoritas(String favoritas)throws RemoteException;
-	List<Pelicula> buscarPeliculasVistas(String vistas)throws RemoteException;
-	public void borrarPelicula(String titulo)throws RemoteException;
+//	List<Pelicula> buscarPeliculasFavoritas(String favoritas)throws RemoteException;
+//	List<Pelicula> buscarPeliculasVistas(String vistas)throws RemoteException;
+//	public void borrarPelicula(String titulo)throws RemoteException;
 	/**
 	 * Devuelve la lista de las peliculas almacenadas en la bd
 	 * @return
@@ -63,9 +63,9 @@ public interface IServer extends Remote{
 	 * @throws RemoteException
 	 */
 	public String[] mostrarUsuarios()throws RemoteException;
-	public void borrarUsuario(String correo)throws RemoteException;
-	public void almacenarUsuario (Cuenta c)throws RemoteException;
-	public void almacenarPelicula (Pelicula p)throws RemoteException;
+//	public void borrarUsuario(String correo)throws RemoteException;
+//	public void almacenarUsuario (Cuenta c)throws RemoteException;
+//	public void almacenarPelicula (Pelicula p)throws RemoteException;
 	/**
 	 * Compruba si el correo y el nombre pertenecen a la misma cuenta
 	 * @param nombre Nombre de la cuenta

@@ -12,8 +12,7 @@ public class AnadirUsuarioController {
 		this.service = service;
 	}
 	//TODO Metodos correspondientes
-	public void almacenarUsuario(Cuenta c) throws RemoteException {
-		service.getService().almacenarUsuario(c);
-		
-	}
+//	public void almacenarUsuario(Cuenta c) throws RemoteException {
+//		service.getService().almacenarUsuario(c);
+//	}
 }

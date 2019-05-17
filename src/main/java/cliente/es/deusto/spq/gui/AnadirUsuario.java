@@ -374,8 +374,8 @@ public class AnadirUsuario extends JPanel {
 							Statement stmt = conexion.createStatement();
 							stmt.executeUpdate(query);
 							 */
-							
-							anadirUsuarioController.almacenarUsuario(null);
+							//TODO:anadir usuario
+							//anadirUsuarioController.almacenarUsuario(null);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido");
 							

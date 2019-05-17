@@ -32,29 +32,29 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		super();
 	}
 
-	@Override
-	public int idPeli(String nombre) throws RemoteException {
-		persistentManager = persistentManagerFactory.getPersistenceManager();
-		transaction = persistentManager.currentTransaction();
-		int id = 0;
-		try {
-			transaction.begin();
-			@SuppressWarnings("unchecked")
-			Query<Integer> query = persistentManager.newQuery(
-					"SELECT PELICULA_ID FROM" + Pelicula.class.getName() + "WHERE TITULO = '" + nombre + "';");
-			id = (int) query.execute();
-			transaction.commit();
-			return id;
-		} catch (Exception ex) {
-			return 0;
-		} finally {
-			if (transaction.isActive()) {
-				transaction.rollback();
-			}
-
-			persistentManager.close();
-		}
-	}
+//	@Override
+//	public int idPeli(String nombre) throws RemoteException {
+//		persistentManager = persistentManagerFactory.getPersistenceManager();
+//		transaction = persistentManager.currentTransaction();
+//		int id = 0;
+//		try {
+//			transaction.begin();
+//			@SuppressWarnings("unchecked")
+//			Query<Integer> query = persistentManager.newQuery(
+//					"SELECT PELICULA_ID FROM" + Pelicula.class.getName() + "WHERE TITULO = '" + nombre + "';");
+//			id = (int) query.execute();
+//			transaction.commit();
+//			return id;
+//		} catch (Exception ex) {
+//			return 0;
+//		} finally {
+//			if (transaction.isActive()) {
+//				transaction.rollback();
+//			}
+//
+//			persistentManager.close();
+//		}
+//	}
 
 	@Override
 	public boolean alquilarPelicula(String fAlq, int tAlq, String nombre, String titulo) throws RemoteException {
@@ -79,73 +79,73 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		}
 	}
 
-	@Override
-	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
-		// TODO:metodo
-		return null;
-	}
+//	@Override
+//	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
+//		// TODO:metodo
+//		return null;
+//	}
+//
+//	@Override
+//	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
+//		// TODO:metodo
+//		return null;
+//	}
 
-	@Override
-	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
-		// TODO:metodo
-		return null;
-	}
-
-	public void borrarPelicula(String titulo) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			pm = pmf.getPersistenceManager();
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			@SuppressWarnings("unchecked")
-			Query<Pelicula> qu = pm.newQuery("DELETE FROM" + Pelicula.class.getName()
-					+ "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
-			qu.setFilter(titulo);
-			qu.deletePersistentAll();
-			System.out.println("Eliminando de la base de datos");
-			tx.commit();
-		} catch (Exception ex) {
-			System.err.println("   $ Error eliminando informacion de la película:" + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-			}
-		}
-	}
-
-	public void borrarUsuario(String correo) {
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			pm = pmf.getPersistenceManager();
-			tx = pm.currentTransaction();
-			tx.begin();
-
-			@SuppressWarnings("unchecked")
-			Query<Cuenta> qu = pm.newQuery("DELETE FROM" + Cuenta.class.getName()
-					+ "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
-			qu.setFilter(correo);
-			qu.deletePersistentAll();
-			System.out.println("Eliminando de la base de datos");
-			tx.commit();
-		} catch (Exception ex) {
-			System.err.println("   $ Error eliminando informacion de la cuenta:" + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			if (pm != null && !pm.isClosed()) {
-				pm.close();
-			}
-		}
-	}
+//	public void borrarPelicula(String titulo) {
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx = pm.currentTransaction();
+//		try {
+//			pm = pmf.getPersistenceManager();
+//			tx = pm.currentTransaction();
+//			tx.begin();
+//
+//			@SuppressWarnings("unchecked")
+//			Query<Pelicula> qu = pm.newQuery("DELETE FROM" + Pelicula.class.getName()
+//					+ "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
+//			qu.setFilter(titulo);
+//			qu.deletePersistentAll();
+//			System.out.println("Eliminando de la base de datos");
+//			tx.commit();
+//		} catch (Exception ex) {
+//			System.err.println("   $ Error eliminando informacion de la película:" + ex.getMessage());
+//		} finally {
+//			if (tx != null && tx.isActive()) {
+//				tx.rollback();
+//			}
+//
+//			if (pm != null && !pm.isClosed()) {
+//				pm.close();
+//			}
+//		}
+//	}
+//
+//	public void borrarUsuario(String correo) {
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx = pm.currentTransaction();
+//		try {
+//			pm = pmf.getPersistenceManager();
+//			tx = pm.currentTransaction();
+//			tx.begin();
+//
+//			@SuppressWarnings("unchecked")
+//			Query<Cuenta> qu = pm.newQuery("DELETE FROM" + Cuenta.class.getName()
+//					+ "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
+//			qu.setFilter(correo);
+//			qu.deletePersistentAll();
+//			System.out.println("Eliminando de la base de datos");
+//			tx.commit();
+//		} catch (Exception ex) {
+//			System.err.println("   $ Error eliminando informacion de la cuenta:" + ex.getMessage());
+//		} finally {
+//			if (tx != null && tx.isActive()) {
+//				tx.rollback();
+//			}
+//
+//			if (pm != null && !pm.isClosed()) {
+//				pm.close();
+//			}
+//		}
+//	}
 
 	@Override
 	public boolean esAdmin(String admin) throws RemoteException {
@@ -239,49 +239,49 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		}
 	}
 
-	public void almacenarUsuario(Cuenta c) {
-
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-		try {
-			tx.begin();
-			logger.info("   * Almacenando informacion de de la cuenta: " + c);
-			pm.makePersistent(c);
-			tx.commit();
-		} catch (Exception ex) {
-			logger.error("   $ Error almacenando informacion de la cuenta:" + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-		}
-	}
-
-	@Override
-
-	public void almacenarPelicula(Pelicula p) {
-
-		PersistenceManager pm = pmf.getPersistenceManager();
-		Transaction tx = pm.currentTransaction();
-
-		try {
-			tx.begin();
-			logger.info("   * Almacenando pelicula en la BD: " + p);
-			pm.makePersistent(p);
-			tx.commit();
-		} catch (Exception ex) {
-			logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
-		} finally {
-			if (tx != null && tx.isActive()) {
-				tx.rollback();
-			}
-
-			pm.close();
-
-		}
-	}
+//	public void almacenarUsuario(Cuenta c) {
+//
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx = pm.currentTransaction();
+//		try {
+//			tx.begin();
+//			logger.info("   * Almacenando informacion de de la cuenta: " + c);
+//			pm.makePersistent(c);
+//			tx.commit();
+//		} catch (Exception ex) {
+//			logger.error("   $ Error almacenando informacion de la cuenta:" + ex.getMessage());
+//		} finally {
+//			if (tx != null && tx.isActive()) {
+//				tx.rollback();
+//			}
+//
+//			pm.close();
+//		}
+//	}
+//
+//	@Override
+//
+//	public void almacenarPelicula(Pelicula p) {
+//
+//		PersistenceManager pm = pmf.getPersistenceManager();
+//		Transaction tx = pm.currentTransaction();
+//
+//		try {
+//			tx.begin();
+//			logger.info("   * Almacenando pelicula en la BD: " + p);
+//			pm.makePersistent(p);
+//			tx.commit();
+//		} catch (Exception ex) {
+//			logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
+//		} finally {
+//			if (tx != null && tx.isActive()) {
+//				tx.rollback();
+//			}
+//
+//			pm.close();
+//
+//		}
+//	}
 
 	public boolean correo(String nombre, String correo) {
 		boolean resultado = false;

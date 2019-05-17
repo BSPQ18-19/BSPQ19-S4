@@ -14,7 +14,7 @@ public class BorrarUsuarioController {
 	}
 
 	// TODO Metodos correspondientes
-	public void borrarUsuario(String correo) throws RemoteException {
-		service.getService().borrarUsuario(correo);
-    }
+//	public void borrarUsuario(String correo) throws RemoteException {
+//		service.getService().borrarUsuario(correo);
+//    }
 }

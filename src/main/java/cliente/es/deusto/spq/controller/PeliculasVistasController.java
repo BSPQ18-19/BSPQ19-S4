@@ -12,8 +12,8 @@ public class PeliculasVistasController {
 	public PeliculasVistasController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-
-	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
-    		return service.getService().buscarPeliculasVistas(vistas);    
-	}
+	//TODO: metodo
+//	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
+//    		return service.getService().buscarPeliculasVistas(vistas);    
+//	}
 }
