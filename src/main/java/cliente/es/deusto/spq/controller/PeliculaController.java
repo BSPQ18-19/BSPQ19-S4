@@ -12,10 +12,6 @@ public class PeliculaController {
 		this.service = service;
 	}
 
-	public Pelicula conseguirPelicula(String titulo) throws RemoteException {
-		return service.getService().conseguirPelicula(titulo);
-	}
-
 	/**
 	 * @return the service
 	 */

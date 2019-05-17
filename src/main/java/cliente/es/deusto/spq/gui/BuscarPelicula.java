@@ -33,7 +33,8 @@ public class BuscarPelicula extends JPanel {
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
 	static String pelicula = null;
-
+	static servidor.es.deusto.spq.jdo.Pelicula peliObj = null;
+	
 	public void actualizarLista(String[] peliculas) {
 		listMostarPeliculas.setEnabled(true);
 		DefaultListModel<String> model = new DefaultListModel<String>();
@@ -171,7 +172,8 @@ public class BuscarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							Pelicula.init(pelicula);
+							peliObj = buscarPeliculaController.conseguirPelicula(pelicula);
+							Pelicula.init(peliObj);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULA);
 						} catch (Exception e) {
 							e.printStackTrace();

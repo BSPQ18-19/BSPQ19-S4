@@ -3,6 +3,7 @@ package cliente.es.deusto.spq.controller;
 import java.rmi.RemoteException;
 
 import cliente.es.deusto.spq.remote.RMIBSPQ19S4ServiceLocator;
+import servidor.es.deusto.spq.jdo.Pelicula;
 
 public class BuscarPeliculaController {
 	private RMIBSPQ19S4ServiceLocator service;
@@ -18,6 +19,9 @@ public class BuscarPeliculaController {
 	}
 	public String[] buscarPeliculasFecha()throws RemoteException {
 		return service.getService().buscarPeliculasFecha();
+	}
+	public Pelicula conseguirPelicula(String titulo) throws RemoteException {
+		return service.getService().conseguirPelicula(titulo);
 	}
 	/**
 	 * @return the service

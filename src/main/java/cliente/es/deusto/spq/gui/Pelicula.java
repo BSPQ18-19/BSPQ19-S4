@@ -28,9 +28,8 @@ public class Pelicula extends JPanel{
 	static PeliculaController peliculaController;
 	static servidor.es.deusto.spq.jdo.Pelicula peli;
 	
-	public static void init(String titulo) throws RemoteException {
-		lblGetTit.setText(titulo);
-		peli = peliculaController.conseguirPelicula(titulo);
+	public static void init(servidor.es.deusto.spq.jdo.Pelicula peli) throws RemoteException {
+		lblGetTit.setText(peli.getTitulo());
 		System.out.println(peli.toString());
 		lblGetGen.setText(peli.getGenero());
 		lblGetEstreno.setText(peli.getfEstreno());
