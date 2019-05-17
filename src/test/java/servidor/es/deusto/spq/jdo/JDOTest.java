@@ -136,7 +136,11 @@ public class JDOTest {
 		assertEquals(peliculas, pelis);
 	}
 	
-	
+	@Test
+	public void testalquilarPelicula() throws RemoteException {
+		db.alquilarPelicula("2019/01/01", 5, c.getNombre(), p.getTitulo());
+		assertTrue(db.alquilarPelicula("2019/01/01", 5, c.getNombre(), p.getTitulo()));
+	}
 	
 	
 	
