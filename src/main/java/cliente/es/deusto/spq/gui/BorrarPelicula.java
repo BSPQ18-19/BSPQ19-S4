@@ -28,6 +28,7 @@ public class BorrarPelicula extends JPanel {
 	private JList<String> listMostarPeliculas;
 	//TODO;quitar la siguiente linea
 	private String[] peliculas = { "a", "b" };
+	//private String[] peliculas = new String[20];
 
 	public BorrarPelicula(BorrarPeliculaController borrarPeliculaController, CardLayout cardLayout) {
 
@@ -77,8 +78,8 @@ public class BorrarPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO:borrar pelicula
 							//borrarPeliculaController.borrarPelicula(n);
+							//borrarPeliculaController.borrarPelicula(titulo, genero, fEstreno, trailer, fichatecnica, sinopsis, puntuacion);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
 							JOptionPane.showMessageDialog(null, "Pelicula eliminada");
 						} catch (Exception e) {
@@ -95,7 +96,7 @@ public class BorrarPelicula extends JPanel {
 		gbc_btnBorrar.gridy = 2;
 		add(btnBorrar, gbc_btnBorrar);
 
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {

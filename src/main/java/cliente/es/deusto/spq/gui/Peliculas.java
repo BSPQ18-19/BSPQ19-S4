@@ -25,7 +25,7 @@ public class Peliculas extends JPanel {
 		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		setLayout(gbl_contentPane);
 
-		JButton btnAnadir = new JButton("A\u00F1adir pelicula");
+		JButton btnAnadir = new JButton("Añadir pelicula");
 		btnAnadir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {
@@ -85,7 +85,7 @@ public class Peliculas extends JPanel {
 		gbc_btnMostrarLista.gridy = 2;
 		add(btnMostrarLista, gbc_btnMostrarLista);
 
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				EventQueue.invokeLater(new Runnable() {

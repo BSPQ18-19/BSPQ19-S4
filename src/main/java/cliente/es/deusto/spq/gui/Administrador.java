@@ -66,7 +66,7 @@ public class Administrador extends JPanel {
 		gbc_btnPeliculas.gridy = 1;
 		add(btnPeliculas, gbc_btnPeliculas);
 
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reinicio();

@@ -20,7 +20,8 @@ public class PeliculaController {
 	}
 
 	/**
-	 * @param service the service to set
+	 * @param service
+	 *            the service to set
 	 */
 	public void setService(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;

@@ -12,8 +12,9 @@ public class AnadirPeliculaController {
 	public AnadirPeliculaController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	//TODO Metodos correspondientes
-//	public void almacenarPelicula(Pelicula p) throws RemoteException {
-//		service.getService().almacenarPelicula(p);
-//	}
+
+	// TODO Metodos correspondientes
+	public boolean almacenarPelicula(Pelicula p) throws RemoteException {
+		return service.getService().almacenarPelicula(p);
+	}
 }

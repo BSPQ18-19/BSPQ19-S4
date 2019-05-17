@@ -29,7 +29,6 @@ public class Perfil extends JPanel{
 	public static void init(String nombre) throws RemoteException {
 		lblGetNombre.setText(nombre);
 		user = perfilController.conseguirUsuario(nombre);
-		System.out.println(user.toString());
 		lblGetCorreo.setText(user.getCorreo());
 		lblGetPaypal.setText(user.getPaypal());
 	}
@@ -134,7 +133,7 @@ public class Perfil extends JPanel{
 		gbc_btnPelVis.gridy = 3;
 		add(btnPelVis, gbc_btnPelVis);
 		
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {

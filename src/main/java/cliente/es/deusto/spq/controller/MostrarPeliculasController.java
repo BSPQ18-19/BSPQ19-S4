@@ -10,9 +10,11 @@ public class MostrarPeliculasController {
 	public MostrarPeliculasController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	public String[] mostrarPeliculas()throws RemoteException {
+
+	public String[] mostrarPeliculas() throws RemoteException {
 		return service.getService().mostrarPeliculas();
 	}
+
 	/**
 	 * @return the service
 	 */
@@ -21,7 +23,8 @@ public class MostrarPeliculasController {
 	}
 
 	/**
-	 * @param service the service to set
+	 * @param service
+	 *            the service to set
 	 */
 	public void setService(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;

@@ -7,11 +7,11 @@ import servidor.es.deusto.spq.jdo.Cuenta;
 
 public class PerfilController {
 	private RMIBSPQ19S4ServiceLocator service;
-	
+
 	public PerfilController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	
+
 	public Cuenta conseguirUsuario(String nombre) throws RemoteException {
 		return service.getService().conseguirUsuario(nombre);
 	}
@@ -24,7 +24,8 @@ public class PerfilController {
 	}
 
 	/**
-	 * @param service the service to set
+	 * @param service
+	 *            the service to set
 	 */
 	public void setService(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;

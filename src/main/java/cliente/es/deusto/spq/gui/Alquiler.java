@@ -79,7 +79,7 @@ private static final long serialVersionUID = 674330126384087764L;
 		gbc_btnAceptar.gridy = 2;
 		add(btnAceptar, gbc_btnAceptar);
 		
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {

@@ -23,13 +23,14 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 	private static final long serialVersionUID = -5970799150454206362L;
 
 	private static PersistenceManagerFactory pmf;
+	@SuppressWarnings("unused")
 	private static final Logger logger = Logger.getLogger(JDO.class);
 	private static Logger logger2 = null;
 	PersistenceManagerFactory persistentManagerFactory = JDOHelper
 			.getPersistenceManagerFactory("datanucleus.properties");
 	PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
 	Transaction transaction = persistentManager.currentTransaction();
-	
+
 	public static Logger getLogger() {
 		if (logger2 == null) {
 			BasicConfigurator.configure();
@@ -37,36 +38,14 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		}
 		return logger2;
 	}
+
 	public static void msglogger(String mensaje) {
 		getLogger().info(mensaje);
 	}
+
 	public JDO() throws RemoteException {
 		super();
 	}
-
-//	@Override
-//	public int idPeli(String nombre) throws RemoteException {
-//		persistentManager = persistentManagerFactory.getPersistenceManager();
-//		transaction = persistentManager.currentTransaction();
-//		int id = 0;
-//		try {
-//			transaction.begin();
-//			@SuppressWarnings("unchecked")
-//			Query<Integer> query = persistentManager.newQuery(
-//					"SELECT PELICULA_ID FROM" + Pelicula.class.getName() + "WHERE TITULO = '" + nombre + "';");
-//			id = (int) query.execute();
-//			transaction.commit();
-//			return id;
-//		} catch (Exception ex) {
-//			return 0;
-//		} finally {
-//			if (transaction.isActive()) {
-//				transaction.rollback();
-//			}
-//
-//			persistentManager.close();
-//		}
-//	}
 
 	@Override
 	public boolean alquilarPelicula(String fAlq, int tAlq, String nombre, String titulo) throws RemoteException {
@@ -91,74 +70,7 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		}
 	}
 
-//	@Override
-//	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
-//		// TODO:metodo
-//		return null;
-//	}
-//
-//	@Override
-//	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
-//		// TODO:metodo
-//		return null;
-//	}
-
-//	public void borrarPelicula(String titulo) {
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//		try {
-//			pm = pmf.getPersistenceManager();
-//			tx = pm.currentTransaction();
-//			tx.begin();
-//
-//			@SuppressWarnings("unchecked")
-//			Query<Pelicula> qu = pm.newQuery("DELETE FROM" + Pelicula.class.getName()
-//					+ "(titulo, genero, fEstreno, trailer, fichaTecnica, sinopsis, puntuacion)");
-//			qu.setFilter(titulo);
-//			qu.deletePersistentAll();
-//			msglogger("Eliminando de la base de datos");
-//			tx.commit();
-//		} catch (Exception ex) {
-//			System.err.println("   $ Error eliminando informacion de la película:" + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//
-//			if (pm != null && !pm.isClosed()) {
-//				pm.close();
-//			}
-//		}
-//	}
-//
-//	public void borrarUsuario(String correo) {
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//		try {
-//			pm = pmf.getPersistenceManager();
-//			tx = pm.currentTransaction();
-//			tx.begin();
-//
-//			@SuppressWarnings("unchecked")
-//			Query<Cuenta> qu = pm.newQuery("DELETE FROM" + Cuenta.class.getName()
-//					+ "(correo, nombre, contrasenna, paypal, privilegio, gasto)");
-//			qu.setFilter(correo);
-//			qu.deletePersistentAll();
-//			msglogger("Eliminando de la base de datos");
-//			tx.commit();
-//		} catch (Exception ex) {
-//			System.err.println("   $ Error eliminando informacion de la cuenta:" + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//
-//			if (pm != null && !pm.isClosed()) {
-//				pm.close();
-//			}
-//		}
-//	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public boolean esAdmin(String admin) throws RemoteException {
 		boolean resultado = false;
@@ -184,11 +96,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return false;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public boolean esUser(String user) throws RemoteException {
 		boolean resultado = false;
@@ -214,11 +127,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return false;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public boolean passCorrecta(String user, String pass) throws RemoteException {
 		boolean resultado = false;
@@ -246,55 +160,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return false;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
-//	public void almacenarUsuario(Cuenta c) {
-//
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//		try {
-//			tx.begin();
-//			logger.info("   * Almacenando informacion de de la cuenta: " + c);
-//			pm.makePersistent(c);
-//			tx.commit();
-//		} catch (Exception ex) {
-//			logger.error("   $ Error almacenando informacion de la cuenta:" + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//
-//			pm.close();
-//		}
-//	}
-//
-//	@Override
-//
-//	public void almacenarPelicula(Pelicula p) {
-//
-//		PersistenceManager pm = pmf.getPersistenceManager();
-//		Transaction tx = pm.currentTransaction();
-//
-//		try {
-//			tx.begin();
-//			logger.info("   * Almacenando pelicula en la BD: " + p);
-//			pm.makePersistent(p);
-//			tx.commit();
-//		} catch (Exception ex) {
-//			logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
-//		} finally {
-//			if (tx != null && tx.isActive()) {
-//				tx.rollback();
-//			}
-//
-//			pm.close();
-//
-//		}
-//	}
-
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public boolean correo(String nombre, String correo) {
 		boolean resultado = false;
 		try {
@@ -321,11 +192,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return false;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	public String contrasenya(String nombre) {
 		String resultado = null;
 		try {
@@ -351,11 +223,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return null;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked", "unused" })
 	@Override
 	public String[] mostrarPeliculas() throws RemoteException {
 		String[] resultado = null;
@@ -379,10 +252,10 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				return null;
 			}
 			persistentManager.close();
-			return resultado;
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes", "unused" })
 	@Override
 	public String[] mostrarUsuarios() throws RemoteException {
 		String[] resultado = null;
@@ -406,10 +279,10 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				return null;
 			}
 			persistentManager.close();
-			return resultado;
 		}
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public String[] buscarPeliculasTitulo() throws RemoteException {
 		String[] resultado = null;
@@ -434,11 +307,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return null;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public String[] buscarPeliculasGenero() throws RemoteException {
 		String[] resultado = null;
@@ -463,11 +337,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return null;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	public String[] buscarPeliculasFecha() throws RemoteException {
 		String[] resultado = null;
@@ -492,11 +367,12 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 				transaction.rollback();
 				return null;
 			}
-			persistentManager.close();
-			return resultado;
 		}
+		persistentManager.close();
+		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Pelicula conseguirPelicula(String titulo) throws RemoteException {
 		Pelicula resultado = null;
@@ -526,6 +402,7 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		return resultado;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public Cuenta conseguirUsuario(String nombre) throws RemoteException {
 		Cuenta resultado = null;
@@ -557,4 +434,130 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 		}
 		return resultado;
 	}
+
+	@Override
+	public boolean almacenarPelicula(Pelicula p) {
+
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery("INSERT INTO" + Pelicula.class.getName()
+					+ "(FESTRENO, FICHATECNICA, GENERO, PUNTUACION, SINOPSIS, TITULO, TRAILER) VALUES('" + p.fEstreno
+					+ "'," + p.fichaTecnica + ",'" + p.genero + "'," + p.puntuacion + ",'" + p.sinopsis + "', "
+					+ p.titulo + ",'" + p.trailer + ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
+
+		/*
+		 * try { tx.begin(); logger.info("   * Almacenando pelicula en la BD: " + p);
+		 * pm.makePersistent(p); tx.commit(); } catch (Exception ex) {
+		 * logger.error("   $ Error almacenando pelicula en la BD:" + ex.getMessage());
+		 * } finally { if (tx != null && tx.isActive()) { tx.rollback(); }
+		 * 
+		 * pm.close();
+		 * 
+		 * }
+		 */
+	}
+
+	public boolean almacenarUsuario(Cuenta c) {
+
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery("INSERT INTO" + Cuenta.class.getName()
+					+ "(CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) VALUES('" + c.correo + "',"
+					+ c.contrasenna + ",'" + c.gasto + "'," + c.nombre + ",'" + c.paypal + "', " + c.privilegio + ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
+
+		/*
+		 * try { tx.begin();
+		 * logger.info("   * Almacenando informacion de de la cuenta: " + c);
+		 * pm.makePersistent(c); tx.commit(); } catch (Exception ex) {
+		 * logger.error("   $ Error almacenando informacion de la cuenta:" +
+		 * ex.getMessage()); } finally { if (tx != null && tx.isActive()) {
+		 * tx.rollback(); }
+		 * 
+		 * pm.close(); }
+		 */
+	}
+
+	public boolean borrarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica,
+			String sinopsis, int puntuacion) {
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery("DELETE FROM" + Pelicula.class.getName()
+					+ "(FESTRENO, FICHATECNICA, GENERO, PUNTUACION, SINOPSIS, TITULO, TRAILER) VALUES('" + fEstreno
+					+ "'," + fichatecnica + ",'" + genero + "'," + puntuacion + ",'" + sinopsis + "', " + titulo + ",'"
+					+ trailer + ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
+	}
+
+	public boolean borrarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio,
+			double gasto) {
+		persistentManager = persistentManagerFactory.getPersistenceManager();
+		transaction = persistentManager.currentTransaction();
+		try {
+			transaction.begin();
+			Query query = persistentManager.newQuery("DELETE FROM" + Cuenta.class.getName()
+					+ "(CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) VALUES('" + correo + "'," + contrasenna
+					+ ",'" + gasto + "'," + nombre + ",'" + paypal + "', " + privilegio + ");");
+			transaction.commit();
+			return true;
+		} catch (Exception ex) {
+			return false;
+		} finally {
+			if (transaction.isActive()) {
+				transaction.rollback();
+			}
+
+			persistentManager.close();
+		}
+	}
+	
+	@Override
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

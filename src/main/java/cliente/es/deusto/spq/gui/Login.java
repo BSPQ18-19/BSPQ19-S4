@@ -86,7 +86,7 @@ public class Login extends JPanel {
 							Perfil.init(nombre);
 						 }
 						if (administrador == false && usuario == false) {
-							JOptionPane.showMessageDialog(null, "El usuario introducido no est\u00E1 registrado");
+							JOptionPane.showMessageDialog(null, "El usuario introducido no esta registrado");
 						}
 					} catch (HeadlessException | RemoteException e1) {
 						e1.printStackTrace();
@@ -95,7 +95,7 @@ public class Login extends JPanel {
 			}
 		});
 
-		lblContrasea = new JLabel("Contrase\u00F1a:");
+		lblContrasea = new JLabel("Contraseña:");
 		lblContrasea.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea = new GridBagConstraints();
 		gbc_lblContrasea.insets = new Insets(0, 0, 5, 5);
@@ -122,7 +122,7 @@ public class Login extends JPanel {
 							 passwordFieldContrasea.setEnabled(false);
 							 btnIniciarSesion.requestFocus();
 						 }else{
-							 JOptionPane.showMessageDialog(null, "Contrase\u00F1a incorrecta");
+							 JOptionPane.showMessageDialog(null, "Contraseña incorrecta");
 						 }
 					} catch (HeadlessException | RemoteException e1) {
 						e1.printStackTrace();
@@ -151,7 +151,7 @@ public class Login extends JPanel {
 		gbc_btnNuevoUsuario.gridy = 2;
 		add(btnNuevoUsuario, gbc_btnNuevoUsuario);
 
-		btnContraseaOlvidada = new JButton("Se me ha olvidado la contrase\u00F1a");
+		btnContraseaOlvidada = new JButton("Se me ha olvidado la contraseña");
 		btnContraseaOlvidada.setEnabled(false);
 		btnContraseaOlvidada.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -172,7 +172,7 @@ public class Login extends JPanel {
 		gbc_btnContraseaOlvidada.gridy = 2;
 		add(btnContraseaOlvidada, gbc_btnContraseaOlvidada);
 
-		btnIniciarSesion = new JButton("Iniciar Sesi\u00F3n");
+		btnIniciarSesion = new JButton("Iniciar Sesion");
 		btnIniciarSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				setVisible(false);

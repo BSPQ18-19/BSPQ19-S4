@@ -20,6 +20,7 @@ import javax.swing.border.BevelBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import cliente.es.deusto.spq.controller.BorrarPeliculaController;
 import cliente.es.deusto.spq.controller.BorrarUsuarioController;
 
 public class BorrarUsuario extends JPanel {
@@ -28,6 +29,7 @@ public class BorrarUsuario extends JPanel {
 	private JList<String> listMostarUsuarios;
 	//TODO: eliminar la siguiente linea
 	private String[] usuarios = { "a", "b" };
+	//private String[] usuarios = new String[20];
 
 	public BorrarUsuario(BorrarUsuarioController borrarUsuarioController, CardLayout cardLayout) {
 
@@ -77,8 +79,8 @@ public class BorrarUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							//TODO:borrar usuario
 							//borrarUsuarioController.borrarUsuario(n);
+							//borrarUsuarioController.borrarUsuario(correo, nombre, contrasenna, paypal, privilegio, gasto);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
 							JOptionPane.showMessageDialog(null, "Usuario eliminado");
 						} catch (Exception e) {
@@ -95,7 +97,7 @@ public class BorrarUsuario extends JPanel {
 		gbc_btnBorrar.gridy = 2;
 		add(btnBorrar, gbc_btnBorrar);
 
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {

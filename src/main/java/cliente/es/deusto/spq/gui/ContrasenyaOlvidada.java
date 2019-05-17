@@ -51,7 +51,7 @@ public class ContrasenyaOlvidada extends JPanel {
 		gbl_panel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
-		lblCorreo = new JLabel("Introducir correo electr\u00F3nico: ");
+		lblCorreo = new JLabel("Introducir correo electronico: ");
 		GridBagConstraints gbc_lblCorreo = new GridBagConstraints();
 		gbc_lblCorreo.insets = new Insets(0, 0, 0, 5);
 		gbc_lblCorreo.gridx = 0;
@@ -73,7 +73,7 @@ public class ContrasenyaOlvidada extends JPanel {
 					 try {
 						if(contrasenyaController.correo(nombre, correo) == true){
 						 String contrasenya = contrasenyaController.contrasenya(nombre);
-						 JOptionPane.showMessageDialog(null, "La contrase\u00F1a del usuario "+nombre+" con correo "+correo+" es "+contrasenya);
+						 JOptionPane.showMessageDialog(null, "La contraseña del usuario "+nombre+" con correo "+correo+" es "+contrasenya);
 						 }
 					} catch (HeadlessException | RemoteException e1) {
 						e1.printStackTrace();
@@ -92,7 +92,7 @@ public class ContrasenyaOlvidada extends JPanel {
 			}
 		});
 
-		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reinicio();

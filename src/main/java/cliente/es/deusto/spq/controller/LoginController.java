@@ -10,7 +10,6 @@ public class LoginController {
 	public LoginController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	
 
 	public boolean esAdmin(String nombre) throws RemoteException {
 		return service.getService().esAdmin(nombre);
@@ -32,7 +31,8 @@ public class LoginController {
 	}
 
 	/**
-	 * @param service the service to set
+	 * @param service
+	 *            the service to set
 	 */
 	public void setService(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;

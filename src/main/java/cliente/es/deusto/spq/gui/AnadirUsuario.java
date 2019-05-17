@@ -11,6 +11,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -21,6 +23,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import cliente.es.deusto.spq.controller.AnadirUsuarioController;
+import servidor.es.deusto.spq.jdo.Cuenta;
 
 public class AnadirUsuario extends JPanel {
 	private static final long serialVersionUID = 674330126384087764L;
@@ -81,7 +84,7 @@ public class AnadirUsuario extends JPanel {
 					boolean disponible = true;
 					// TODO: comprobar en la BD si el nombre de usuario esta disponible
 					if (disponible == false) {
-						JOptionPane.showMessageDialog(null, "Este nombre de usuario no est\u00E1 disponible");
+						JOptionPane.showMessageDialog(null, "Este nombre de usuario no esta disponible");
 					} else {
 						lblContrasea1.setEnabled(true);
 						passwordFieldContrasea1.setEnabled(true);
@@ -92,7 +95,7 @@ public class AnadirUsuario extends JPanel {
 			}
 		});
 
-		lblContrasea1 = new JLabel("Introducir contrase\u00F1a:");
+		lblContrasea1 = new JLabel("Introducir contraseña:");
 		lblContrasea1.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea1 = new GridBagConstraints();
 		gbc_lblContrasea1.insets = new Insets(0, 0, 5, 5);
@@ -121,7 +124,7 @@ public class AnadirUsuario extends JPanel {
 			}
 		});
 
-		lblContrasea2 = new JLabel("Repetir contrase\u00F1a: ");
+		lblContrasea2 = new JLabel("Repetir contraseña: ");
 		lblContrasea2.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea2 = new GridBagConstraints();
 		gbc_lblContrasea2.insets = new Insets(0, 0, 5, 5);
@@ -144,7 +147,7 @@ public class AnadirUsuario extends JPanel {
 					String contrasenya2 = new String(passwordFieldContrasea2.getPassword());
 					if (!contrasenya2.equals(contrasenya1)) {
 						JOptionPane.showMessageDialog(null,
-								"La contrase\u00F1a repetida no es igual a la contrase\u00F1a introducida");
+								"La contraseña repetida no es igual a la contraseña introducida");
 					} else {
 						lblCorreo1.setEnabled(true);
 						textFieldCorreo1.setEnabled(true);
@@ -155,7 +158,7 @@ public class AnadirUsuario extends JPanel {
 			}
 		});
 
-		lblCorreo1 = new JLabel("Introducir correo electr\u00F3nico:");
+		lblCorreo1 = new JLabel("Introducir correo electronico:");
 		lblCorreo1.setEnabled(false);
 		GridBagConstraints gbc_lblCorreo1 = new GridBagConstraints();
 		gbc_lblCorreo1.insets = new Insets(0, 0, 5, 5);
@@ -184,7 +187,7 @@ public class AnadirUsuario extends JPanel {
 			}
 		});
 
-		lblCorreo2 = new JLabel("Repetir correo electr\u00F3nico:");
+		lblCorreo2 = new JLabel("Repetir correo electronico:");
 		lblCorreo2.setEnabled(false);
 		GridBagConstraints gbc_lblCorreo2 = new GridBagConstraints();
 		gbc_lblCorreo2.insets = new Insets(0, 0, 5, 5);
@@ -313,7 +316,7 @@ public class AnadirUsuario extends JPanel {
 		gbl_panel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
-		lblAdminSiONo = new JLabel("Introducir c\u00F3digo de administrador:");
+		lblAdminSiONo = new JLabel("Introducir cuenta de administrador:");
 		lblAdminSiONo.setEnabled(false);
 		GridBagConstraints gbc_lblAdminSiONo = new GridBagConstraints();
 		gbc_lblAdminSiONo.insets = new Insets(0, 0, 0, 5);
@@ -338,14 +341,14 @@ public class AnadirUsuario extends JPanel {
 						btnAnadirUsuario.setEnabled(true);
 						textFieldAdminSiONo.setEditable(false);
 					} else {
-						JOptionPane.showMessageDialog(null, "El c\u00F3digo introducido no es correcto");
+						JOptionPane.showMessageDialog(null, "El codigo introducido no es correcto");
 						btnAnadirUsuario.setEnabled(false);
 					}
 				}
 			}
 		});
 
-		btnAnadirUsuario = new JButton("A\u00F1adir");
+		btnAnadirUsuario = new JButton("Añadir");
 		btnAnadirUsuario.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (administrador == true) {
@@ -357,10 +360,6 @@ public class AnadirUsuario extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							/*
-							Class.forName("com.mysql.jdbc.Driver");
-							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
 							
 							String nombre = textFieldUsuario.getText();
 							String contrasenna = passwordFieldContrasea1.getText();
@@ -369,15 +368,24 @@ public class AnadirUsuario extends JPanel {
 							int privilegio = Integer.parseInt(textFieldAdminSiONo.getText());
 							double gasto = 0.0;
 							
+							Cuenta c = new Cuenta(nombre, contrasenna, correo, paypal, privilegio, gasto);
+							
+							/*
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+							
+							
+							
 							String query = "INSERT INTO cuenta (CORREO, CONTRASENNA, GASTO, NOMBRE, PAYPAL, PRIVILEGIO) values ('"+correo+"','"+contrasenna+"','"+gasto+"','"+nombre+"','"+paypal+"','"+privilegio+"')";
 							
 							Statement stmt = conexion.createStatement();
 							stmt.executeUpdate(query);
 							 */
-							//TODO:anadir usuario
-							//anadirUsuarioController.almacenarUsuario(null);
+							
+							anadirUsuarioController.almacenarUsuario(c);
 							cardLayout.show(getParent(), VentanaPrincipal.USUARIOS);
-							JOptionPane.showMessageDialog(null, "Nuevo usuario a\u00F1adido");
+							JOptionPane.showMessageDialog(null, "Nuevo usuario añadido");
 							
 							
 						} catch (Exception e) {
@@ -394,7 +402,7 @@ public class AnadirUsuario extends JPanel {
 		gbc_btnAnadirUsuario.gridy = 8;
 		add(btnAnadirUsuario, gbc_btnAnadirUsuario);
 
-		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reinicio();

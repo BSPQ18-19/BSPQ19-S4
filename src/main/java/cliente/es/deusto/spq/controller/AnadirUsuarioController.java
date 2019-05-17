@@ -11,8 +11,10 @@ public class AnadirUsuarioController {
 	public AnadirUsuarioController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	//TODO Metodos correspondientes
-//	public void almacenarUsuario(Cuenta c) throws RemoteException {
-//		service.getService().almacenarUsuario(c);
-//	}
+
+	// TODO Metodos correspondientes
+	public boolean almacenarUsuario(Cuenta c) throws RemoteException {
+		return service.getService().almacenarUsuario(c);
+
+	}
 }

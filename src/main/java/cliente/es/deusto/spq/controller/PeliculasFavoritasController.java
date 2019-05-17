@@ -12,8 +12,8 @@ public class PeliculasFavoritasController {
 	public PeliculasFavoritasController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	//TODO: metodo
-//	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
-//		return service.getService().buscarPeliculasFavoritas(favoritas);
-//	}
+
+	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
+		return service.getService().buscarPeliculasFavoritas(favoritas);
+	}
 }

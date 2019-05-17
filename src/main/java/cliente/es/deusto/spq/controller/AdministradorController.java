@@ -8,5 +8,5 @@ public class AdministradorController {
 	public AdministradorController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	//TODO Metodos correspondientes
+	// TODO Metodos correspondientes
 }

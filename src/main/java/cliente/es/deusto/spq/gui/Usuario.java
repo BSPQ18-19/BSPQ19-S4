@@ -65,7 +65,7 @@ public class Usuario extends JPanel{
 		gbc_btnPelicula.gridy = 1;
 		add(btnPelicula, gbc_btnPelicula);
 
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reinicio();

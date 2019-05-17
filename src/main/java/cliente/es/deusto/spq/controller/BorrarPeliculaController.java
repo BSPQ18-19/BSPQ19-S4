@@ -13,7 +13,9 @@ public class BorrarPeliculaController {
 	}
 
 	// TODO Metodos correspondientes
-//	public void borrarPelicula(String titulo) throws RemoteException {
-//		service.getService().borrarPelicula(titulo);
-//    }
+	public boolean borrarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica,
+			String sinopsis, int puntuacion) throws RemoteException {
+		return service.getService().borrarPelicula(titulo, genero, fEstreno, trailer, fichatecnica, sinopsis,
+				puntuacion);
+	}
 }

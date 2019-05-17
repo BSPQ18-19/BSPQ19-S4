@@ -30,7 +30,6 @@ public class Pelicula extends JPanel{
 	
 	public static void init(servidor.es.deusto.spq.jdo.Pelicula peli) throws RemoteException {
 		lblGetTit.setText(peli.getTitulo());
-		System.out.println(peli.toString());
 		lblGetGen.setText(peli.getGenero());
 		lblGetEstreno.setText(peli.getfEstreno());
 		lblGetSinopsis.setText(peli.getSinopsis());
@@ -219,7 +218,7 @@ public class Pelicula extends JPanel{
 		gbc_btnAlquilar.gridy = 7;
 		add(btnAlquilar, gbc_btnAlquilar);
 		
-		JButton btnAtras = new JButton("Atr\u00E1s");
+		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				EventQueue.invokeLater(new Runnable() {

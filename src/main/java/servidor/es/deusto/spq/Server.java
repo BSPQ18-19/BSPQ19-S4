@@ -46,7 +46,7 @@ public class Server extends UnicastRemoteObject {
 			scanner.nextLine();
 			scanner.close();
 		} catch (Exception e) {
-			System.err.println("$ Server exception: " + e.getMessage());
+			JDO.msglogger("$ Server exception: " + e.getMessage());
 			e.printStackTrace();
 		}
 

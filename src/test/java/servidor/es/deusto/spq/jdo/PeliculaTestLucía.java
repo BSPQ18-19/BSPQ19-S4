@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import servidor.es.deusto.spq.jdo.Pelicula;
 
-public class PeliculaTest {
+public class PeliculaTestLucía {
 	private Pelicula pelicula;
 	
 	@Before

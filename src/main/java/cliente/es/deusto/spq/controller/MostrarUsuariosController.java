@@ -10,9 +10,11 @@ public class MostrarUsuariosController {
 	public MostrarUsuariosController(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;
 	}
-	public String[] mostrarUsuarios()throws RemoteException {
+
+	public String[] mostrarUsuarios() throws RemoteException {
 		return service.getService().mostrarUsuarios();
 	}
+
 	/**
 	 * @return the service
 	 */
@@ -21,7 +23,8 @@ public class MostrarUsuariosController {
 	}
 
 	/**
-	 * @param service the service to set
+	 * @param service
+	 *            the service to set
 	 */
 	public void setService(RMIBSPQ19S4ServiceLocator service) {
 		this.service = service;

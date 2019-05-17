@@ -83,7 +83,7 @@ public class Registrar extends JPanel {
 					boolean disponible = true;
 					// TODO: comprobar en la BD si el nombre de usuario esta disponible
 					if (disponible == false) {
-						JOptionPane.showMessageDialog(null, "Este nombre de usuario no est\u00E1 disponible");
+						JOptionPane.showMessageDialog(null, "Este nombre de usuario no esta disponible");
 					} else {
 						lblContrasea1.setEnabled(true);
 						passwordFieldContrasea1.setEnabled(true);
@@ -94,7 +94,7 @@ public class Registrar extends JPanel {
 			}
 		});
 
-		lblContrasea1 = new JLabel("Introducir contrase\u00F1a:");
+		lblContrasea1 = new JLabel("Introducir contraseña:");
 		lblContrasea1.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea1 = new GridBagConstraints();
 		gbc_lblContrasea1.insets = new Insets(0, 0, 5, 5);
@@ -123,7 +123,7 @@ public class Registrar extends JPanel {
 			}
 		});
 
-		lblContrasea2 = new JLabel("Repetir contrase\u00F1a: ");
+		lblContrasea2 = new JLabel("Repetir contraseña: ");
 		lblContrasea2.setEnabled(false);
 		GridBagConstraints gbc_lblContrasea2 = new GridBagConstraints();
 		gbc_lblContrasea2.insets = new Insets(0, 0, 5, 5);
@@ -146,7 +146,7 @@ public class Registrar extends JPanel {
 					String contrasenya2 = new String(passwordFieldContrasea2.getPassword());
 					if (!contrasenya2.equals(contrasenya1)) {
 						JOptionPane.showMessageDialog(null,
-								"La contrase\u00F1a repetida no es igual a la contrase\u00F1a introducida");
+								"La contraseña repetida no es igual a la contraseña introducida");
 					} else {
 						// lblCorreo1.setEnabled(true);
 						textFieldCorreo1.setEnabled(true);
@@ -157,7 +157,7 @@ public class Registrar extends JPanel {
 			}
 		});
 
-		lblCorreo1 = new JLabel("Introducir correo electr\u00F3nico:");
+		lblCorreo1 = new JLabel("Introducir correo electronico:");
 		lblCorreo1.setEnabled(false);
 		GridBagConstraints gbc_lblCorreo1 = new GridBagConstraints();
 		gbc_lblCorreo1.insets = new Insets(0, 0, 5, 5);
@@ -186,7 +186,7 @@ public class Registrar extends JPanel {
 			}
 		});
 
-		lblCorreo2 = new JLabel("Repetir correo electr\u00F3nico:");
+		lblCorreo2 = new JLabel("Repetir correo electronico:");
 		lblCorreo2.setEnabled(false);
 		GridBagConstraints gbc_lblCorreo2 = new GridBagConstraints();
 		gbc_lblCorreo2.insets = new Insets(0, 0, 5, 5);
@@ -315,7 +315,7 @@ public class Registrar extends JPanel {
 		gbl_panel.rowWeights = new double[] { 1.0, Double.MIN_VALUE };
 		panel.setLayout(gbl_panel);
 
-		lblAdminSiONo = new JLabel("Introducir c\u00F3digo de administrador:");
+		lblAdminSiONo = new JLabel("Introducir codigo de administrador:");
 		lblAdminSiONo.setEnabled(false);
 		GridBagConstraints gbc_lblAdminSiONo = new GridBagConstraints();
 		gbc_lblAdminSiONo.insets = new Insets(0, 0, 0, 5);
@@ -340,7 +340,7 @@ public class Registrar extends JPanel {
 						btnGuardar.setEnabled(true);
 						textFieldAdminSiONo.setEditable(false);
 					} else {
-						JOptionPane.showMessageDialog(null, "El c\u00F3digo introducido no es correcto");
+						JOptionPane.showMessageDialog(null, "El codigo introducido no es correcto");
 						btnGuardar.setEnabled(false);
 					}
 				}
@@ -375,7 +375,7 @@ public class Registrar extends JPanel {
 		gbc_btnGuardar.gridy = 8;
 		add(btnGuardar, gbc_btnGuardar);
 
-		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				reinicio();

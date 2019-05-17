@@ -11,6 +11,8 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -20,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import cliente.es.deusto.spq.controller.AnadirPeliculaController;
+import servidor.es.deusto.spq.jdo.Pelicula;
 
 
 public class AnadirPelicula extends JPanel {
@@ -81,7 +84,7 @@ public class AnadirPelicula extends JPanel {
 					boolean anadida = false;
 					// TODO: comprobar en la BD si el titulo de la pelicula esta añadido
 					if (anadida == true) {
-						JOptionPane.showMessageDialog(null, "Esta pelicula ya est\u00E1  añadida");
+						JOptionPane.showMessageDialog(null, "Esta pelicula ya esta añadida");
 					} else {
 						lblGenero.setEnabled(true);
 						textFieldGenero.setEnabled(true);
@@ -150,7 +153,7 @@ public class AnadirPelicula extends JPanel {
 			}
 		});
 
-		lbltrailer = new JLabel("Introducir direcci\u00F3n del trailer:");
+		lbltrailer = new JLabel("Introducir direccion del trailer:");
 		lbltrailer.setEnabled(false);
 		GridBagConstraints gbc_lbltrailer = new GridBagConstraints();
 		gbc_lbltrailer.insets = new Insets(0, 0, 5, 5);
@@ -298,7 +301,7 @@ public class AnadirPelicula extends JPanel {
 			}
 		});
 
-		btnAnadirPelicula = new JButton("A\u00F1adir");
+		btnAnadirPelicula = new JButton("Añadir");
 		btnAnadirPelicula.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				// TODO: guardar pelicula en la BD
@@ -306,13 +309,7 @@ public class AnadirPelicula extends JPanel {
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
-							/*
-							Class.forName("com.mysql.jdbc.Driver");
 							
-							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
-						
-						//int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
-						
 							String titulo = textFieldPelicula.getText();
 							String genero = textFieldGenero.getText();
 							String festreno = textFieldfEstreno.getText();
@@ -320,6 +317,14 @@ public class AnadirPelicula extends JPanel {
 							String fichatecnica = textFieldFichaTecnica.getText();
 							String sinopsis = textFieldSinopsis.getText();
 							int puntuacion = 8;
+							
+							Pelicula p = new Pelicula(titulo, genero, festreno, trailer, fichatecnica, sinopsis, puntuacion);
+							/*
+							Class.forName("com.mysql.jdbc.Driver");
+							
+							java.sql.Connection conexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/bspq19-s4", "spq", "spq");
+						
+							int pelicula_id = Integer.parseInt(textFieldPelicula_id.getText());
 						
 							String query = "INSERT INTO pelicula (FESTRENO, FICHATECNICA, GENERO, SINOPSIS, TITULO, TRAILER) values ('"+festreno+"', '"+fichatecnica+"','"+genero+"','"+sinopsis+"', '"+titulo+"', '"+trailer+"')";
 							
@@ -327,10 +332,9 @@ public class AnadirPelicula extends JPanel {
 							stmt.executeUpdate(query);
 							 */		
 							
-							//TODO:anadir pelicula
-							//anadirPeliculaController.almacenarPelicula(null);
+							anadirPeliculaController.almacenarPelicula(p);
 							cardLayout.show(getParent(), VentanaPrincipal.PELICULAS);
-							JOptionPane.showMessageDialog(null, "Nueva pelicula a\u00F1adida a la BD");
+							JOptionPane.showMessageDialog(null, "Nueva pelicula añadida a la BD");
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -345,7 +349,7 @@ public class AnadirPelicula extends JPanel {
 		gbc_btnAnadirPelicula.gridy = 7;
 		add(btnAnadirPelicula, gbc_btnAnadirPelicula);
 
-		btnAtras = new JButton("Atr\u00E1s");
+		btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				reinicio();
