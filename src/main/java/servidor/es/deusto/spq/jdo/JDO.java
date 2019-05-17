@@ -29,9 +29,8 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 	PersistenceManager persistentManager = persistentManagerFactory.getPersistenceManager();
 	Transaction transaction = persistentManager.currentTransaction();
 
-	public JDO(String serverName) throws RemoteException {
+	public JDO() throws RemoteException {
 		super();
-		this.serverName = serverName;
 	}
 
 	/**
