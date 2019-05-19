@@ -547,17 +547,4 @@ public class JDO extends UnicastRemoteObject implements IServer, Serializable {
 			persistentManager.close();
 		}
 	}
-	
-	@Override
-	public List<Pelicula> buscarPeliculasFavoritas(String favoritas) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<Pelicula> buscarPeliculasVistas(String vistas) throws RemoteException {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

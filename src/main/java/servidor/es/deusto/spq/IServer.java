@@ -147,8 +147,6 @@ public interface IServer extends Remote {
 	 */
 	public Cuenta conseguirUsuario(String nombre) throws RemoteException;
 
-	List<Pelicula> buscarPeliculasFavoritas(String favoritas)throws RemoteException;
-	List<Pelicula> buscarPeliculasVistas(String vistas)throws RemoteException;
 	public boolean borrarPelicula(String titulo, String genero, String fEstreno, String trailer, String fichatecnica, String sinopsis, int puntuacion) throws RemoteException;
 	public boolean borrarUsuario(String correo, String nombre, String contrasenna, String paypal, int privilegio, double gasto) throws RemoteException;
 	public boolean almacenarUsuario (Cuenta c)throws RemoteException;

@@ -38,9 +38,9 @@ public class Perfil extends JPanel{
 		
 		GridBagLayout gbl_contentPane = new GridBagLayout();
 		gbl_contentPane.columnWidths = new int[] { 0, 0 };
-		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0, 0 };
+		gbl_contentPane.rowHeights = new int[] { 0, 0, 0, 0 };
 		gbl_contentPane.columnWeights = new double[] { 1.0, 1.0 };
-		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0, 1.0 };
+		gbl_contentPane.rowWeights = new double[] { 1.0, 1.0, 1.0, 1.0 };
 		setLayout(gbl_contentPane);
 	
 		JLabel lblNombre = new JLabel("Nombre: ");
@@ -93,46 +93,6 @@ public class Perfil extends JPanel{
 		gbc_lblGetPaypal.gridy = 2;
 		add(lblGetPaypal, gbc_lblGetPaypal);
 		
-		JButton btnPelFav = new JButton("Lista películas favoritas");
-		btnPelFav.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							cardLayout.show(getParent(), VentanaPrincipal.FAVORITAS);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		GridBagConstraints gbc_btnPelFav = new GridBagConstraints();
-		gbc_btnPelFav.insets = new Insets(0, 0, 5, 5);
-		gbc_btnPelFav.gridx = 0;
-		gbc_btnPelFav.gridy = 3;
-		add(btnPelFav, gbc_btnPelFav);
-		
-		JButton btnPelVis = new JButton("Lista películas vistas");
-		btnPelVis.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				EventQueue.invokeLater(new Runnable() {
-					public void run() {
-						try {
-							cardLayout.show(getParent(), VentanaPrincipal.VISTAS);
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-			}
-		});
-		GridBagConstraints gbc_btnPelVis = new GridBagConstraints();
-		gbc_btnPelVis.insets = new Insets(0, 0, 5, 0);
-		gbc_btnPelVis.gridx = 1;
-		gbc_btnPelVis.gridy = 3;
-		add(btnPelVis, gbc_btnPelVis);
-		
 		JButton btnAtras = new JButton("Atras");
 		btnAtras.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -148,9 +108,9 @@ public class Perfil extends JPanel{
 			}
 		});
 		GridBagConstraints gbc_btnAtras = new GridBagConstraints();
-		gbc_btnAtras.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAtras.gridwidth = 2;
 		gbc_btnAtras.gridx = 0;
-		gbc_btnAtras.gridy = 4;
+		gbc_btnAtras.gridy = 3;
 		add(btnAtras, gbc_btnAtras);
 	}
 }
