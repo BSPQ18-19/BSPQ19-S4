@@ -28,7 +28,7 @@ public class BuscarPelicula extends JPanel {
 	private static final long serialVersionUID = -1644310303190255276L;
 	private JLabel lblLista;
 	private JScrollPane scrollPane;
-	private String[] peliculas = { "Elegir como ordenar la lista" };
+	private String[] peliculas = {"Elegir como ordenar la lista"};
 	private String[] pelis = null;
 	private JList<String> listMostarPeliculas;
 	private JButton btnVer;
@@ -83,7 +83,12 @@ public class BuscarPelicula extends JPanel {
 				}
 			}
 		});
+		
+		lblLista = new JLabel("Ordenar lista por: ");
 		GridBagConstraints gbc_lblLista = new GridBagConstraints();
+		gbc_lblLista.insets = new Insets(0, 0, 5, 0);
+		gbc_lblLista.gridwidth = 3;
+		gbc_lblLista.gridx = 0;
 		gbc_lblLista.gridy = 0;
 		add(lblLista, gbc_lblLista);
 
