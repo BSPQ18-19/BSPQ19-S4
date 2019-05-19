@@ -6,6 +6,9 @@ import java.rmi.RemoteException;
 
 import servidor.es.deusto.spq.IServer;
 
+/**
+ * \brief Establece la conexión con le servidor
+ */
 public class RMIBSPQ19S4ServiceLocator {
 	private IServer service;
 	

@@ -1,9 +1,6 @@
 package servidor.es.deusto.spq;
 
 import java.rmi.Remote;
-/**
- * \brief 
- */
 import java.rmi.RemoteException;
 import java.util.List;
 

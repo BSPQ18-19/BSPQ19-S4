@@ -1,4 +1,6 @@
-
+/** @package servidor.es.deusto.spq
+    @brief Paquete que contiene la clase Server y la interfaz IServer
+ */
 package servidor.es.deusto.spq;
 
 import java.rmi.Naming;

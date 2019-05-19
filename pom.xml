@@ -169,6 +169,7 @@
 						<fileset>
 							<directory>${basedir}</directory>
 							<includes>
+								<include>**/docs/**</include>
 								<include>**.log</include>
 								<include>**.ods</include>
 							</includes>
