@@ -12,6 +12,7 @@
 		<config.files.dir>${basedir}/src/main/resources</config.files.dir>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<policy.file>${basedir}/src/main/resources/security/java.policy</policy.file>
+		<doxygen.config.file>${basedir}/src/main/resources/Doxyfile</doxygen.config.file>
 		<server.IP>127.0.0.1</server.IP>
 		<server.port>1099</server.port>
 		<server.Name>BSPQ19-S4</server.Name>
@@ -170,7 +171,6 @@
 							<includes>
 								<include>**.log</include>
 								<include>**.ods</include>
-								<include>**/Doxygen/**</include>
 							</includes>
 						</fileset>
 					</filesets>

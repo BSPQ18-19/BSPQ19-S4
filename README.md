@@ -7,16 +7,28 @@
 Este es un programa para gestionar un videoclub online. Gracias al él, los usuarios registrados podrán buscar y alquilar películas durante un periodo de tiempo determinado por ellos, y pagarlas utilizando sus cuentas de paypal.
 
 ## Instalación
-##### Creación de la base de datos 
-- Crear una base de datos la ruta 127.0.0.1:3306 (localhost) con nombre: **bspq19-s4**
-- Crear un usuario con privilegios sobre la base de datos. El nombre y contraseña del usuario ha de ser en ambos campos: **spq**
-##### Cargar schema
-Para cargar el schema es necesario ejecutar unos comando de Maven, en la parte del Servidor.
+### Creación de la base de datos 
+- Primero es necesario borrar si existe el schema y el usuario de la base de datos.
+ ``` sh
+    DROP SCHEMA IF EXISTS bspq19s4;
+    DROP USER IF EXISTS 'spq'@'%';
+ ```
+- A continuación se creará el schema y se le asignará el usuario.
+ ``` sh
+    CREATE SCHEMA bspq19s4;
+    CREATE USER IF NOT EXISTS 'spq'@'%' IDENTIFIED BY 'spq';
+ ```
+- Finalmente se le concederan permisos al usuario
+ ``` sh
+    GRANT ALL ON bspq19s4.* TO 'spq'@'%';
+ ```
+ 
+### Creación de las tablas:
 - Primero es necesario compilar el proyecto para hacer el enhance de las clases.
  ``` sh
     mvn clean compile 
  ```
-- A continuación se creará el schema
+- A continuación se crearán las tablas
  ``` sh
     mvn datanucleus:schema-create
  ```
