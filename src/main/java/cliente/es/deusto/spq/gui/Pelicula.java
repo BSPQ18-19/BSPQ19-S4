@@ -1,6 +1,8 @@
 package cliente.es.deusto.spq.gui;
 
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -10,10 +12,14 @@ import java.awt.event.ActionListener;
 import java.rmi.RemoteException;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import chrriis.dj.nativeswing.swtimpl.NativeInterface;
+import chrriis.dj.nativeswing.swtimpl.components.JWebBrowser;
 import cliente.es.deusto.spq.controller.PeliculaController;
+import cliente.es.deusto.spq.gui.Pelicula;
 
 public class Pelicula extends JPanel{
 
@@ -137,6 +143,36 @@ public class Pelicula extends JPanel{
 				EventQueue.invokeLater(new Runnable() {
 					public void run() {
 						try {
+							NativeInterface.open();
+							VentanaTrailerPelicula abrirventana = new VentanaTrailerPelicula();
+							abrirventana.setVisible(true);
+							abrirventana.setTitle("Trailer de la pelicula");
+							abrirventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+							abrirventana.setSize(1366, 768);
+							
+							
+							NativeInterface.runEventPump();
+							
+							Runtime.getRuntime().addShutdownHook(new Thread(new Runnable() {
+
+								public void run() {
+									NativeInterface.close();
+								}
+								
+							}));
+							
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+					}
+
+				});
+			}
+			/*
+			public void actionPerformed(ActionEvent arg0) {
+				EventQueue.invokeLater(new Runnable() {
+					public void run() {
+						try {
 							try {
 								VentanaTrailerPelicula frame = new VentanaTrailerPelicula();
 								frame.setVisible(true);
@@ -150,6 +186,7 @@ public class Pelicula extends JPanel{
 					}
 				});
 			}
+			*/
 		});
 		GridBagConstraints gbc_btnTrailer = new GridBagConstraints();
 		gbc_btnTrailer.insets = new Insets(0, 0, 5, 0);
